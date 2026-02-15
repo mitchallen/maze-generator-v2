@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Shuffle Example</title>
+    <meta name="description" content="Shuffle Example">
+    <!-- either cdn should work -->
+    <!--
+    <script src="https://cdn.rawgit.com/mitchallen/shuffle/v0.1.10/dist/shuffle.min.js"></script>
+    -->
+    <script src="https://unpkg.com/@mitchallen/shuffle@0.1.10/dist/shuffle.min.js"></script>
+    <script>
+      var factory = window.MitchAllen.Shuffle;
+      var list = [1, 2, 3, 4, 5];
+      var obj = factory.create({ array: list });
+      var shuffled = obj.shuffle();
+      console.log(shuffled); 
+    </script>
+  </head>
+  <body>
+    <h1>Shuffle Example</h1>
+    <p>See the JavaScript console for results.</p>
+    <p>Refresh browser for new results.</p>
+  </body>
+</html>

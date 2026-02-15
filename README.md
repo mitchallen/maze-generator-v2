@@ -10,6 +10,33 @@ You must use __npm__ __2.7.0__ or higher because of the scoped package name.
 
     $ npm init
     $ npm install @mitchallen/maze-generator --save
+
+## Monorepo (npm workspaces)
+
+This repository is now organized as an npm workspaces monorepo:
+
+- root package: `@mitchallen/maze-generator`
+- workspace packages: `packages/*` for all local `@mitchallen/*` dependencies
+
+### Workspace bootstrap
+
+```sh
+make install
+```
+
+### Common monorepo commands
+
+```sh
+make list     # list workspace packages
+make deps     # show workspace dependency tree
+make build    # run build scripts in all workspaces (if present)
+make test     # run test scripts in all workspaces (if present)
+make clean    # remove all node_modules directories
+```
+
+### Runtime note
+
+Some workspace packages use older build/test tooling. If `make test` fails under very new Node.js releases, use an LTS runtime (Node 20 or Node 22).
   
 * * *
 

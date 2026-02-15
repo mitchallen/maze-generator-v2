@@ -14,7 +14,11 @@
     "test-circle": "grunt && mocha --recursive test/circle/ --timeout 5000",
     "test-ascii": "grunt && mocha --recursive test/ascii/ --timeout 5000",
     "test-debug": "grunt && mocha -g '@DEBUG' --recursive --timeout 20000",
-    "test-jenkins": "grunt && mocha --recursive --timeout 20000 -R xunit test/ > test-reports.xml"
+    "test-jenkins": "grunt && mocha --recursive --timeout 20000 -R xunit test/ > test-reports.xml",
+    "ws:install": "npm install --workspaces",
+    "ws:test": "npm run test --workspaces --if-present",
+    "ws:build": "npm run build --workspaces --if-present",
+    "ws:clean": "npm run clean --workspaces --if-present"
   },
   "repository": {
     "type": "git",
@@ -53,5 +57,14 @@
     "trim-newlines": "^5.0.0",
     "yargs-parser": "^22.0.0",
     "minimatch": "^3.0.5"
+  },
+  "private": true,
+  "workspaces": [
+    ".",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=20 <23",
+    "npm": ">=10"
   }
 }

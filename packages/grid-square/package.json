@@ -1,0 +1,36 @@
+{
+  "name": "@mitchallen/grid-square",
+  "version": "0.1.9",
+  "description": "2D square grid",
+  "main": "dist/grid-square.js",
+  "scripts": {
+    "start": "node dist/grid-square.js",
+    "build": "node esbuild.config.js",
+    "test": "npm run build && mocha --recursive --timeout 20000",
+    "test-coverage": "./node_modules/.bin/istanbul cover _mocha -- -R spec test/**/*",
+    "test-nodemon": "nodemon ./node_modules/.bin/mocha --timeout 5000",
+    "test-debug": "npm run build && mocha -g '@DEBUG' --recursive --timeout 20000",
+    "test-jenkins": "npm run build && --recursive --timeout 20000 -R xunit test/ > test-reports.xml",
+    "web-server": "python -m SimpleHTTPServer $PORT || 8000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mitchallen/grid-square.git"
+  },
+  "author": "Mitch Allen <npm@mitchallen.com> (http://mitchallen.com)",
+  "license": "MIT",
+  "dependencies": {
+    "@mitchallen/grid-core": "^0.1.10"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.5",
+    "istanbul": "^0.4.5",
+    "mocha": "^10.1.0",
+    "should": "^10.0.0",
+    "supertest": "^6.3.1"
+  },
+  "engines": {
+    "node": ">=20 <23",
+    "npm": ">=10"
+  }
+}
