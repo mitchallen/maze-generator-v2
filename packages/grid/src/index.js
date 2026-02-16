@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/grid
+    Module: grid
     Author: Mitch Allen
 */
 
@@ -8,11 +8,11 @@
 
 "use strict";
 
-var squareGrid = require('@mitchallen/grid-square').create,
+var squareGrid = require('grid-square').create,
     circleGrid = require('./circle');
  
 var createGrid = (spec) => {
-    console.warn("@mitchallen/grid: .create is deprecated. Use .Square instead.");
+    console.warn("grid: .create is deprecated. Use .Square instead.");
     return squareGrid( spec );
 };
 

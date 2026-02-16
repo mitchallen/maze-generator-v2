@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/grid
+    Module: grid
       Test: has-connections-test
     Author: Mitch Allen
 */

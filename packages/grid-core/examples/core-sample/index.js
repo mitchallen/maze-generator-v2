@@ -1,6 +1,6 @@
 "use strict";
 
-var gridFactory = require("@mitchallen/grid-core");
+var gridFactory = require("grid-core");
 
 var rows = 5;
 

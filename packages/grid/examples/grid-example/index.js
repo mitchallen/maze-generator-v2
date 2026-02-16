@@ -1,6 +1,6 @@
     
 "use strict";
-var gridFactory = require("@mitchallen/grid");
+var gridFactory = require("grid");
 var xSize = 5;
 var ySize = 10;
 var value = 100;

@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/maze-generator
+    Module: maze-generator
       Test: triangle/smoke-test
     Author: Mitch Allen
 */

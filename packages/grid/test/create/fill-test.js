@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/grid
+    Module: grid
       Test: fill-test
     Author: Mitch Allen
 */

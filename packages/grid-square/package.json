@@ -1,5 +1,5 @@
 {
-  "name": "@mitchallen/grid-square",
+  "name": "grid-square",
   "version": "0.1.9",
   "description": "2D square grid",
   "main": "dist/grid-square.js",
@@ -20,7 +20,7 @@
   "author": "Mitch Allen <npm@mitchallen.com> (http://mitchallen.com)",
   "license": "MIT",
   "dependencies": {
-    "@mitchallen/grid-core": "^0.1.10"
+    "grid-core": "^0.1.10"
   },
   "devDependencies": {
     "esbuild": "^0.25.5",

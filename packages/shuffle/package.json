@@ -1,5 +1,5 @@
 {
-  "name": "@mitchallen/shuffle",
+  "name": "shuffle",
   "version": "0.1.10",
   "description": "Uses Fisher-Yates to shuffle an array",
   "main": "dist/shuffle.js",

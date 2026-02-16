@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/connection-grid-core
+    Module: connection-grid-core
       Test: smoke-test
     Author: Mitch Allen
 */
@@ -8,8 +8,8 @@
 
 let request = require('supertest'),
   should = require('should'),
-  gridCore = require('@mitchallen/grid-core'),
-  gridSquare = require('@mitchallen/grid-square'),
+  gridCore = require('grid-core'),
+  gridSquare = require('grid-square'),
   // modulePath = "../dist/connection-grid-core";
   modulePath = "../src/index";
 

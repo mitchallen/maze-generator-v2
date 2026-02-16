@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/connection-grid
+    Module: connection-grid
     Author: Mitch Allen
 */
 
@@ -8,13 +8,13 @@
 
 "use strict";
 
-let squareGrid = require('@mitchallen/connection-grid-square').create,
+let squareGrid = require('connection-grid-square').create,
     hexagonGrid = require('./hexagon'),
     circleGrid = require('./circle'),
     triangleGrid = require('./triangle');
 
 let createGrid = (spec) => {
-    console.warn("@mitchallen/connection-grid: .create is deprecated. Use .Square instead.");
+    console.warn("connection-grid: .create is deprecated. Use .Square instead.");
     return squareGrid( spec );
 };
 

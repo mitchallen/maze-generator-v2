@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/grid
+    Module: grid
       Test: square-mask-test
     Author: Mitch Allen
 */

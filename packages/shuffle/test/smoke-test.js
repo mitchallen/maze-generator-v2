@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/shuffle
+    Module: shuffle
       Test: smoke-test
     Author: Mitch Allen
 */

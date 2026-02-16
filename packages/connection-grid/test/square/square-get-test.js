@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/grid
+    Module: grid
       Test: square-get-test
     Author: Mitch Allen
 */

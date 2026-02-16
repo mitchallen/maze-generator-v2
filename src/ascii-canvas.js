@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/maze-generator/../ascii-canvas
+    Module: maze-generator/../ascii-canvas
     Author: Mitch Allen
 */
 
@@ -8,7 +8,7 @@
 
 "use strict";
 
-var gridFactory = require("@mitchallen/grid");
+var gridFactory = require("grid");
 
 module.exports.Canvas = (spec) => {
 

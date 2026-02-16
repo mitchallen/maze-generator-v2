@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/grid
+    Module: grid
       Test: triangle-smoke-test
     Author: Mitch Allen
 */

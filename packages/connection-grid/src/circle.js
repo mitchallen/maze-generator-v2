@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/connection-grid/src/circle.js
+    Module: connection-grid/src/circle.js
     Author: Mitch Allen
 */
 
@@ -8,8 +8,8 @@
 
 "use strict";
 
-let gridFactory = require("@mitchallen/grid"),
-    baseGrid = require("@mitchallen/connection-grid-core").create;
+let gridFactory = require("grid"),
+    baseGrid = require("connection-grid-core").create;
 
 module.exports = (spec) => {
 

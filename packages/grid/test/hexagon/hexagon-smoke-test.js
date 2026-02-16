@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/grid
+    Module: grid
       Test: hexagon-smoke-test
     Author: Mitch Allen
 */

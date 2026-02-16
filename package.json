@@ -1,5 +1,5 @@
 {
-  "name": "@mitchallen/maze-generator",
+  "name": "maze-generator",
   "version": "0.1.28",
   "description": "maze generator",
   "main": "dist/maze-generator.js",
@@ -45,10 +45,10 @@
     "yargs-parser": "^22.0.0"
   },
   "dependencies": {
-    "@mitchallen/connection-grid": "^0.1.34",
-    "@mitchallen/connection-grid-square": "^0.1.17",
-    "@mitchallen/maze-generator-core": "^0.1.13",
-    "@mitchallen/maze-generator-square": "^0.1.24"
+    "connection-grid": "^0.1.34",
+    "connection-grid-square": "^0.1.17",
+    "maze-generator-core": "^0.1.13",
+    "maze-generator-square": "^0.1.24"
   },
   "overrides": {
     "braces": "^3.0.3",

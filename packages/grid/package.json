@@ -1,5 +1,5 @@
 {
-  "name": "@mitchallen/grid",
+  "name": "grid",
   "version": "0.1.25",
   "description": "A 2D grid that uses zero-based indexing",
   "main": "dist/grid.js",
@@ -39,8 +39,8 @@
     "supertest": "^7.1.1"
   },
   "dependencies": {
-    "@mitchallen/grid-core": "^0.1.10",
-    "@mitchallen/grid-square": "^0.1.9"
+    "grid-core": "^0.1.10",
+    "grid-square": "^0.1.9"
   },
   "overrides": {
     "braces": ">=3.0.3",

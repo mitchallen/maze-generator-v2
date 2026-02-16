@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/connection-grid-square
+    Module: connection-grid-square
       Test: square-multi-test
     Author: Mitch Allen
 */

@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/maze-generator-square
+    Module: maze-generator-square
       Test: square/smoke-test
     Author: Mitch Allen
 */

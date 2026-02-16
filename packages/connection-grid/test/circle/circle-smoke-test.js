@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/connection-grid
+    Module: connection-grid
       Test: circle-smoke-test
     Author: Mitch Allen
 */

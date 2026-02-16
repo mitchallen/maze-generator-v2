@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/maze-generator-square/modules/index
+    Module: maze-generator-square/modules/index
     Author: Mitch Allen
 */
 
@@ -8,12 +8,12 @@
 
 "use strict";
 
-var cgFactory = require("@mitchallen/connection-grid-square"),
-  baseGrid = require("@mitchallen/maze-generator-core");
+var cgFactory = require("connection-grid-square"),
+  baseGrid = require("maze-generator-core");
 
 
 /**
- * Maze Generator Core {@link https://www.npmjs.com/package/@mitchallen/maze-generator-core|npm documentation}
+ * Maze Generator Core {@link https://www.npmjs.com/package/maze-generator-core|npm documentation}
  * @module maze-generator-core
  */
 
@@ -39,12 +39,12 @@ var cgFactory = require("@mitchallen/connection-grid-square"),
 * @param {number} options.y Height of the maze
 * @returns {module:maze-generator-square}
 * @example <caption>Creating a maze-generator-square</caption>
-* var mazeFactory = require("@mitchallen/maze-generator-square");
+* var mazeFactory = require("maze-generator-square");
 * let xSize = 5;
 * let ySize = 6;
 * var maze = mazeFactory.create({ x: xSize, y: ySize });
 * @example <caption>Calling create mulitple times</caption>
-* var mazeFactory = require("@mitchallen/maze-generator-square");
+* var mazeFactory = require("maze-generator-square");
 * var maze1 = mazeFactory.create( { x: 5, y: 10 } );
 * var maze2 = mazeFactory.create( { x: 7, y: 20 } );
 * maze1.generate();

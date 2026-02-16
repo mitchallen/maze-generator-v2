@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/grid-square
+    Module: grid-square
       Test: square-smoke-test
     Author: Mitch Allen
 */

@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/grid-circle
+    Module: grid-circle
       Test: clone-array-test
     Author: Mitch Allen
 */

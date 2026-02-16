@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/grid
+    Module: grid
       Test: smoke-test
     Author: Mitch Allen
 */

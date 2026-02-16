@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/grid
+    Module: grid
       Test: iscell-test
     Author: Mitch Allen
 */

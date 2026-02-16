@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/grid-core/src/index.js
+    Module: grid-core/src/index.js
     Author: Mitch Allen
 */
 

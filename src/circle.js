@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/maze-generator/../circle
+    Module: maze-generator/../circle
     Author: Mitch Allen
 */
 
@@ -8,8 +8,8 @@
 
 "use strict";
 
-var connectionGridFactory = require("@mitchallen/connection-grid"),
-    baseGrid = require("@mitchallen/maze-generator-core");
+var connectionGridFactory = require("connection-grid"),
+    baseGrid = require("maze-generator-core");
 
 module.exports = (spec) => {
     

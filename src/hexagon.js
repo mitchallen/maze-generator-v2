@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/maze-generator/../hexagon
+    Module: maze-generator/../hexagon
     Author: Mitch Allen
 */
 
@@ -8,8 +8,8 @@
 
 "use strict";
 
-var connectionGridFactory = require("@mitchallen/connection-grid"),
-    baseGrid = require("@mitchallen/maze-generator-core"),
+var connectionGridFactory = require("connection-grid"),
+    baseGrid = require("maze-generator-core"),
     ascii = require("./ascii-canvas");
 
 module.exports = (spec) => {

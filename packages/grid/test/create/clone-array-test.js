@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/grid
+    Module: grid
       Test: clone-array-test
     Author: Mitch Allen
 */
