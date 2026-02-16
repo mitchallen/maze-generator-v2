@@ -54,7 +54,7 @@ module.exports = function (grunt) {
                    // if the source file has an extension of es6 then
                    // we change the name of the source file accordingly.
                    // The result file's extension is always .js
-                   "./dist/maze-generator.js": ["./src/index.js"]
+                   "./dist/maze-generator-v2.js": ["./src/index.js"]
                 }
             }
         },
@@ -62,7 +62,7 @@ module.exports = function (grunt) {
         terser: {
             my_target: {
                 files: {
-                    './dist/maze-generator.min.js': ['./dist/maze-generator.js']
+                    './dist/maze-generator-v2.min.js': ['./dist/maze-generator-v2.js']
                 }
             }
         },

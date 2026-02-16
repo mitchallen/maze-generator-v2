@@ -2,10 +2,10 @@
   "name": "@mitchallen/maze-generator-v2",
   "version": "0.1.28",
   "description": "maze generator",
-  "main": "dist/maze-generator.js",
+  "main": "dist/maze-generator-v2.js",
   "scripts": {
     "//": "To use: npm run test-nodemon (assumes global location of mocha)",
-    "start": "node dist/maze-generator.js",
+    "start": "node dist/maze-generator-v2.js",
     "test": "grunt && mocha --recursive --timeout 20000",
     "test-nodemon": "nodemon mocha --recursive --timeout 5000",
     "test-hexagon": "grunt && mocha --recursive test/hexagon/ --timeout 5000",
