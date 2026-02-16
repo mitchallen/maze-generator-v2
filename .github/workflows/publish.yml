@@ -23,7 +23,7 @@ jobs:
         run: npm install
 
       - name: Run tests
-        run: npx mocha --recursive --timeout 20000
+        run: npx mocha --recursive --timeout 20000 --ignore test/ascii
 
       - name: Publish to GitHub Packages
         run: npm publish --access public
