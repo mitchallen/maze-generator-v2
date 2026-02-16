@@ -19,6 +19,7 @@
   },
   "author": "Mitch Allen <npm@mitchallen.com> (http://mitchallen.com)",
   "license": "MIT",
+  "private": true,
   "dependencies": {
     "grid-core": "^0.1.10"
   },

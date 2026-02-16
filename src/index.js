@@ -1,5 +1,5 @@
 /**
-    Module: maze-generator
+    Module: @mitchallen/maze-generator-v2
     Author: Mitch Allen
 */
 
@@ -14,7 +14,7 @@ var squareMaze = require('maze-generator-square').create,
     circleMaze = require('./circle');
 
 var createMaze = (spec) => {
-    console.warn("maze-generator: .create is deprecated. Use .Square instead.");
+    console.warn("@mitchallen/maze-generator-v2: .create is deprecated. Use .Square instead.");
     return squareMaze( spec );
 };
 

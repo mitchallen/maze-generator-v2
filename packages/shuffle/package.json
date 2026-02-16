@@ -19,6 +19,7 @@
   },
   "author": "Mitch Allen <npm@mitchallen.com> (http://mitchallen.com)",
   "license": "MIT",
+  "private": true,
   "devDependencies": {
     "babel-preset-es2015": "^6.18.0",
     "babelify": "^7.3.0",

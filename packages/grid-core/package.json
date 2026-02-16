@@ -20,6 +20,7 @@
   },
   "author": "Mitch Allen <npm@mitchallen.com> (http://mitchallen.com)",
   "license": "MIT",
+  "private": true,
   "devDependencies": {
     "esbuild": "^0.25.5",
     "istanbul": "^0.4.5",
