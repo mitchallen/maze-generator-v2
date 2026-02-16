@@ -37,7 +37,7 @@ describe('mask test', function() {
     });
 
     it('isMasked should return true for a masked cell', function(done) {
-        var grid = _module.create({ x: 3, y: 3 });
+        var grid = _module.Square({ x: 3, y: 3 });
         should.exist(grid);
         let tX = 0;
         let tY = 0;
@@ -47,7 +47,7 @@ describe('mask test', function() {
     });
 
     it('isMasked should return false for a non-masked cell', function(done) {
-        var grid = _module.create({ x: 3, y: 3 });
+        var grid = _module.Square({ x: 3, y: 3 });
         should.exist(grid);
         let tX = 0;
         let tY = 0;

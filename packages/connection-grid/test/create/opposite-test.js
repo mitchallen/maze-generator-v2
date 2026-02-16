@@ -37,7 +37,7 @@ describe('getOppositeDir', function() {
     });
 
     it('should return opposite neighbor', function(done) {
-        var grid = _module.create({ x: 5, y: 5 });
+        var grid = _module.Square({ x: 5, y: 5 });
         should.exist(grid);
         let tX = 2;
         let tY = 3;
@@ -52,7 +52,7 @@ describe('getOppositeDir', function() {
     });
 
     it('should return null for invalid dir', function(done) {
-        var grid = _module.create({ x: 5, y: 5 });
+        var grid = _module.Square({ x: 5, y: 5 });
         should.exist(grid);
         var sDir = "X";
         var oDir = grid.getOppositeDir(sDir);
@@ -61,7 +61,7 @@ describe('getOppositeDir', function() {
     });
 
     it('should return null for null dir', function(done) {
-        var grid = _module.create({ x: 5, y: 5 });
+        var grid = _module.Square({ x: 5, y: 5 });
         should.exist(grid);
         var sDir = null;
         var oDir = grid.getOppositeDir(sDir);

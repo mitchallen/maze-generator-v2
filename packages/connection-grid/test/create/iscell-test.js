@@ -39,7 +39,7 @@ describe('isCell method', function() {
     it('should return true when called with valid x and y parameters', function(done) {
         let sizeX = 5;
         let sizeY = 5;
-        var obj = _module.create({ x: sizeX, y: sizeY });
+        var obj = _module.Square({ x: sizeX, y: sizeY });
         should.exist(obj);
         var result = obj.isCell(sizeX-1, sizeY-1);
         result.should.eql(true);
@@ -49,7 +49,7 @@ describe('isCell method', function() {
     it('should return true when called with x and y parameters set to zero', function(done) {
         let sizeX = 1;
         let sizeY = 1;
-        var obj = _module.create({ x: sizeX, y: sizeY });
+        var obj = _module.Square({ x: sizeX, y: sizeY });
         should.exist(obj);
         var result = obj.isCell(0, 0);
         result.should.eql(true);
@@ -59,7 +59,7 @@ describe('isCell method', function() {
     it('should return true when called with x and y parameters set to size minus one', function(done) {
         let sizeX = 10;
         let sizeY = 5;
-        var obj = _module.create({ x: sizeX, y: sizeY });
+        var obj = _module.Square({ x: sizeX, y: sizeY });
         should.exist(obj);
         var result = obj.isCell(sizeX-1, sizeY-1);
         result.should.eql(true);
@@ -69,7 +69,7 @@ describe('isCell method', function() {
     it('should return false when called with negative x and y parameters', function(done) {
         let sizeX = 5;
         let sizeY = 5;
-        var obj = _module.create({ x: sizeX, y: sizeY });
+        var obj = _module.Square({ x: sizeX, y: sizeY });
         should.exist(obj);
         var result = obj.isCell(-1, -1);
         result.should.eql(false);
@@ -79,7 +79,7 @@ describe('isCell method', function() {
     it('should return false when called with negative x parameter', function(done) {
         let sizeX = 5;
         let sizeY = 5;
-        var obj = _module.create({ x: sizeX, y: sizeY });
+        var obj = _module.Square({ x: sizeX, y: sizeY });
         should.exist(obj);
         var result = obj.isCell(-1, sizeY-1);
         result.should.eql(false);
@@ -89,7 +89,7 @@ describe('isCell method', function() {
     it('should return false when called with negative y parameter', function(done) {
         let sizeX = 5;
         let sizeY = 5;
-        var obj = _module.create({ x: sizeX, y: sizeY });
+        var obj = _module.Square({ x: sizeX, y: sizeY });
         should.exist(obj);
         var result = obj.isCell(sizeX-1, -1);
         result.should.eql(false);
