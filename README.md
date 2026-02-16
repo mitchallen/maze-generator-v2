@@ -66,7 +66,7 @@ Example:
         <meta name="description" content="Maze Generator Example">
         <script src="https://unpkg.com/@mitchallen/maze-generator-v2@latest/dist/maze-generator-v2.min.js"></script>
         <script>
-          var factory = window.MitchAllen.MazeGenerator;
+          var factory = window.MitchAllen.MazeGeneratorV2;
           console.log(factory);
           var xSize = 10, ySize = 5;
           var sm = factory.Square( { x: xSize, y: ySize } );

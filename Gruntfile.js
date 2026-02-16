@@ -45,7 +45,7 @@ module.exports = function (grunt) {
             dist: {
                 options: {
                     browserifyOptions: {
-                        standalone: 'MitchAllen.MazeGenerator'
+                        standalone: 'MitchAllen.MazeGeneratorV2'
                     },
                     transform: [['babelify', {presets: ['@babel/preset-env']}]],
                     plugin: [[ "browserify-derequire" ]]
