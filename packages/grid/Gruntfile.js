@@ -59,7 +59,7 @@ module.exports = function (grunt) {
             }
         },
 
-        uglify: {
+        terser: {
             my_target: {
                 files: {
                     './dist/grid.min.js': ['./dist/grid.js']
@@ -70,18 +70,18 @@ module.exports = function (grunt) {
         watch: {
              scripts: {
                 files: ["./src/*.js"],
-                tasks: ["browserify",'uglify']
+                tasks: ["browserify",'terser']
              }
         }
     });
 
     grunt.loadNpmTasks("grunt-browserify");
-    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-terser');
     grunt.loadNpmTasks("grunt-contrib-watch");
 
-    grunt.registerTask('default', ['jshint','browserify','uglify']);
+    grunt.registerTask('default', ['jshint','browserify','terser']);
     grunt.registerTask('monitor', ['jshint','watch']);
-    grunt.registerTask("build", ['browserify','uglify']);
-    grunt.registerTask('pubinit', ['jshint','browserify','uglify','shell:pubinit']);
-    grunt.registerTask('publish', ['jshint','browserify','uglify','bump','shell:publish']);
+    grunt.registerTask("build", ['browserify','terser']);
+    grunt.registerTask('pubinit', ['jshint','browserify','terser','shell:pubinit']);
+    grunt.registerTask('publish', ['jshint','browserify','terser','bump','shell:publish']);
 };

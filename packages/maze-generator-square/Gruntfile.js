@@ -4,7 +4,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-bump');
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks("grunt-browserify");
-    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-terser');
     grunt.loadNpmTasks("grunt-contrib-watch");
     grunt.loadNpmTasks('grunt-jsdoc-to-markdown');
 
@@ -63,7 +63,7 @@ module.exports = function (grunt) {
             }
         },
 
-        uglify: {
+        terser: {
             my_target: {
                 files: {
                     './dist/maze-generator-square.min.js': ['./dist/maze-generator-square.js']
@@ -74,7 +74,7 @@ module.exports = function (grunt) {
         watch: {
              scripts: {
                 files: ["./src/*.js"],
-                tasks: ["browserify",'uglify']
+                tasks: ["browserify",'terser']
              }
         },
 
@@ -104,7 +104,7 @@ module.exports = function (grunt) {
     grunt.registerTask('default', ['build']);
     grunt.registerTask('monitor', ['jshint','watch']);
     grunt.registerTask('build-doc', ['jsdoc2md']);
-    grunt.registerTask("build", ['jshint','build-doc','browserify','uglify']);
+    grunt.registerTask("build", ['jshint','build-doc','browserify','terser']);
     grunt.registerTask('pubinit', ['build','shell:pubinit']);
     grunt.registerTask('publish', ['build','bump','shell:publish']);
 };

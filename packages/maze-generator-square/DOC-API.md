@@ -2,7 +2,7 @@
 
 <dl>
 <dt><a href="#module_maze-generator-core">maze-generator-core</a></dt>
-<dd><p>Maze Generator Core <a href="https://www.npmjs.com/package/@mitchallen/maze-generator-core">npm documentation</a></p>
+<dd><p>Maze Generator Core <a href="https://www.npmjs.com/package/maze-generator-core">npm documentation</a></p>
 </dd>
 <dt><a href="#module_maze-generator-square">maze-generator-square</a> ⇐ <code><a href="#module_maze-generator-core">maze-generator-core</a></code></dt>
 <dd><p>Square Maze Generator</p>
@@ -15,16 +15,16 @@
 <a name="module_maze-generator-core"></a>
 
 ## maze-generator-core
-Maze Generator Core [npm documentation](https://www.npmjs.com/package/@mitchallen/maze-generator-core)
+Maze Generator Core [npm documentation](https://www.npmjs.com/package/maze-generator-core)
 
 <a name="module_maze-generator-square"></a>
 
-## maze-generator-square ⇐ <code>[maze-generator-core](#module_maze-generator-core)</code>
+## maze-generator-square ⇐ [<code>maze-generator-core</code>](#module_maze-generator-core)
 Square Maze Generator
 
-**Extends:** <code>[maze-generator-core](#module_maze-generator-core)</code>  
+**Extends**: [<code>maze-generator-core</code>](#module_maze-generator-core)  
 
-* [maze-generator-square](#module_maze-generator-square) ⇐ <code>[maze-generator-core](#module_maze-generator-core)</code>
+* [maze-generator-square](#module_maze-generator-square) ⇐ [<code>maze-generator-core</code>](#module_maze-generator-core)
     * [.afterGenerate(spec)](#module_maze-generator-square+afterGenerate)
     * [.printBoard()](#module_maze-generator-square+printBoard)
 
@@ -34,7 +34,7 @@ Square Maze Generator
 Called by base class after generate generates the maze.
 Not meant to be called directly. The generate method will pass the spec on to this method.
 
-**Kind**: instance method of <code>[maze-generator-square](#module_maze-generator-square)</code>  
+**Kind**: instance method of [<code>maze-generator-square</code>](#module_maze-generator-square)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -104,7 +104,7 @@ Drawing a square maze work like this:
     </ul>
 </ul>
 
-**Kind**: instance method of <code>[maze-generator-square](#module_maze-generator-square)</code>  
+**Kind**: instance method of [<code>maze-generator-square</code>](#module_maze-generator-square)  
 **Example** *(console output)*  
 ```js
 MAZE: 20, 20
@@ -137,13 +137,13 @@ A module for generating square mazes
 
 <a name="module_maze-generator-square-factory.create"></a>
 
-### maze-generator-square-factory.create(options) ⇒ <code>[maze-generator-square](#module_maze-generator-square)</code>
+### maze-generator-square-factory.create(options) ⇒ [<code>maze-generator-square</code>](#module_maze-generator-square)
 Factory method that returns a square maze generator object.
 It takes one spec parameter that must be an object with x and y values specifying the size of the maze.
 If x and y size values are less than one (0) they will be normalized to 0.
 You can call create multiple times to create multiple mazes.
 
-**Kind**: static method of <code>[maze-generator-square-factory](#module_maze-generator-square-factory)</code>  
+**Kind**: static method of [<code>maze-generator-square-factory</code>](#module_maze-generator-square-factory)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -153,14 +153,14 @@ You can call create multiple times to create multiple mazes.
 
 **Example** *(Creating a maze-generator-square)*  
 ```js
-var mazeFactory = require("@mitchallen/maze-generator-square");
+var mazeFactory = require("maze-generator-square");
 let xSize = 5;
 let ySize = 6;
 var maze = mazeFactory.create({ x: xSize, y: ySize });
 ```
 **Example** *(Calling create mulitple times)*  
 ```js
-var mazeFactory = require("@mitchallen/maze-generator-square");
+var mazeFactory = require("maze-generator-square");
 var maze1 = mazeFactory.create( { x: 5, y: 10 } );
 var maze2 = mazeFactory.create( { x: 7, y: 20 } );
 maze1.generate();
