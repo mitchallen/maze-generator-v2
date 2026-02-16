@@ -3,10 +3,9 @@
   <head>
     <meta charset="utf-8">
     <link rel="icon" href="data:,">
-    <title>Maze Generator Example</title>
-    <meta name="description" content="Maze Generator Example">
-    <!-- local dist file (see ../cdn-example for jsDelivr CDN version) -->
-    <script src="../../dist/maze-generator-v2.min.js"></script>
+    <title>Maze Generator CDN Example</title>
+    <meta name="description" content="Maze Generator CDN Example">
+    <script src="https://cdn.jsdelivr.net/gh/mitchallen/maze-generator-v2@latest/dist/maze-generator-v2.min.js"></script>
     <script>
       var factory = window.MitchAllen.MazeGeneratorV2;
       console.log(factory);
@@ -14,11 +13,11 @@
       var sm = factory.Square( { x: xSize, y: ySize } );
       console.log(sm);
       sm.generate();
-      sm.printBoard(); 
+      sm.printBoard();
     </script>
   </head>
   <body>
-    <h1>Maze Generator Example</h1>
+    <h1>Maze Generator CDN Example</h1>
     <p>See JavaScript developer console for output.</p>
   </body>
 </html>
