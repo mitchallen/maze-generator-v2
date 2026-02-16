@@ -1,5 +1,5 @@
 
-@mitchallen/maze-generator
+@mitchallen/maze-generator-v2
 ==
 maze generator
 --
@@ -9,14 +9,14 @@ maze generator
 You must use __npm__ __2.7.0__ or higher because of the scoped package name.
 
     $ npm init
-    $ npm install @mitchallen/maze-generator --save
+    $ npm install @mitchallen/maze-generator-v2 --save
 
 ## Monorepo (npm workspaces)
 
 This repository is now organized as an npm workspaces monorepo:
 
-- root package: `@mitchallen/maze-generator`
-- workspace packages: `packages/*` for all local `@mitchallen/*` dependencies
+- root package: `@mitchallen/maze-generator-v2`
+- workspace packages: `packages/*` (private, unpublished internal dependencies)
 
 ### Workspace bootstrap
 
@@ -45,7 +45,7 @@ Some workspace packages use older build/test tooling. If `make test` fails under
 ```js
     "use strict";
 
-    var mazeFactory = require("@mitchallen/maze-generator");
+    var mazeFactory = require("@mitchallen/maze-generator-v2");
 
     let xSize = 5;
     let ySize = 6;
@@ -64,7 +64,7 @@ Example:
         <meta charset="utf-8">
         <title>Maze Generator Example</title>
         <meta name="description" content="Maze Generator Example">
-        <script src="https://unpkg.com/@mitchallen/maze-generator@0.1.25/dist/maze-generator.min.js"></script>
+        <script src="https://unpkg.com/@mitchallen/maze-generator-v2@0.1.28/dist/maze-generator.min.js"></script>
         <script>
           var factory = window.MitchAllen.MazeGenerator;
           console.log(factory);
@@ -87,7 +87,7 @@ Example:
 
 ## Methods
 
-For more methods see the parent class: __[@mitchallen/connection-grid](https://www.npmjs.com/package/@mitchallen/connection-grid)__.
+For more methods see the parent class: __connection-grid__ (in `packages/connection-grid`).
 
 ### gridFactory = factory.create(spec)
 
@@ -103,7 +103,7 @@ If x and y size values are less than one (0) they will be normalized to 0.
 
 You can call Square multiple times to create multiple mazes.
 
-    var mazeFactory = require("@mitchallen/maze-generator");
+    var mazeFactory = require("@mitchallen/maze-generator-v2");
 
     var maze1 = mazeFactory.Square( { x: 5, y: 10 } );
     var maze2 = mazeFactory.Square( { x: 7, y: 20 } );
@@ -121,7 +121,7 @@ If x and y size values are less than one (0) they will be normalized to 0.
 
 You can call Hexagon multiple times to create multiple mazes.
 
-    var mazeFactory = require("@mitchallen/maze-generator");
+    var mazeFactory = require("@mitchallen/maze-generator-v2");
 
     var maze1 = mazeFactory.Hexagon( { x: 5, y: 10 } );
     var maze2 = mazeFactory.Hexagon( { x: 7, y: 20 } );
@@ -139,7 +139,7 @@ If x and y size values are less than one (0) they will be normalized to 0.
 
 You can call Triangle multiple times to create multiple mazes.
 
-    var mazeFactory = require("@mitchallen/maze-generator");
+    var mazeFactory = require("@mitchallen/maze-generator-v2");
 
     var maze1 = mazeFactory.Triangle( { x: 5, y: 10 } );
     var maze2 = mazeFactory.Triangle( { x: 7, y: 20 } );
@@ -155,7 +155,7 @@ It takes one spec parameter that must be an object with a __rings__ value specif
 
 You can call Circle multiple times to create multiple mazes.
 
-    var mazeFactory = require("@mitchallen/maze-generator");
+    var mazeFactory = require("@mitchallen/maze-generator-v2");
 
     var maze1 = mazeFactory.Circle( { rings: 5 } );
     var maze2 = mazeFactory.Circle( { rings: 6 } );
