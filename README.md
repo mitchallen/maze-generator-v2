@@ -3,6 +3,18 @@
 ==
 maze generator
 --
+
+## What's new in v2
+
+This is a new and improved version of the original [@mitchallen/maze-generator](https://www.npmjs.com/package/@mitchallen/maze-generator) package. The v2 repo has been reorganized as an **npm workspaces monorepo**, bringing all of the previously separate dependency packages under one roof. This makes it easier to develop, test, and maintain the entire maze generator stack in a single repository.
+
+Key improvements over v1:
+
+- **Monorepo structure** — all internal packages live in `packages/*` and are managed via npm workspaces, eliminating the need to publish and version them independently
+- **Simplified dependency management** — workspace packages are private and resolved locally, so there are no cross-published version conflicts
+- **Unified build and test** — a single `make test` or `make build` runs across all workspace packages
+- **Updated tooling** — modernized build dependencies and Node.js compatibility (Node 20+)
+
 * * *
 ## Installation
 
@@ -12,8 +24,6 @@ You must use __npm__ __2.7.0__ or higher because of the scoped package name.
     $ npm install @mitchallen/maze-generator-v2 --save
 
 ## Monorepo (npm workspaces)
-
-This repository is now organized as an npm workspaces monorepo:
 
 - root package: `@mitchallen/maze-generator-v2`
 - workspace packages: `packages/*` (private, unpublished internal dependencies)
