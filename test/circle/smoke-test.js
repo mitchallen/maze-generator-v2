@@ -11,7 +11,7 @@
 
 var request = require('supertest'),
     should = require('should'),
-    modulePath = "../../dist/maze-generator";
+    modulePath = "../../dist/maze-generator-v2";
 
 describe('Circle smoke test', function() {
 

@@ -22,11 +22,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build package
-        run: npx grunt build
-
       - name: Run tests
-        run: npm test
+        run: npx mocha --recursive --timeout 20000
 
       - name: Publish to GitHub Packages
         run: npm publish --access public
