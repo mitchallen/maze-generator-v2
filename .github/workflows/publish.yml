@@ -8,6 +8,9 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -25,7 +28,39 @@ jobs:
       - name: Run tests
         run: npx mocha --recursive --timeout 20000 test/square test/hexagon test/triangle test/circle
 
+      - name: Resolve package metadata
+        id: pkg
+        run: |
+          echo "name=$(node -p "require('./package.json').name")" >> "$GITHUB_OUTPUT"
+          echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
+
+      - name: Validate tag matches package.json version
+        run: |
+          TAG_VERSION="${GITHUB_REF_NAME#v}"
+          if [ "$TAG_VERSION" != "${{ steps.pkg.outputs.version }}" ]; then
+            echo "Tag version ($TAG_VERSION) does not match package.json version (${{ steps.pkg.outputs.version }})."
+            exit 1
+          fi
+
+      - name: Check if version already exists on GitHub Packages
+        id: exists
+        run: |
+          set +e
+          npm view "${{ steps.pkg.outputs.name }}@${{ steps.pkg.outputs.version }}" version --registry=https://npm.pkg.github.com/ >/dev/null 2>&1
+          rc=$?
+          set -e
+          if [ "$rc" -eq 0 ]; then
+            echo "published=true" >> "$GITHUB_OUTPUT"
+            echo "Package already exists. Skipping publish."
+          else
+            echo "published=false" >> "$GITHUB_OUTPUT"
+            echo "Package does not exist yet. Proceeding with publish."
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PUBLISH_TOKEN }}
+
       - name: Publish to GitHub Packages
+        if: steps.exists.outputs.published != 'true'
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_PUBLISH_TOKEN }}
