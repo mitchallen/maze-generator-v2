@@ -18,10 +18,46 @@ Key improvements over v1:
 * * *
 ## Installation
 
-You must use __npm__ __2.7.0__ or higher because of the scoped package name.
+This package is published to **GitHub Packages** (not the public npm registry).
 
-    $ npm init
-    $ npm install @mitchallen/maze-generator-v2 --save
+By default, npm pulls packages from the public npm registry. To install this package from GitHub Packages, configure your `.npmrc`:
+
+```
+@mitchallen:registry=https://npm.pkg.github.com/
+```
+
+If you are using a Personal Access Token (PAT), add this line as well:
+
+```
+//npm.pkg.github.com/:_authToken=YOUR_GITHUB_TOKEN
+```
+
+Then install:
+
+```
+npm install @mitchallen/maze-generator-v2
+```
+
+**Alternative:** You can also specify the registry directly in the install command (useful for CI or one-off installs):
+
+```
+npm install @mitchallen/maze-generator-v2 --registry=https://npm.pkg.github.com/
+```
+
+If authentication is required, make sure your environment has the appropriate `NPM_TOKEN` or PAT set up.
+
+### Why is a PAT required for public packages on GitHub Packages?
+
+GitHub Packages (npm registry at https://npm.pkg.github.com) enforces authentication for all package access, regardless of visibility.
+
+- Unlike registry.npmjs.org, GitHub Packages does not support unauthenticated access, even for public packages.
+- To install any package from https://npm.pkg.github.com, you must use a Personal Access Token (PAT) with at least `read:packages` scope.
+- Configure your `.npmrc` like this:
+
+```
+//npm.pkg.github.com/:_authToken=YOUR_PAT
+@mitchallen:registry=https://npm.pkg.github.com/
+```
 
 ## Monorepo (npm workspaces)
 
@@ -277,6 +313,27 @@ Example:
     |_______________________________________________|
 
 
+## Publishing to GitHub Packages
+
+To publish this package to GitHub Packages, you need a GitHub Personal Access Token (PAT) with the following scopes:
+- `write:packages`
+- `read:packages`
+- `repo`
+
+Add this token as a repository secret named `GH_PUBLISH_TOKEN`.
+
+The GitHub Actions workflow will use this token to authenticate and publish the package when a version tag is pushed. See `.github/workflows/publish.yml` for details.
+
+To bump the version and trigger a publish:
+
+```
+make publish
+```
+
+This will switch to the `main` branch, increment the patch version, and push the changes and tags to GitHub — which triggers the publish workflow.
+
+* * *
+
 ## Testing
 
 To test, go to the root folder and type (sans __$__):
@@ -298,8 +355,7 @@ Run suites using nodemon:
  
 ## Repo(s)
 
-* [bitbucket.org/mitchallen/maze-generator.git](https://bitbucket.org/mitchallen/maze-generator.git)
-* [github.com/mitchallen/maze-generator.git](https://github.com/mitchallen/maze-generator.git)
+* [github.com/mitchallen/maze-generator-v2](https://github.com/mitchallen/maze-generator-v2)
 
 * * *
 

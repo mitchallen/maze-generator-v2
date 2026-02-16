@@ -1,6 +1,6 @@
 SHELL := /bin/sh
 
-.PHONY: install bootstrap ci test build clean prune list deps
+.PHONY: install bootstrap ci test build clean prune list deps publish
 
 install:
 	npm install
@@ -27,3 +27,11 @@ list:
 
 deps:
 	npm ls --workspaces --depth=0
+
+publish:
+	@echo "Switching to main branch..."
+	git checkout main
+	@echo "Incrementing version..."
+	npm version patch
+	@echo "Pushing changes and tags..."
+	git push && git push --tags
