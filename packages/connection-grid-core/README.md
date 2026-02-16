@@ -1,5 +1,5 @@
 
-@mitchallen/connection-grid-core
+connection-grid-core
 ==
 Connection grid core
 --
@@ -14,16 +14,16 @@ Connection grid core
     <img src="https://codecov.io/gh/mitchallen/connection-grid-core/branch/master/graph/badge.svg" alt="Coverage Status">
   </a>
   
-  <a href="https://npmjs.org/package/@mitchallen/connection-grid-core">
-    <img src="http://img.shields.io/npm/v/@mitchallen/connection-grid-core.svg?style=flat-square" alt="Version">
+  <a href="https://npmjs.org/package/connection-grid-core">
+    <img src="http://img.shields.io/npm/v/connection-grid-core.svg?style=flat-square" alt="Version">
   </a>
   
-  <a href="https://npmjs.org/package/@mitchallen/connection-grid-core">
+  <a href="https://npmjs.org/package/connection-grid-core">
     <img src="https://img.shields.io/github/license/mitchallen/connection-grid-core.svg">
   </a>
 
-  <a href="https://www.jsdelivr.com/package/npm/@mitchallen/connection-grid-core">
-    <img src="https://data.jsdelivr.com/v1/package/npm/@mitchallen/connection-grid-core/badge" alt="jsdelivr">
+  <a href="https://www.jsdelivr.com/package/npm/connection-grid-core">
+    <img src="https://data.jsdelivr.com/v1/package/npm/connection-grid-core/badge" alt="jsdelivr">
   </a>
   
 </p>
@@ -31,11 +31,8 @@ Connection grid core
 * * *
 ## Installation
 
-You must use __npm__ __2.7.0__ or higher because of the scoped package name.
+> **Note:** This is a private workspace package. It is not published to npm and is resolved automatically via npm workspaces.
 
-    $ npm init
-    $ npm install @mitchallen/connection-grid-core --save
-  
 * * *
 
 ## Usage
@@ -43,8 +40,8 @@ You must use __npm__ __2.7.0__ or higher because of the scoped package name.
 ```js
 "use strict";
     
-let gridFactory = require("@mitchallen/connection-grid-core"),
-    gridSquare = require('@mitchallen/grid-square')
+let gridFactory = require("connection-grid-core"),
+    gridSquare = require('grid-square')
     
 let sourceGrid = gridSquare.create({ x: 5, y: 6 });
 	
@@ -72,8 +69,8 @@ let cg = gridFactory.create({
     <meta charset="utf-8">
     <title>Connection-Grid-Core Example</title>
     <meta name="description" content="Connection Grid Core Example">
-    <script src="https://cdn.jsdelivr.net/npm/@mitchallen/connection-grid-core@0.1.22/dist/connection-grid-core.min.js"></script>
-    <script src="https://unpkg.com/@mitchallen/grid-square@0.1.8/dist/grid-square.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/connection-grid-core@0.1.22/dist/connection-grid-core.min.js"></script>
+    <script src="https://unpkg.com/grid-square@0.1.8/dist/grid-square.min.js"></script>
     <script>
       var factory = window.MitchAllen.ConnectionGridCore;
       var squareFactory = window.MitchAllen.GridSquare;
@@ -149,7 +146,7 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 #### Version 0.1.9
 
 * integrated travis-ci and codecov.io
-* uses latest version of @mitchallen/shuffle
+* uses latest version of shuffle
 * updated license to MIT
 * refactored test cases to bring code coverage to 100%
 

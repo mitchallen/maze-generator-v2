@@ -1,5 +1,5 @@
 
-@mitchallen/maze-generator-core
+maze-generator-core
 ==
 maze generator core
 --
@@ -14,11 +14,11 @@ maze generator core
     <img src="https://codecov.io/gh/mitchallen/maze-generator-core/branch/master/graph/badge.svg" alt="Coverage Status">
   </a>
   
-  <a href="https://npmjs.org/package/@mitchallen/maze-generator-core">
-    <img src="http://img.shields.io/npm/v/@mitchallen/maze-generator-core.svg?style=flat-square" alt="Version">
+  <a href="https://npmjs.org/package/maze-generator-core">
+    <img src="http://img.shields.io/npm/v/maze-generator-core.svg?style=flat-square" alt="Version">
   </a>
   
-  <a href="https://npmjs.org/package/@mitchallen/maze-generator-core">
+  <a href="https://npmjs.org/package/maze-generator-core">
     <img src="https://img.shields.io/github/license/mitchallen/maze-generator-core.svg">
   </a>
   
@@ -27,18 +27,15 @@ maze generator core
 * * *
 ## Installation
 
-You must use __npm__ __2.7.0__ or higher because of the scoped package name.
+> **Note:** This is a private workspace package. It is not published to npm and is resolved automatically via npm workspaces.
 
-    $ npm init
-    $ npm install @mitchallen/maze-generator-core --save
-  
 * * *
 
 ## Usage
 
 ```js
-let cgFactory = require("@mitchallen/connection-grid-square"),
-    mazeCore = require("@mitchallen/maze-generator-core");
+let cgFactory = require("connection-grid-square"),
+    mazeCore = require("maze-generator-core");
     
 spec = spec || {};
 
@@ -74,8 +71,8 @@ maze.generate();
         <meta charset="utf-8">
         <title>Maze Generator Core Example</title>
         <meta name="description" content="Maze Generator Core Example">
-        <script src="https://unpkg.com/@mitchallen/maze-generator-core@0.1.11/dist/maze-generator-core.min.js"></script>
-        <script src="https://unpkg.com/@mitchallen/connection-grid-square@0.1.14/dist/connection-grid-square.min.js"></script>
+        <script src="https://unpkg.com/maze-generator-core@0.1.11/dist/maze-generator-core.min.js"></script>
+        <script src="https://unpkg.com/connection-grid-square@0.1.14/dist/connection-grid-square.min.js"></script>
         <script>
           var cgFactory = window.MitchAllen.ConnectionGridSquare;
           console.log(cgFactory);

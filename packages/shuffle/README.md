@@ -1,5 +1,5 @@
 
-@mitchallen/shuffle
+shuffle
 ==
 Uses Fisher-Yates to shuffle an array.
 --
@@ -14,11 +14,11 @@ Uses Fisher-Yates to shuffle an array.
     <img src="https://codecov.io/gh/mitchallen/shuffle/branch/master/graph/badge.svg" alt="Coverage Status">
   </a>
   
-  <a href="https://npmjs.org/package/@mitchallen/shuffle">
-    <img src="http://img.shields.io/npm/v/@mitchallen/shuffle.svg?style=flat-square" alt="Version">
+  <a href="https://npmjs.org/package/shuffle">
+    <img src="http://img.shields.io/npm/v/shuffle.svg?style=flat-square" alt="Version">
   </a>
   
-  <a href="https://npmjs.org/package/@mitchallen/shuffle">
+  <a href="https://npmjs.org/package/shuffle">
     <img src="https://img.shields.io/github/license/mitchallen/shuffle.svg">
   </a>
   
@@ -28,18 +28,15 @@ Uses Fisher-Yates to shuffle an array.
 * * *
 ## Installation
 
-You must use __npm__ __2.7.0__ or higher because of the scoped package name.
+> **Note:** This is a private workspace package. It is not published to npm and is resolved automatically via npm workspaces.
 
-    $ npm init
-    $ npm install @mitchallen/shuffle --save
-  
 * * *
 
 ## Usage 
 
     "use strict";
     
-    var shuffleFactory = require("@mitchallen/shuffle");
+    var shuffleFactory = require("shuffle");
     
 	var list = [1, 2, 3, 4, 5];
 	
@@ -54,7 +51,7 @@ You must use __npm__ __2.7.0__ or higher because of the scoped package name.
 You can reference a minimized client version inside an HTML script tag using one of these URL's:
 
 * https://cdn.rawgit.com/mitchallen/shuffle/v0.1.4/dist/shuffle.min.js
-* https://unpkg.com/@mitchallen/shuffle@0.1.4/dist/shuffle.min.js
+* https://unpkg.com/shuffle@0.1.4/dist/shuffle.min.js
 
 Adjust for the version that you wish to use.
 
@@ -83,7 +80,7 @@ Example:
         <!--
         <script src="https://cdn.rawgit.com/mitchallen/shuffle/v0.1.10/dist/shuffle.min.js"></script>
         -->
-        <script src="https://unpkg.com/@mitchallen/shuffle@0.1.10/dist/shuffle.min.js"></script>
+        <script src="https://unpkg.com/shuffle@0.1.10/dist/shuffle.min.js"></script>
         <script>
           var factory = window.MitchAllen.Shuffle;
           var list = [1, 2, 3, 4, 5];
@@ -112,7 +109,7 @@ The method will return null if create fails, such as with bad parameters.
 
 You can call create multiple times to create multiple shuffle objects.
 
-	var shuffleFactory = require("@mitchallen/shuffle");
+	var shuffleFactory = require("shuffle");
 
 	var s1 = shuffleFactory.create( { array: [ 1, 2, 3, 4, 5 ] } );
 	var s2 = shuffleFactory.create( { array: [ 6, 7, 8, 9, 10 ] }  );
@@ -123,7 +120,7 @@ You can call create multiple times to create multiple shuffle objects.
 
 Returns a shuffled version of the array passed to the create method. It does not affect the original but instead returns a shuffled copy. You can call __shuffle__ multiple times and it will keep shuffling it's internal copy.
 
-	var shuffleFactory = require("@mitchallen/shuffle");
+	var shuffleFactory = require("shuffle");
 
 	var s1 = shuffleFactory.create( { array: [ 1, 2, 3, 4, 5 ] } );
 	

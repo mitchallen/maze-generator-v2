@@ -1,5 +1,5 @@
 
-@mitchallen/connection-grid-square
+connection-grid-square
 ==
 Connection grid for square array
 --
@@ -14,11 +14,11 @@ Connection grid for square array
     <img src="https://codecov.io/gh/mitchallen/connection-grid-square/branch/master/graph/badge.svg" alt="Coverage Status">
   </a>
   
-  <a href="https://npmjs.org/package/@mitchallen/connection-grid-square">
-    <img src="http://img.shields.io/npm/v/@mitchallen/connection-grid-square.svg?style=flat-square" alt="Version">
+  <a href="https://npmjs.org/package/connection-grid-square">
+    <img src="http://img.shields.io/npm/v/connection-grid-square.svg?style=flat-square" alt="Version">
   </a>
   
-  <a href="https://npmjs.org/package/@mitchallen/connection-grid-square">
+  <a href="https://npmjs.org/package/connection-grid-square">
     <img src="https://img.shields.io/github/license/mitchallen/connection-grid-square.svg">
   </a>
   
@@ -28,11 +28,8 @@ Connection grid for square array
 * * *
 ## Installation
 
-You must use __npm__ __2.7.0__ or higher because of the scoped package name.
+> **Note:** This is a private workspace package. It is not published to npm and is resolved automatically via npm workspaces.
 
-    $ npm init
-    $ npm install @mitchallen/connection-grid-square --save
-  
 * * *
 
 ## Usage
@@ -40,7 +37,7 @@ You must use __npm__ __2.7.0__ or higher because of the scoped package name.
 ```js
 "use strict";
     
-let gridFactory = require("@mitchallen/connection-grid-square");
+let gridFactory = require("connection-grid-square");
     
 let xSize = 5;
 let ySize = 6;
@@ -57,7 +54,7 @@ let grid = gridFactory.create({ x: xSize, y: ySize });
         <meta charset="utf-8">
         <title>Connection-Grid-Square Example</title>
         <meta name="description" content="Connection Grid Square Example">
-        <script src="https://unpkg.com/@mitchallen/connection-grid-square@0.1.17/dist/connection-grid-square.min.js"></script>
+        <script src="https://unpkg.com/connection-grid-square@0.1.17/dist/connection-grid-square.min.js"></script>
         <script>
           var factory = window.MitchAllen.ConnectionGridSquare;
           console.log(factory);
@@ -121,11 +118,11 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 ### Version 0.1.6
 
-* installed latest version of __@mitchallen/connection-grid-core__ 
+* installed latest version of __connection-grid-core__ 
 
 ### Version 0.1.5
 
-* installed latest version of __@mitchallen/connection-grid-core__ 
+* installed latest version of __connection-grid-core__ 
 * refactored documentation
 
 #### Version 0.1.4
@@ -134,7 +131,7 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 #### Version 0.1.3
 
-* installed latest version of __@mitchallen/connection-grid-core__ 
+* installed latest version of __connection-grid-core__ 
 * updated npm scripts
 * updated client example
 * integrated jsdoc 
@@ -145,7 +142,7 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 #### Version 0.1.1 
 
-* added missing package dependency for __@mitchallen/connection-grid-core__
+* added missing package dependency for __connection-grid-core__
 
 #### Version 0.1.0 
 

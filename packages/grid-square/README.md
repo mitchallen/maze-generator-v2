@@ -1,5 +1,5 @@
 
-@mitchallen/grid-square
+grid-square
 ==
 2D square grid
 --
@@ -14,11 +14,11 @@
     <img src="https://codecov.io/gh/mitchallen/grid-square/branch/master/graph/badge.svg" alt="Coverage Status">
   </a>
   
-  <a href="https://npmjs.org/package/@mitchallen/grid-square">
-    <img src="http://img.shields.io/npm/v/@mitchallen/grid-square.svg?style=flat-square" alt="Version">
+  <a href="https://npmjs.org/package/grid-square">
+    <img src="http://img.shields.io/npm/v/grid-square.svg?style=flat-square" alt="Version">
   </a>
   
-  <a href="https://npmjs.org/package/@mitchallen/grid-square">
+  <a href="https://npmjs.org/package/grid-square">
     <img src="https://img.shields.io/github/license/mitchallen/grid-square.svg">
   </a>
   
@@ -27,18 +27,15 @@
 * * *
 ## Installation
 
-You must use __npm__ __2.7.0__ or higher because of the scoped package name.
+> **Note:** This is a private workspace package. It is not published to npm and is resolved automatically via npm workspaces.
 
-    $ npm init
-    $ npm install @mitchallen/grid-square --save
-  
 * * *
 
 ## Usage
 
 ```js
     "use strict";
-    var gridFactory = require("@mitchallen/grid-square");
+    var gridFactory = require("grid-square");
     
     var xSize = 5;
     var ySize = 10;
@@ -84,7 +81,7 @@ The method will set xSize and ySize to 0 if no parameters are set
 You can call __create__ multiple times to create multiple grids.
 
 ```js
-    var gridFactory = require("@mitchallen/grid-square");
+    var gridFactory = require("grid-square");
     
     var grid1 = gridFactory.create( { x: 5, y: 10 } );
     var grid2 = gridFactory.create( { x: 7, y: 20 } );
@@ -232,7 +229,7 @@ Example output:
         <meta charset="utf-8">
         <title>Grid Square Example</title>
         <meta name="description" content="Grid Square Example">
-        <script src="https://unpkg.com/@mitchallen/grid-square@0.1.9/dist/grid-square.min.js"></script>
+        <script src="https://unpkg.com/grid-square@0.1.9/dist/grid-square.min.js"></script>
         <script>
           var factory = window.MitchAllen.GridSquare;
           console.log(factory);

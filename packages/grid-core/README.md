@@ -1,5 +1,5 @@
 
-@mitchallen/grid-core
+grid-core
 ==
 Grid core
 --
@@ -14,11 +14,11 @@ Grid core
     <img src="https://codecov.io/gh/mitchallen/grid-core/branch/master/graph/badge.svg" alt="Coverage Status">
   </a>
   
-  <a href="https://npmjs.org/package/@mitchallen/grid-core">
-    <img src="http://img.shields.io/npm/v/@mitchallen/grid-core.svg?style=flat-square" alt="Version">
+  <a href="https://npmjs.org/package/grid-core">
+    <img src="http://img.shields.io/npm/v/grid-core.svg?style=flat-square" alt="Version">
   </a>
   
-  <a href="https://npmjs.org/package/@mitchallen/grid-core">
+  <a href="https://npmjs.org/package/grid-core">
     <img src="https://img.shields.io/github/license/mitchallen/grid-core.svg">
   </a>
 </p> 
@@ -26,26 +26,18 @@ Grid core
 * * *
 ## Installation
 
-You must use __npm__ __2.7.0__ or higher because of the scoped package name.
+> **Note:** This is a private workspace package. It is not published to npm and is resolved automatically via npm workspaces.
 
-    $ npm init
-    $ npm install @mitchallen/grid-core --save 
-  
 * * *
 
 ## Usage
-
-Create a new folder and do the following at the command line:
-
-    $ npm init
-    $ npm install @mitchallen/grid-core --save
 
 In the same folder create a file called __index.js__ with the content below:
 
 ```js
     "use strict";
 
-    var gridFactory = require("@mitchallen/grid-core");
+    var gridFactory = require("grid-core");
 
     var rows = 5;
 
@@ -100,7 +92,7 @@ An example similar to this exists on the __examples__ folder out on the repo.
         <meta charset="utf-8">
         <title>Grid Core Example</title>
         <meta name="description" content="Grid Core Example">
-        <script src="https://unpkg.com/@mitchallen/grid-core@0.1.10/dist/grid-core.min.js"></script>
+        <script src="https://unpkg.com/grid-core@0.1.10/dist/grid-core.min.js"></script>
         <script>
           var factory = window.MitchAllen.GridCore;
           console.log(factory);
@@ -131,7 +123,7 @@ It takes one spec parameter that must be an object with a __rows__ value specify
 
 You can call __create__ multiple times to create multiple grids.
 
-    var gridFactory = require("@mitchallen/grid-core");
+    var gridFactory = require("grid-core");
     
     var grid1 = gridFactory.create( { rows: 5 } );
     var grid2 = gridFactory.create( { rows: 10 } );

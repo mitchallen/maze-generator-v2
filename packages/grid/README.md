@@ -1,4 +1,4 @@
-@mitchallen/grid
+grid
 ===============================
 
 A 2D grid that uses zero-based indexing.
@@ -7,11 +7,8 @@ A 2D grid that uses zero-based indexing.
 * * *
 ## Installation
 
-You must use __npm__ __2.7.0__ or higher because of the scoped package name.
+> **Note:** This is a private workspace package. It is not published to npm and is resolved automatically via npm workspaces.
 
-    $ npm init
-    $ npm install @mitchallen/grid --save
-  
 * * *
 
 ## Usage
@@ -23,16 +20,11 @@ There are two forms of usage:
 
 ## Square Grid Usage
 
-Create a new folder and do the following at the command line:
-
-    $ npm init
-    $ npm install @mitchallen/grid --save
-
 In the same folder create a file called __index.js__ with the content below:
 
 ```js
     "use strict";
-    var gridFactory = require("@mitchallen/grid");
+    var gridFactory = require("grid");
     
     var xSize = 5;
     var ySize = 10;
@@ -89,7 +81,7 @@ The method will set xSize and ySize to 0 if no parameters are set
 
 You can call __Square__ multiple times to create multiple grids.
 
-    var gridFactory = require("@mitchallen/grid");
+    var gridFactory = require("grid");
     
     var grid1 = gridFactory.Square( { x: 5, y: 10 } );
     var grid2 = gridFactory.Square( { x: 7, y: 20 } );
@@ -210,15 +202,10 @@ Example output:
 
 ## Circle Grid Usage
 
-Create a new folder and do the following at the command line:
-
-    $ npm init
-    $ npm install @mitchallen/grid-circle --save
-
 In the same folder create a file called __index.js__ with the content below:
 
     "use strict";
-    var gridFactory = require("@mitchallen/grid");
+    var gridFactory = require("grid");
       
     var grid = gridFactory.Circle( { rings: 5 } );
     
@@ -259,7 +246,7 @@ The method will normalize __rings__ to 0 if for a missing or bad parameter.
 
 You can call __Circle__ multiple times to create multiple grids.
 
-    var gridFactory = require("@mitchallen/grid");
+    var gridFactory = require("grid");
     
     var grid1 = gridFactory.Circle( { rings: 6 } );
     var grid2 = gridFactory.Circle( { rings: 5 } );
@@ -382,7 +369,7 @@ You can find examples in the repos listed below in the __examples__ folder.
 You can reference a minimized client version inside an HTML script tag using one of these URL's:
 
 * https://cdn.rawgit.com/mitchallen/grid/v0.1.21/dist/grid.min.js
-* https://unpkg.com/@mitchallen/grid@0.1.21/dist/grid.min.js
+* https://unpkg.com/grid@0.1.21/dist/grid.min.js
 
 Adjust the URL's depending upon what version is available
 
@@ -409,7 +396,7 @@ Example:
         <!-- either cdn should work 
         <script src="https://cdn.rawgit.com/mitchallen/grid/v0.1.21/dist/grid.min.js"></script>
     -->
-        <script src="https://unpkg.com/@mitchallen/grid@0.1.21/dist/grid.min.js"></script>
+        <script src="https://unpkg.com/grid@0.1.21/dist/grid.min.js"></script>
         <script>
           var factory = window.MitchAllen.Grid;
           console.log(factory);
@@ -451,11 +438,11 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 #### Version 0.1.23
 
-* replaced internal square with __@mitchallen/grid-square__
+* replaced internal square with __grid-square__
 
 #### Version 0.1.22
 
-* square and cirlce modules now uses @mitchallen/git-core
+* square and cirlce modules now uses git-core
 * remove modules/base.js which is replaced by grid-core
 
 #### Version 0.1.21

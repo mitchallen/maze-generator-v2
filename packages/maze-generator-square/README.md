@@ -1,4 +1,4 @@
-@mitchallen/maze-generator-square
+maze-generator-square
 ==
 square maze generator
 --
@@ -13,11 +13,11 @@ square maze generator
     <img src="https://codecov.io/gh/mitchallen/maze-generator-square/branch/master/graph/badge.svg" alt="Coverage Status">
   </a>
   
-  <a href="https://npmjs.org/package/@mitchallen/maze-generator-square">
-    <img src="http://img.shields.io/npm/v/@mitchallen/maze-generator-square.svg?style=flat-square" alt="Version">
+  <a href="https://npmjs.org/package/maze-generator-square">
+    <img src="http://img.shields.io/npm/v/maze-generator-square.svg?style=flat-square" alt="Version">
   </a>
   
-  <a href="https://npmjs.org/package/@mitchallen/maze-generator-square">
+  <a href="https://npmjs.org/package/maze-generator-square">
     <img src="https://img.shields.io/github/license/mitchallen/maze-generator-square.svg">
   </a>
   
@@ -25,11 +25,8 @@ square maze generator
 
 ## Installation
 
-You must use __npm__ __2.7.0__ or higher because of the scoped package name.
+> **Note:** This is a private workspace package. It is not published to npm and is resolved automatically via npm workspaces.
 
-    $ npm init
-    $ npm install @mitchallen/maze-generator-square --save
-  
 * * *
 
 ## Usage
@@ -37,7 +34,7 @@ You must use __npm__ __2.7.0__ or higher because of the scoped package name.
 ```js
     "use strict";
 
-    var mazeFactory = require("@mitchallen/maze-generator-square");
+    var mazeFactory = require("maze-generator-square");
 
     let xSize = 5;
     let ySize = 6;
@@ -56,7 +53,7 @@ Example:
         <meta charset="utf-8">
         <title>Maze Generator Square Example</title>
         <meta name="description" content="Maze Generator Square Example">
-        <script src="https://unpkg.com/@mitchallen/maze-generator-square@0.1.23/dist/maze-generator-square.min.js"></script>
+        <script src="https://unpkg.com/maze-generator-square@0.1.23/dist/maze-generator-square.min.js"></script>
         <script>
           var factory = window.MitchAllen.MazeGeneratorSquare;
           console.log(factory);
@@ -139,7 +136,7 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 #### Version 0.1.7
 
-* updated @mitchallen/connection-grid-square to version 0.1.4
+* updated connection-grid-square to version 0.1.4
 
 #### Version 0.1.6
 

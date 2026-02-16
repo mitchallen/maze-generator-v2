@@ -1,15 +1,12 @@
-@mitchallen/connection-grid
+connection-grid
 ==
 Map connections between cells in a 2D grid.
 --
 * * *
 ## Installation
 
-You must use __npm__ __2.7.0__ or higher because of the scoped package name.
+> **Note:** This is a private workspace package. It is not published to npm and is resolved automatically via npm workspaces.
 
-    $ npm init
-    $ npm install @mitchallen/connection-grid --save
-  
 * * *
 
 ## Usage
@@ -17,7 +14,7 @@ You must use __npm__ __2.7.0__ or higher because of the scoped package name.
 ```js
 "use strict";
     
-let gridFactory = require("@mitchallen/connection-grid");
+let gridFactory = require("connection-grid");
     
 let xSize = 5;
 let ySize = 6;
@@ -38,7 +35,7 @@ Example:
         <meta charset="utf-8">
         <title>Connection-Grid Example</title>
         <meta name="description" content="Connection Grid Example">
-        <script src="https://unpkg.com/@mitchallen/connection-grid@0.1.33/dist/connection-grid.min.js"></script>
+        <script src="https://unpkg.com/connection-grid@0.1.33/dist/connection-grid.min.js"></script>
         <script>
           var factory = window.MitchAllen.ConnectionGrid;
           console.log(factory);
@@ -92,15 +89,15 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 #### Version 0.1.28
 
-* replaced modules/square.js with @mitchallen/connection-grid-square
+* replaced modules/square.js with connection-grid-square
 
 #### Version 0.1.27
 
-* square now uses @mitchallen/grid-square
+* square now uses grid-square
 
 #### Version 0.1.26
 
-* Replaced modules/base.js with @mitchallen/connection-grid-core
+* Replaced modules/base.js with connection-grid-core
 
 #### Version 0.1.25
 
@@ -167,11 +164,11 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 #### Version 0.1.10
 
-* now uses @mitchallen/grid 0.1.10
+* now uses grid 0.1.10
 
 #### Version 0.1.9
 
-* now uses @mitchallen/grid 0.1.9
+* now uses grid 0.1.9
 * changed internal use of __grid.create__ to __grid.Square__
 * added __Square__ method to replace __create__ method
 * added test suites for __Square__ method
@@ -179,12 +176,12 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 #### Version 0.1.8
 
-* now uses @mitchallen/grid 0.1.8
+* now uses grid 0.1.8
 * added experimental __Hexagon__ method
 
 #### Version 0.1.7 
 
-* now uses @mitchallen/grid 0.1.7
+* now uses grid 0.1.7
 * x and y values that are missing or less than 0 will be normalized to 0
 * updated tests 
 
@@ -206,7 +203,7 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 #### Version 0.1.3 
 
-* now uses @mitchallen/grid 0.1.6
+* now uses grid 0.1.6
 
 #### Version 0.1.2 
 
