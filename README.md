@@ -4,8 +4,8 @@
 
 [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/mitchallen/maze-generator-v2/publish.yml)](https://github.com/mitchallen/maze-generator-v2/actions)
 [![GitHub package.json version](https://img.shields.io/github/package-json/v/mitchallen/maze-generator-v2)](https://github.com/mitchallen/maze-generator-v2)
-[![License: MIT](https://img.shields.io/github/license/mitchallen/maze-generator-v2)](https://github.com/mitchallen/maze-generator-v2/blob/main/LICENSE)
-[![Node.js Version](https://img.shields.io/node/v/@mitchallen/maze-generator-v2)](https://github.com/mitchallen/maze-generator-v2/blob/main/package.json)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](https://github.com/mitchallen/maze-generator-v2/blob/main/package.json)
+[![Node.js Version](https://img.shields.io/badge/node-%3E%3D20-brightgreen)](https://github.com/mitchallen/maze-generator-v2/blob/main/package.json)
 [![GitHub last commit](https://img.shields.io/github/last-commit/mitchallen/maze-generator-v2)](https://github.com/mitchallen/maze-generator-v2/commits/main)
 
 maze generator
