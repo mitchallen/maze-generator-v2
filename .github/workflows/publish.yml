@@ -24,6 +24,8 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run tests
         run: npx mocha --recursive --timeout 20000 test/square test/hexagon test/triangle test/circle
@@ -57,10 +59,10 @@ jobs:
             echo "Package does not exist yet. Proceeding with publish."
           fi
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_PUBLISH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to GitHub Packages
         if: steps.exists.outputs.published != 'true'
-        run: npm publish --access public
+        run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_PUBLISH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
