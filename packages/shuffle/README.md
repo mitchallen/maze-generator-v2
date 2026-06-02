@@ -51,15 +51,11 @@ Uses Fisher-Yates to shuffle an array.
 You can reference a minimized client version inside an HTML script tag using one of these URL's:
 
 * https://cdn.rawgit.com/mitchallen/shuffle/v0.1.4/dist/shuffle.min.js
-* https://unpkg.com/shuffle@0.1.4/dist/shuffle.min.js
+* https://cdn.jsdelivr.net/npm/shuffle@0.1.4/dist/shuffle.min.js
 
 Adjust for the version that you wish to use.
 
-The __rawgit.com__ URL will pull based on the version from GitHub.
-
-The __unpkg.com__ URL will pull based on the version in npmjs.com.
-
-See http://rawgit.com and https://unpkg.com for other ways to retrieve the file.
+The __jsDelivr__ URL will pull based on the version in npmjs.com.
 
 The factory function can be retrieved from __window.MitchAllen.Shuffle__:
 
@@ -80,7 +76,7 @@ Example:
         <!--
         <script src="https://cdn.rawgit.com/mitchallen/shuffle/v0.1.10/dist/shuffle.min.js"></script>
         -->
-        <script src="https://unpkg.com/shuffle@0.1.10/dist/shuffle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/shuffle@0.1.10/dist/shuffle.min.js"></script>
         <script>
           var factory = window.MitchAllen.Shuffle;
           var list = [1, 2, 3, 4, 5];

@@ -70,7 +70,7 @@ let cg = gridFactory.create({
     <title>Connection-Grid-Core Example</title>
     <meta name="description" content="Connection Grid Core Example">
     <script src="https://cdn.jsdelivr.net/npm/connection-grid-core@0.1.22/dist/connection-grid-core.min.js"></script>
-    <script src="https://unpkg.com/grid-square@0.1.8/dist/grid-square.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/grid-square@0.1.8/dist/grid-square.min.js"></script>
     <script>
       var factory = window.MitchAllen.ConnectionGridCore;
       var squareFactory = window.MitchAllen.GridSquare;
