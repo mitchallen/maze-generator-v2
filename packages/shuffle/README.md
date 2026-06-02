@@ -51,7 +51,7 @@ Uses Fisher-Yates to shuffle an array.
 You can reference a minimized client version inside an HTML script tag using one of these URL's:
 
 * https://cdn.rawgit.com/mitchallen/shuffle/v0.1.4/dist/shuffle.min.js
-* https://cdn.jsdelivr.net/npm/shuffle@0.1.4/dist/shuffle.min.js
+* https://cdn.jsdelivr.net/gh/mitchallen/shuffle@v0.1.4/dist/shuffle.min.js
 
 Adjust for the version that you wish to use.
 
@@ -76,7 +76,7 @@ Example:
         <!--
         <script src="https://cdn.rawgit.com/mitchallen/shuffle/v0.1.10/dist/shuffle.min.js"></script>
         -->
-        <script src="https://cdn.jsdelivr.net/npm/shuffle@0.1.10/dist/shuffle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/mitchallen/shuffle@v0.1.10/dist/shuffle.min.js"></script>
         <script>
           var factory = window.MitchAllen.Shuffle;
           var list = [1, 2, 3, 4, 5];
