@@ -49,7 +49,7 @@ build-layer3: build-layer2
 
 # Layer 4: depends on layers 1-3
 build-layer4: build-layer3
-	npm run build --workspace=connection-grid --workspace=maze-generator-square
+	npm run build --workspace=connection-grid --workspace=maze-generator-square --workspace=maze-generator-weave
 
 # Root depends on layers 1-4
 build: build-layer4

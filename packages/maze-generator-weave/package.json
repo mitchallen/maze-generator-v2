@@ -1,0 +1,39 @@
+{
+  "name": "maze-generator-weave",
+  "version": "0.1.0",
+  "description": "weave maze generator",
+  "main": "dist/maze-generator-weave.cjs.js",
+  "scripts": {
+    "//": "Usage:> [PORT=8002] npm run web-server",
+    "start": "node dist/maze-generator-weave.cjs.js",
+    "build": "node build.js",
+    "test": "npm run build && mocha --recursive --timeout 20000",
+    "test-weave": "npm run build && mocha test/weave/ --recursive --timeout 5000",
+    "test-debug": "npm run build && mocha -g '@DEBUG' --recursive --timeout 20000",
+    "web-server": "python -m SimpleHTTPServer $PORT || 8000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mitchallen/maze-generator-weave.git"
+  },
+  "author": "Mitch Allen <npm@mitchallen.com> (http://mitchallen.com)",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "connection-grid-square": "^0.1.17",
+    "maze-generator-core": "^0.1.13"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.12",
+    "mocha": "^11.7.6",
+    "should": "^10.0.0",
+    "supertest": "^7.2.2"
+  },
+  "engines": {
+    "node": ">=20",
+    "npm": ">=10"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}

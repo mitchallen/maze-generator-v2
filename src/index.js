@@ -9,6 +9,7 @@
 "use strict";
 
 var squareMaze = require('maze-generator-square').create,
+    weaveMaze = require('maze-generator-weave').create,
     hexagonMaze = require('./hexagon'),
     triangleMaze = require('./triangle'),
     circleMaze = require('./circle');
@@ -21,6 +22,7 @@ var createMaze = (spec) => {
 module.exports = {
     create: createMaze,
     Square: squareMaze,
+    Weave: weaveMaze,
     Hexagon: hexagonMaze,
     Triangle: triangleMaze,
     Circle: circleMaze

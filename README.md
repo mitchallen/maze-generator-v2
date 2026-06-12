@@ -173,6 +173,28 @@ You can call Square multiple times to create multiple mazes.
     maze1.generate();
     maze2.generate();
     
+### mazeFactory = factory.Weave(spec)
+
+Factory method that returns a __weave__ maze generator object.
+
+It takes one spec parameter that must be an object with x and y values specifying the size of the maze.
+
+If x and y size values are less than one (0) they will be normalized to 0.
+
+A weave maze is a square maze where some passages tunnel under (or over) an existing straight corridor instead of stopping at it, producing cells (called __crossings__) that are open in all four directions. Pass `weaveChance` (0-1, default 0.6) to control how often a tunnel is taken when one is available; `0` produces an ordinary maze with few or no crossings.
+
+You can call Weave multiple times to create multiple mazes.
+
+    var mazeFactory = require("@mitchallen/maze-generator-v2");
+
+    var maze1 = mazeFactory.Weave( { x: 5, y: 10 } );
+    var maze2 = mazeFactory.Weave( { x: 7, y: 20, weaveChance: 0.8 } );
+
+    maze1.generate();
+    maze2.generate();
+
+Use `maze.isUnder(x, y)` to check whether a cell is a crossing; it returns `"NS"`, `"EW"`, or `null`. `printBoard` marks crossing cells with `+`.
+
 ### mazeFactory = factory.Hexagon(spec)
 
 Factory method that returns a __hexagon__ maze generator object. 
@@ -363,6 +385,7 @@ This builds the package (via esbuild) and runs the full test suite. To run the t
 Run individual suites (each builds first via `npm run build`):
 
     $ npm run test-square
+    $ npm run test-weave
     $ npm run test-hexagon
     $ npm run test-triangle
     $ npm run test-circle
@@ -384,6 +407,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.3.x
+
+* added `maze-generator-weave` package and `factory.Weave` method for generating weave mazes (passages that tunnel under/over existing corridors, producing "crossing" cells)
 
 #### Version 0.2.x
 

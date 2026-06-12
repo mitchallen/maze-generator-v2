@@ -9,6 +9,7 @@
     "test": "npm run build && mocha --recursive --timeout 20000",
     "test-hexagon": "npm run build && mocha --recursive test/hexagon/ --timeout 5000",
     "test-square": "npm run build && mocha --recursive test/square/ --timeout 5000",
+    "test-weave": "npm run build && mocha --recursive test/weave/ --timeout 5000",
     "test-triangle": "npm run build && mocha --recursive test/triangle/ --timeout 5000",
     "test-circle": "npm run build && mocha --recursive test/circle/ --timeout 5000",
     "test-ascii": "npm run build && mocha --recursive test/ascii/ --timeout 5000",
@@ -35,7 +36,8 @@
     "connection-grid-square": "^0.1.17",
     "grid": "^0.1.25",
     "maze-generator-core": "^0.1.13",
-    "maze-generator-square": "^0.1.24"
+    "maze-generator-square": "^0.1.24",
+    "maze-generator-weave": "^0.1.0"
   },
   "overrides": {
     "diff": "^9.0.0",
