@@ -57,13 +57,10 @@ Example:
 To test, go to the root folder and type (sans __$__):
 
     $ npm test
-    
-Run all tests using nodemon:
 
-    $ npm run test-nodemon
-    
-Run suites using nodemon:
+This builds the package (via esbuild) and runs the full test suite. Run individual suites (each builds first via `npm run build`):
 
+    $ npm run test-create
     $ npm run test-square
     $ npm run test-hexagon
     $ npm run test-triangle
