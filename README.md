@@ -20,7 +20,8 @@ Key improvements over v1:
 - **Monorepo structure** — all internal packages live in `packages/*` and are managed via npm workspaces, eliminating the need to publish and version them independently
 - **Simplified dependency management** — workspace packages are private and resolved locally, so there are no cross-published version conflicts
 - **Unified build and test** — a single `make test` or `make build` runs across all workspace packages
-- **Updated tooling** — modernized build dependencies and Node.js compatibility (Node 20+)
+- **Modern build tooling** — Grunt/Browserify/Babel/Terser have been replaced with [esbuild](https://esbuild.github.io/); each package builds a browser IIFE bundle and a CommonJS bundle directly from `src/`
+- **Updated tooling** — modernized build dependencies and Node.js compatibility (Node 20+, CI runs on Node 24)
 
 * * *
 ## Installation
@@ -79,18 +80,26 @@ make install
 
 ### Common monorepo commands
 
+Running `make` with no target prints a help screen listing all available targets.
+
 ```sh
 make list     # list workspace packages
 make deps     # show workspace dependency tree
-make build    # run build scripts in all workspaces (if present)
+make build    # build all workspaces, in dependency order
 make test     # run test scripts in all workspaces (if present)
+make test-all # alias for make test
 make clean    # remove all node_modules directories
 ```
 
-### Runtime note
+### Build process
 
-Some workspace packages use older build/test tooling. If `make test` fails under very new Node.js releases, use an LTS runtime (Node 20 or Node 22).
-  
+Every package (including the root) builds with [esbuild](https://esbuild.github.io/) via its own `build.js` (or `npm run build` script), producing two bundles:
+
+- `dist/<name>.js` — a minified browser IIFE bundle exposing a `window.MitchAllen.<Name>` global
+- `dist/<name>.cjs.js` — a CommonJS bundle used as the package's `main` entry and by its tests
+
+Because the root package and `packages/grid` / `packages/connection-grid` bundle other workspace packages via `require()`, they must be built *after* their dependencies. `npm run build --workspaces` builds in workspace-listing order (not dependency order) and will fail for this reason — always use `make build`, which runs explicit dependency-ordered build layers (`build-layer1` .. `build-layer4`) before building the root package.
+
 * * *
 
 ## Usage
@@ -117,7 +126,7 @@ Example:
         <meta charset="utf-8">
         <title>Maze Generator Example</title>
         <meta name="description" content="Maze Generator Example">
-        <script src="https://cdn.jsdelivr.net/gh/mitchallen/maze-generator-v2@latest/dist/maze-generator-v2.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/mitchallen/maze-generator-v2@latest/dist/maze-generator-v2.js"></script>
         <script>
           var factory = window.MitchAllen.MazeGeneratorV2;
           console.log(factory);
@@ -347,16 +356,17 @@ To test, go to the root folder and type (sans __$__):
 
     $ npm test
 
-Run all tests using nodemon:
+This builds the package (via esbuild) and runs the full test suite. To run the tests for all workspace packages in the monorepo:
 
-    $ npm run test-nodemon
-    
-Run suites using nodemon:
+    $ make test
+
+Run individual suites (each builds first via `npm run build`):
 
     $ npm run test-square
     $ npm run test-hexagon
     $ npm run test-triangle
     $ npm run test-circle
+    $ npm run test-ascii
    
 * * *
  
@@ -374,6 +384,14 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.2.x
+
+* removed Grunt/Browserify/Babel/Terser from every package in the monorepo
+* each package now builds with esbuild (`build.js`), producing a browser IIFE bundle (`dist/<name>.js`) and a CommonJS bundle (`dist/<name>.cjs.js`)
+* added dependency-ordered `make build` layers so packages that bundle other workspace packages (root, `grid`, `connection-grid`) build after their dependencies
+* CI workflows now run `npm audit --audit-level=high`
+* `make` with no target prints a help screen; added `make test-all`
 
 #### Version 0.1.21
 
