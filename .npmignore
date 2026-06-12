@@ -6,7 +6,6 @@ src/
 .github/
 .claude/
 .vscode/
-Gruntfile.js
 Makefile
 package-lock.json
 .npmrc

@@ -12,8 +12,7 @@
 var request = require('supertest'),
   should = require('should'),
   cgFactory = require("connection-grid-square"),
-  modulePath = "../dist/maze-generator-core";
-// modulePath = "../src/index";
+  modulePath = "../src/index";
 
 function printboard(spec = {}) {
 

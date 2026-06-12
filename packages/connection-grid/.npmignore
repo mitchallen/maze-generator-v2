@@ -1,5 +1,6 @@
-Gruntfile.js
+src
 test
+coverage
 example
 examples
 support

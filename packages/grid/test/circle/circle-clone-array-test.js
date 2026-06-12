@@ -8,8 +8,7 @@
 
 var request = require('supertest'),
     should = require('should'),
-    // modulePath = "../../src/index";
-    modulePath = "../../dist/grid";
+    modulePath = "../../src/index";
 
 describe('Circle cloneArray method', function() {
 

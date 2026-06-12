@@ -1,5 +1,5 @@
 /**
-    Module: shuffle
+    Module: shuffle/src/index.js
     Author: Mitch Allen
 */
 
@@ -19,7 +19,7 @@ module.exports.create = (spec) => {
     return {
         shuffle: function() {
             var i = 0,
-                j = 0, 
+                j = 0,
                 temp = null;
             for (i = _array.length - 1; i > 0; i -= 1) {
                 j = Math.floor(Math.random() * (i + 1));

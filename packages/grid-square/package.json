@@ -7,10 +7,7 @@
     "start": "node dist/grid-square.js",
     "build": "node esbuild.config.js",
     "test": "npm run build && mocha --recursive --timeout 20000",
-    "test-coverage": "./node_modules/.bin/istanbul cover _mocha -- -R spec test/**/*",
-    "test-nodemon": "nodemon ./node_modules/.bin/mocha --timeout 5000",
     "test-debug": "npm run build && mocha -g '@DEBUG' --recursive --timeout 20000",
-    "test-jenkins": "npm run build && --recursive --timeout 20000 -R xunit test/ > test-reports.xml",
     "web-server": "python -m SimpleHTTPServer $PORT || 8000"
   },
   "repository": {
@@ -24,11 +21,10 @@
     "grid-core": "^0.1.10"
   },
   "devDependencies": {
-    "esbuild": "^0.25.5",
-    "istanbul": "^0.4.5",
-    "mocha": "^10.1.0",
+    "esbuild": "^0.25.12",
+    "mocha": "^11.7.6",
     "should": "^10.0.0",
-    "supertest": "^6.3.1"
+    "supertest": "^7.2.2"
   },
   "engines": {
     "node": ">=20",
