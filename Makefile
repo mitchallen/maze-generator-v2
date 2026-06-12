@@ -1,6 +1,6 @@
 SHELL := /bin/sh
 
-.PHONY: help install bootstrap ci test test-all build clean prune list deps publish
+.PHONY: help install bootstrap ci test test-all build build-layer1 build-layer2 build-layer3 build-layer4 clean prune list deps publish
 
 .DEFAULT_GOAL := help
 
@@ -31,8 +31,29 @@ test:
 
 test-all: test
 
-build:
-	npm run build --workspaces --if-present
+# npm run build --workspaces builds in workspace-listing order, not
+# dependency order, so root and grid would build before the packages
+# they bundle via require(). Build in explicit dependency layers instead.
+
+# Layer 1: packages with no internal workspace dependencies
+build-layer1:
+	npm run build --workspace=shuffle --workspace=grid-core --workspace=maze-generator-core
+
+# Layer 2: depends only on layer 1
+build-layer2: build-layer1
+	npm run build --workspace=grid-square --workspace=connection-grid-core
+
+# Layer 3: depends on layers 1-2
+build-layer3: build-layer2
+	npm run build --workspace=grid --workspace=connection-grid-square
+
+# Layer 4: depends on layers 1-3
+build-layer4: build-layer3
+	npm run build --workspace=connection-grid --workspace=maze-generator-square
+
+# Root depends on layers 1-4
+build: build-layer4
+	npm run build --workspace=.
 
 clean:
 	find . -name node_modules -type d -prune -exec rm -rf {} +

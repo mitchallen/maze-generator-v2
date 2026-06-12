@@ -31,7 +31,7 @@ jobs:
         run: npm audit --audit-level=high
 
       - name: Build workspaces
-        run: npm run build --workspaces --if-present
+        run: make build
 
       - name: Run tests
         run: npx mocha --recursive --timeout 20000 test/square test/hexagon test/triangle test/circle
