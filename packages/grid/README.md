@@ -65,10 +65,6 @@ An example similar to this exists on the __examples__ folder out on the repo.
     
 ## Square Methods
 
-### create( spec )
-
-The __create__ method is deprecated. Use __Square__ instead.
-
 ### Square( spec )
 
 Factory method that returns a square grid object.

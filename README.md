@@ -181,10 +181,6 @@ Example:
 
 For more methods see the parent class: __connection-grid__ (in `packages/connection-grid`).
 
-### gridFactory = factory.create(spec)
-
-The __create__ method is deprecated. Use __Square__ instead.
-
 ### mazeFactory = factory.Square(spec)
 
 Factory method that returns a __square__ maze generator object. 

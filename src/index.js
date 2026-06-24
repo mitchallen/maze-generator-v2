@@ -14,13 +14,7 @@ var squareMaze = require('maze-generator-square').create,
     triangleMaze = require('./triangle'),
     circleMaze = require('./circle');
 
-var createMaze = (spec) => {
-    console.warn("@mitchallen/maze-generator-v2: .create is deprecated. Use .Square instead.");
-    return squareMaze( spec );
-};
-
 module.exports = {
-    create: createMaze,
     Square: squareMaze,
     Weave: weaveMaze,
     Hexagon: hexagonMaze,

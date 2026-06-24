@@ -13,13 +13,7 @@ let squareGrid = require('connection-grid-square').create,
     circleGrid = require('./circle'),
     triangleGrid = require('./triangle');
 
-let createGrid = (spec) => {
-    console.warn("connection-grid: .create is deprecated. Use .Square instead.");
-    return squareGrid( spec );
-};
-
 module.exports = {
-    create: createGrid,
     Square: squareGrid,
     Hexagon: hexagonGrid,
     Circle: circleGrid,

@@ -44,17 +44,6 @@ describe('create method', function() {
         done();
     });
 
-    it('deprecated create() should return a square grid', function(done) {
-        var origWarn = console.warn;
-        console.warn = function() {};
-        var obj = _module.create({ x: 5, y: 5 });
-        console.warn = origWarn;
-        should.exist(obj);
-        obj.xSize.should.eql(5);
-        obj.ySize.should.eql(5);
-        done();
-    });
-
     it('should return object when called no spec x parameter', function(done) {
         var obj = _module.Square({ y: 5 });
         should.exist(obj);
