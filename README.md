@@ -3,6 +3,7 @@
 ==
 
 [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/mitchallen/maze-generator-v2/publish.yml)](https://github.com/mitchallen/maze-generator-v2/actions)
+[![codecov](https://codecov.io/gh/mitchallen/maze-generator-v2/branch/main/graph/badge.svg)](https://codecov.io/gh/mitchallen/maze-generator-v2)
 [![GitHub package.json version](https://img.shields.io/github/package-json/v/mitchallen/maze-generator-v2)](https://github.com/mitchallen/maze-generator-v2)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](https://github.com/mitchallen/maze-generator-v2/blob/main/package.json)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D20-brightgreen)](https://github.com/mitchallen/maze-generator-v2/blob/main/package.json)
