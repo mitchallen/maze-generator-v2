@@ -3,26 +3,6 @@ maze-generator-square
 square maze generator
 --
 
-<p align="left">
-
-  <a href="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml">
-    <img src="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml/badge.svg" alt="Build Status">
-  </a>
-  
-  <a href="https://codecov.io/gh/mitchallen/maze-generator-square">
-    <img src="https://codecov.io/gh/mitchallen/maze-generator-square/branch/master/graph/badge.svg" alt="Coverage Status">
-  </a>
-  
-  <a href="https://npmjs.org/package/maze-generator-square">
-    <img src="http://img.shields.io/npm/v/maze-generator-square.svg?style=flat-square" alt="Version">
-  </a>
-  
-  <a href="https://npmjs.org/package/maze-generator-square">
-    <img src="https://img.shields.io/github/license/mitchallen/maze-generator-square.svg">
-  </a>
-  
-</p>
-
 ## Installation
 
 > **Note:** This is a private workspace package. It is not published to npm and is resolved automatically via npm workspaces.

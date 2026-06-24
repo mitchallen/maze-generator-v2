@@ -4,26 +4,6 @@ connection-grid-square
 Connection grid for square array
 --
 
-<p align="left">
-
-  <a href="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml">
-    <img src="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml/badge.svg" alt="Build Status">
-  </a>
-  
-  <a href="https://codecov.io/gh/mitchallen/connection-grid-square">
-    <img src="https://codecov.io/gh/mitchallen/connection-grid-square/branch/master/graph/badge.svg" alt="Coverage Status">
-  </a>
-  
-  <a href="https://npmjs.org/package/connection-grid-square">
-    <img src="http://img.shields.io/npm/v/connection-grid-square.svg?style=flat-square" alt="Version">
-  </a>
-  
-  <a href="https://npmjs.org/package/connection-grid-square">
-    <img src="https://img.shields.io/github/license/mitchallen/connection-grid-square.svg">
-  </a>
-  
-</p>
-
 
 * * *
 ## Installation

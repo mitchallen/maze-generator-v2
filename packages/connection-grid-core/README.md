@@ -4,30 +4,6 @@ connection-grid-core
 Connection grid core
 --
 
-<p align="left">
-
-  <a href="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml">
-    <img src="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml/badge.svg" alt="Build Status">
-  </a>
-  
-  <a href="https://codecov.io/gh/mitchallen/connection-grid-core">
-    <img src="https://codecov.io/gh/mitchallen/connection-grid-core/branch/master/graph/badge.svg" alt="Coverage Status">
-  </a>
-  
-  <a href="https://npmjs.org/package/connection-grid-core">
-    <img src="http://img.shields.io/npm/v/connection-grid-core.svg?style=flat-square" alt="Version">
-  </a>
-  
-  <a href="https://npmjs.org/package/connection-grid-core">
-    <img src="https://img.shields.io/github/license/mitchallen/connection-grid-core.svg">
-  </a>
-
-  <a href="https://www.jsdelivr.com/package/npm/connection-grid-core">
-    <img src="https://data.jsdelivr.com/v1/package/npm/connection-grid-core/badge" alt="jsdelivr">
-  </a>
-  
-</p>
-
 * * *
 ## Installation
 

@@ -4,26 +4,6 @@ grid-square
 2D square grid
 --
 
-<p align="left">
-
-  <a href="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml">
-    <img src="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml/badge.svg" alt="Build Status">
-  </a>
-  
-  <a href="https://codecov.io/gh/mitchallen/grid-square">
-    <img src="https://codecov.io/gh/mitchallen/grid-square/branch/master/graph/badge.svg" alt="Coverage Status">
-  </a>
-  
-  <a href="https://npmjs.org/package/grid-square">
-    <img src="http://img.shields.io/npm/v/grid-square.svg?style=flat-square" alt="Version">
-  </a>
-  
-  <a href="https://npmjs.org/package/grid-square">
-    <img src="https://img.shields.io/github/license/mitchallen/grid-square.svg">
-  </a>
-  
-</p> 
-
 * * *
 ## Installation
 

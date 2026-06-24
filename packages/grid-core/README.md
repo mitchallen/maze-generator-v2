@@ -4,25 +4,6 @@ grid-core
 Grid core
 --
 
-<p align="left">
-
-  <a href="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml">
-    <img src="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml/badge.svg" alt="Build Status">
-  </a>
-  
-  <a href="https://codecov.io/gh/mitchallen/grid-core">
-    <img src="https://codecov.io/gh/mitchallen/grid-core/branch/master/graph/badge.svg" alt="Coverage Status">
-  </a>
-  
-  <a href="https://npmjs.org/package/grid-core">
-    <img src="http://img.shields.io/npm/v/grid-core.svg?style=flat-square" alt="Version">
-  </a>
-  
-  <a href="https://npmjs.org/package/grid-core">
-    <img src="https://img.shields.io/github/license/mitchallen/grid-core.svg">
-  </a>
-</p> 
-
 * * *
 ## Installation
 
