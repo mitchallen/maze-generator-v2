@@ -28,17 +28,19 @@ Key improvements over v1:
 
 This package is published to **GitHub Packages** (not the public npm registry).
 
-By default, npm pulls packages from the public npm registry. To install this package from GitHub Packages, configure your `.npmrc`:
+By default, npm pulls packages from the public npm registry. To install this package from GitHub Packages, add the scope-to-registry mapping to your **project** `.npmrc`. This line has no secret and is safe to commit:
 
 ```
 @mitchallen:registry=https://npm.pkg.github.com/
 ```
 
-If you are using a Personal Access Token (PAT), add this line as well:
+GitHub Packages requires authentication even for public packages, so you need a Personal Access Token (PAT) with the `read:packages` scope. Store it in your **user** `~/.npmrc` so it never lands in your repository:
 
+```sh
+npm config set //npm.pkg.github.com/:_authToken=YOUR_PAT --location=user
 ```
-//npm.pkg.github.com/:_authToken=YOUR_GITHUB_TOKEN
-```
+
+> ⚠️ Do **not** put the `_authToken` line in your project `.npmrc` — if it is committed, your token is exposed. Keep it in `~/.npmrc`. In CI, set the `NODE_AUTH_TOKEN` environment variable and reference it with `//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}` instead.
 
 Then install:
 
@@ -60,11 +62,16 @@ GitHub Packages (npm registry at https://npm.pkg.github.com) enforces authentica
 
 - Unlike registry.npmjs.org, GitHub Packages does not support unauthenticated access, even for public packages.
 - To install any package from https://npm.pkg.github.com, you must use a Personal Access Token (PAT) with at least `read:packages` scope.
-- Configure your `.npmrc` like this:
+- Put the scope mapping in your **project** `.npmrc` (safe to commit):
 
 ```
-//npm.pkg.github.com/:_authToken=YOUR_PAT
 @mitchallen:registry=https://npm.pkg.github.com/
+```
+
+- Put the token in your **user** `~/.npmrc` so it never ends up in the repo:
+
+```sh
+npm config set //npm.pkg.github.com/:_authToken=YOUR_PAT --location=user
 ```
 
 ## Monorepo (npm workspaces)
@@ -99,6 +106,28 @@ Every package (including the root) builds with [esbuild](https://esbuild.github.
 - `dist/<name>.cjs.js` — a CommonJS bundle used as the package's `main` entry and by its tests
 
 Because the root package and `packages/grid` / `packages/connection-grid` bundle other workspace packages via `require()`, they must be built *after* their dependencies. `npm run build --workspaces` builds in workspace-listing order (not dependency order) and will fail for this reason — always use `make build`, which runs explicit dependency-ordered build layers (`build-layer1` .. `build-layer4`) before building the root package.
+
+### No conflict with the standalone `@mitchallen/*` packages
+
+Several of these vendored packages share a base name with packages published
+separately to GitHub Packages (for example, `@mitchallen/connection-grid`,
+`@mitchallen/grid`, `@mitchallen/shuffle`). They **cannot** collide, for three
+independent reasons:
+
+1. **They are all `private: true`.** npm refuses to publish a package marked
+   private, so the workspace packages are never published anywhere.
+2. **They use unscoped names** (`connection-grid`, `grid`, `shuffle`, …), which
+   are entirely different identifiers from the scoped, published
+   `@mitchallen/connection-grid`, `@mitchallen/grid`, etc. There is no
+   namespace overlap. (GitHub Packages only accepts scoped names matching the
+   owner, so an unscoped name could not be published there regardless.)
+3. **Only the root package is published.** `publish.yml` runs a single
+   `npm publish` for `@mitchallen/maze-generator-v2` — it does not publish the
+   workspaces.
+
+Because the root's dependencies reference the unscoped names, npm workspaces
+links them to the local `packages/*` copies; the published `@mitchallen/*`
+versions are never pulled. The monorepo is intentionally self-contained.
 
 * * *
 

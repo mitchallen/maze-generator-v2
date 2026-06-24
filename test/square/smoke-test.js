@@ -9,8 +9,7 @@
 
 "use strict";
 
-var request = require('supertest'),
-    should = require('should'),
+var should = require('should'),
     modulePath = "../../src/index";
 
 describe('Square method', function() {
@@ -46,6 +45,15 @@ describe('Square method', function() {
 
     it('with no spec should return object', function(done) {
         var mazeGenerator = _module.Square();
+        should.exist(mazeGenerator);
+        done();
+    });
+
+    it('deprecated create() should return a square maze', function(done) {
+        var origWarn = console.warn;
+        console.warn = function() {};
+        var mazeGenerator = _module.create({ x: 5, y: 5 });
+        console.warn = origWarn;
         should.exist(mazeGenerator);
         done();
     });

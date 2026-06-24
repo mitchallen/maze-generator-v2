@@ -22,9 +22,6 @@ module.exports = (spec) => {
     };
 
     var _grid = connectionGridFactory.Circle(_gridSpec);
-    if(!_grid) {
-        return null;
-    }
 
     var obj = baseGrid.create( {
         grid: _grid,

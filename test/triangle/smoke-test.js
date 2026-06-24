@@ -9,8 +9,7 @@
 
 "use strict";
 
-var request = require('supertest'),
-    should = require('should'),
+var should = require('should'),
     modulePath = "../../src/index";
 
 describe('Triangle smoke test', function() {
@@ -214,6 +213,16 @@ describe('Triangle smoke test', function() {
         };
         mazeGenerator.generate(spec);
         mazeGenerator.printBoard();
+        done();
+    });
+
+    it('printBorder should not throw', function(done) {
+        var mazeGenerator = _module.Triangle({ x: 5, y: 6 });
+        should.exist(mazeGenerator);
+        var origLog = console.log;
+        console.log = function() {};
+        mazeGenerator.printBorder();
+        console.log = origLog;
         done();
     });
 });

@@ -24,8 +24,7 @@
     "grid-core": "^0.1.10",
     "grid-square": "^0.1.9",
     "mocha": "^11.7.6",
-    "should": "^10.0.0",
-    "supertest": "^7.1.3"
+    "should": "^10.0.0"
   },
   "engines": {
     "node": ">=20",

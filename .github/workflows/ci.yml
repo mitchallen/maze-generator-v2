@@ -12,10 +12,11 @@ jobs:
     permissions:
       contents: read
       packages: read
+      id-token: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: '24'
           registry-url: 'https://npm.pkg.github.com'
@@ -27,4 +28,12 @@ jobs:
 
       - run: npm audit --audit-level=high
 
-      - run: npx mocha --recursive --timeout 20000 test/square test/hexagon test/triangle test/circle
+      - run: npm run coverage
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v7
+        with:
+          use_oidc: true
+          files: ./coverage/lcov.info
+          slug: mitchallen/maze-generator-v2
+          fail_ci_if_error: false

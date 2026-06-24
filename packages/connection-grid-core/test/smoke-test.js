@@ -6,8 +6,7 @@
 
 "use strict";
 
-let request = require('supertest'),
-  should = require('should'),
+let should = require('should'),
   gridCore = require('grid-core'),
   gridSquare = require('grid-square'),
   // modulePath = "../dist/connection-grid-core";

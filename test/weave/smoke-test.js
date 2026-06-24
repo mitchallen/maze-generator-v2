@@ -9,8 +9,7 @@
 
 "use strict";
 
-var request = require('supertest'),
-    should = require('should'),
+var should = require('should'),
     modulePath = "../../src/index";
 
 describe('Weave method', function() {
