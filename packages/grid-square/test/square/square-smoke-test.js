@@ -7,7 +7,7 @@
 "use strict";
 
 var should = require('should'),
-    modulePath = "../../dist/grid-square";
+    modulePath = "../../src/index";
 
 describe('module smoke test', function() {
 

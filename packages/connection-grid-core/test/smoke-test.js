@@ -983,4 +983,89 @@ describe('module smoke test', function () {
     done();
   });
 
+  // --- coverage: guard and defensive paths ---
+
+  const makeGrid = () => {
+    let cg = _module.create({
+      grid: gridCore.create({ rows: 5 }),
+      dirMap: _dirMap,
+      oppositeMap: _oppositeMap
+    });
+    for (let i = 0; i < 5; i++)
+      for (let j = 0; j < 5; j++) cg.set(i, j, 0);
+    cg.getNeighbor = mockGetNeighbor;
+    cg.getNeighborDirs = mockGetNeighborDirs;
+    return cg;
+  };
+
+  it('flag/red/green/reset helpers return false for an invalid cell', function (done) {
+    let cg = makeGrid();
+    cg.setFlag(-1, -1, 0x01).should.eql(false);
+    cg.clearFlag(-1, -1, 0x01).should.eql(false);
+    cg.isFlagSet(-1, -1, 0x01).should.eql(false);
+    cg.isRed(-1, -1).should.eql(false);
+    cg.isGreen(-1, -1).should.eql(false);
+    cg.reset(-1, -1).should.eql(false);
+    done();
+  });
+
+  it('close returns false for an invalid direction', function (done) {
+    makeGrid().close(0, 0, "ZZ").should.eql(false);
+    done();
+  });
+
+  it('disconnectUndirected returns false when the neighbor cannot disconnect', function (done) {
+    let cg = makeGrid();
+    cg.getNeighbor = function (x, y, dir) {
+      if (x === 0 && y === 0 && dir === "E") return { x: 1, y: 0 };
+      return null;
+    };
+    cg.disconnectUndirected(0, 0, "E").should.eql(false);
+    done();
+  });
+
+  it('getMaxDistance returns origin for a cell with no connections', function (done) {
+    makeGrid().getMaxDistance(0, 0).distance.should.eql(0);
+    done();
+  });
+
+  it('getDistance stops on an unknown neighbor direction', function (done) {
+    let cg = makeGrid();
+    cg.getNeighborDirs = () => ["E", "ZZ"];
+    cg.open(0, 0, "E");
+    let orig = console.error; console.error = () => {};
+    cg.getMaxDistance(0, 0);
+    console.error = orig;
+    done();
+  });
+
+  it('getDistance stops when a connected neighbor does not exist', function (done) {
+    let cg = makeGrid();
+    cg.getNeighborDirs = () => ["E"];
+    cg.getNeighbor = () => ({ x: -1, y: 0 });
+    cg.open(0, 0, "E");
+    cg.getMaxDistance(0, 0);
+    done();
+  });
+
+  it('connectionCount handles no connections and unknown directions', function (done) {
+    let cg = makeGrid();
+    should.equal(cg.connectionCount(2, 2), undefined);
+    cg.getNeighborDirs = () => ["E", "ZZ"];
+    cg.open(0, 0, "E");
+    let orig = console.error; console.error = () => {};
+    cg.connectionCount(0, 0).should.eql(0);
+    console.error = orig;
+    done();
+  });
+
+  it('reset returns false on an unknown direction', function (done) {
+    let cg = makeGrid();
+    cg.getNeighborDirs = () => ["ZZ"];
+    let orig = console.error; console.error = () => {};
+    cg.reset(0, 0).should.eql(false);
+    console.error = orig;
+    done();
+  });
+
 });

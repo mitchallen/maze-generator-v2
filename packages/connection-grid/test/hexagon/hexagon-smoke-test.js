@@ -46,6 +46,23 @@ describe('Hexagon smoke test', function() {
         done();
     });
 
+    it('exercises getNeighborDirs and getNeighbor for every cell', function(done) {
+        var dirs = ["N", "S", "E", "W", "NW", "NE", "SW", "SE"];
+        var grid = _module.Hexagon({ x: 5, y: 5 });
+        should.exist(grid);
+        for (var x = 0; x < grid.xSize; x++) {
+            for (var y = 0; y < grid.ySize; y++) {
+                Array.isArray(grid.getNeighborDirs(x, y)).should.eql(true);
+                for (var d = 0; d < dirs.length; d++) {
+                    grid.getNeighbor(x, y, dirs[d]);
+                }
+            }
+        }
+        should.equal(grid.getNeighbor(-1, -1, "N"), null);
+        should.equal(grid.getNeighbor(0, 0, "ZZ"), null);
+        done();
+    });
+
     it('Hexagon method with valid x and y parameters should return object', function(done) {
         var grid = _module.Hexagon({ x: 5, y: 5 });
         should.exist(grid);

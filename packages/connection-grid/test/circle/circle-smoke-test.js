@@ -46,6 +46,26 @@ describe('Circle smoke test', function() {
         done();
     });
 
+    it('exercises getNeighborDirs and getNeighbor for every cell', function(done) {
+        var dirs = ["CCW", "CW", "A", "T", "A0", "T0", "A1", "T1"];
+        for (var rings = 2; rings <= 12; rings++) {
+            var grid = _module.Circle({ rings: rings });
+            should.exist(grid);
+            for (var ring = 0; ring < grid.rings; ring++) {
+                for (var pos = 0; pos < grid.ringSize(ring); pos++) {
+                    Array.isArray(grid.getNeighborDirs(ring, pos)).should.eql(true);
+                    for (var d = 0; d < dirs.length; d++) {
+                        grid.getNeighbor(ring, pos, dirs[d]);
+                    }
+                }
+            }
+        }
+        var g = _module.Circle({ rings: 5 });
+        should.equal(g.getNeighbor(-1, -1, "CW"), null);
+        should.equal(g.getNeighbor(0, 0, "ZZ"), null);
+        done();
+    });
+
     it('Circle method with valid x and y parameters should return object', function(done) {
         var grid = _module.Circle({ rings: 5 });
         should.exist(grid);

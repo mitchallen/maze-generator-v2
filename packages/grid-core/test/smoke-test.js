@@ -7,7 +7,7 @@
 "use strict";
 
 var should = require('should'),
-    modulePath = "../dist/grid-core.cjs.js"; // use CJS build for tests
+    modulePath = "../src/index"; // use CJS build for tests
 
 describe('module smoke test', function() {
 
@@ -66,6 +66,14 @@ describe('module smoke test', function() {
         should.exist(obj);
         var result = obj.set(0,0,5);
         result.should.eql(true);
+        done();
+    });
+
+    it('set method with negative parameters should return false', function(done) {
+        var obj = _module.create({ rows: 5 });
+        should.exist(obj);
+        obj.set(-1, 0, 5).should.eql(false);
+        obj.set(0, -1, 5).should.eql(false);
         done();
     });
 

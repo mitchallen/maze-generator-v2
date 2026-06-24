@@ -7,7 +7,7 @@
 "use strict";
 
 var should = require('should'),
-    modulePath = "../dist/shuffle.cjs.js"; // use CJS build for tests
+    modulePath = "../src/index"; // use CJS build for tests
 
 describe('module smoke test', function() {
 
