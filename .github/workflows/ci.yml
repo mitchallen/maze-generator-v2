@@ -28,6 +28,10 @@ jobs:
 
       - run: npm audit --audit-level=high
 
+      # Build workspace packages in dependency order (their dist/ is required
+      # by the root build and tests, and is not committed).
+      - run: make build
+
       - run: npm run coverage
 
       - name: Upload coverage to Codecov
