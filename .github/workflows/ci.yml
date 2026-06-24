@@ -32,6 +32,10 @@ jobs:
       # by the root build and tests, and is not committed).
       - run: make build
 
+      # Run every workspace package's test suite (root CI otherwise only
+      # exercises the root package).
+      - run: make test
+
       - run: npm run coverage
 
       - name: Upload coverage to Codecov
