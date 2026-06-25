@@ -3,6 +3,9 @@
   "version": "0.1.24",
   "description": "square maze generator",
   "main": "dist/maze-generator-square.cjs.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "//": "Usage:> [PORT=8002] npm run web-server",
     "start": "node dist/maze-generator-square.cjs.js",

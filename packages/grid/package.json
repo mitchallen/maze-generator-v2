@@ -3,6 +3,9 @@
   "version": "0.1.25",
   "description": "A 2D grid that uses zero-based indexing",
   "main": "dist/grid.cjs.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "node dist/grid.cjs.js",
     "build": "node build.js",

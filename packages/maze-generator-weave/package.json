@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "weave maze generator",
   "main": "dist/maze-generator-weave.cjs.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "//": "Usage:> [PORT=8002] npm run web-server",
     "start": "node dist/maze-generator-weave.cjs.js",

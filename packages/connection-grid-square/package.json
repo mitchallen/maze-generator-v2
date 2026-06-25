@@ -3,6 +3,9 @@
   "version": "0.1.17",
   "description": "Connection grid for square grids",
   "main": "dist/connection-grid-square.cjs.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "node dist/connection-grid-square.cjs.js",
     "build": "node build.js",

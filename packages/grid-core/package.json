@@ -3,6 +3,9 @@
   "version": "0.1.10",
   "description": "Core grid module",
   "main": "dist/grid-core.cjs.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "node dist/grid-core.cjs.js",
     "build": "node build.js",
