@@ -501,6 +501,11 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 ## Version History
 
+#### Version 0.3.2
+
+* restricted the published package to `dist/` via a `files` allowlist (the prior `.npmignore` blocklist had been leaking ~1.4 MB of test `coverage/` output into the tarball); added `make pack` / `make pack-check` and a CI guard (`scripts/check-pack.js`) that fails if anything outside `dist/` would ship
+* removed stale per-package `package-lock.json` files left over from the monorepo migration — they were unused (npm workspaces locks at the root) but triggered 279 spurious Dependabot alerts; gitignored `packages/*/package-lock.json` so they can't return
+
 #### Version 0.3.x
 
 * added `maze-generator-weave` package and `factory.Weave` method for generating weave mazes (passages that tunnel under/over existing corridors, producing "crossing" cells)
