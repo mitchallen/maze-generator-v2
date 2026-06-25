@@ -1,6 +1,6 @@
 SHELL := /bin/sh
 
-.PHONY: help install bootstrap ci test test-all build build-layer1 build-layer2 build-layer3 build-layer4 clean prune list deps publish
+.PHONY: help install bootstrap ci test test-all build build-layer1 build-layer2 build-layer3 build-layer4 clean prune list deps pack pack-check publish
 
 .DEFAULT_GOAL := help
 
@@ -16,6 +16,8 @@ help:
 	@echo "  prune      - prune dependencies for all workspaces"
 	@echo "  list       - list all workspaces"
 	@echo "  deps       - list dependencies for all workspaces"
+	@echo "  pack       - build, then dry-run npm pack to verify the published tarball"
+	@echo "  pack-check - build, then fail if the packed tarball contains unexpected files"
 	@echo "  publish    - bump version and push tags from main"
 
 install:
@@ -66,6 +68,18 @@ list:
 
 deps:
 	npm ls --workspaces --depth=0
+
+# Build the root bundle, then show exactly what `npm publish` would ship.
+# The `files` allowlist in package.json should limit this to dist/ only —
+# no src/, test/, coverage/, or other build artifacts. Eyeball the output
+# (or wire it into CI) whenever packaging behavior might have changed.
+pack: build
+	npm pack --dry-run
+
+# Same as `pack`, but asserts the file list is correct and exits non-zero
+# otherwise — suitable for CI. See scripts/check-pack.js.
+pack-check: build
+	node scripts/check-pack.js
 
 publish:
 	@echo "Switching to main branch..."

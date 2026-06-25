@@ -96,6 +96,7 @@ make deps     # show workspace dependency tree
 make build    # build all workspaces, in dependency order
 make test     # run test scripts in all workspaces (if present)
 make test-all # alias for make test
+make pack     # build, then dry-run npm pack to verify the published tarball
 make clean    # remove all node_modules directories
 ```
 
@@ -129,6 +130,72 @@ independent reasons:
 Because the root's dependencies reference the unscoped names, npm workspaces
 links them to the local `packages/*` copies; the published `@mitchallen/*`
 versions are never pulled. The monorepo is intentionally self-contained.
+
+### What gets published (and why the deps are `devDependencies`)
+
+The published package contains **only the `dist/` bundles** — there is no
+runtime dependency on `grid`, `connection-grid`, `maze-generator-square`, etc.,
+even though the code clearly uses them. Two things make this work:
+
+1. **esbuild bundles everything at build time.** `build.js` runs esbuild with
+   `bundle: true`, so every `require('grid')`, `require('connection-grid-square')`,
+   and friend is followed and its source is **inlined directly into**
+   `dist/maze-generator-v2.cjs.js` (and the IIFE `dist/maze-generator-v2.js`).
+   The shipped bundle has no external `require()` calls pointing at those
+   packages — the code is physically baked in.
+
+2. **So those packages are build-time-only inputs.** Because they are consumed
+   and discarded when the bundle is produced, they live in **`devDependencies`**,
+   and the package declares **no runtime `dependencies` at all**. A consumer who
+   runs `npm install @mitchallen/maze-generator-v2` downloads just the
+   self-contained `dist/` and never has to resolve `grid` et al. from any
+   registry. (This is exactly what made the package installable — see the
+   `fix: make the published package installable` change that moved these from
+   workspace deps to `devDependencies`.)
+
+#### The published file list is an allowlist
+
+`package.json` uses a `files` allowlist so that **only `dist/` is ever
+published**:
+
+```json
+"files": ["dist"]
+```
+
+This is deliberately a small *allowlist* rather than an `.npmignore` *blocklist*.
+A blocklist silently leaks anything you forget to add to it: this package was
+previously shipping ~1.4 MB of `coverage/` test-output because `.npmignore`
+excluded `src/`, `test/`, etc. but never listed `coverage/`. (Note: when an
+`.npmignore` file exists, npm uses it and **ignores `.gitignore` entirely** —
+so even though `coverage/` was git-ignored, it still ended up in the tarball.)
+An allowlist can't leak: anything not named simply does not ship.
+
+#### Verify the tarball before publishing
+
+Run a dry-run pack to see exactly what `npm publish` would include:
+
+```sh
+make pack
+```
+
+This builds the root bundle and then runs `npm pack --dry-run`. The output
+should list **only** `package.json`, `README.md`, and the `dist/` files — no
+`src/`, `test/`, `coverage/`, or other build artifacts.
+
+To enforce that automatically, run the packaging check:
+
+```sh
+make pack-check
+```
+
+This builds, then runs `scripts/check-pack.js`, which packs with
+`npm pack --dry-run --json` and **exits non-zero** if the tarball contains any
+file outside `dist/` (plus npm's always-included `package.json` / `README` /
+`LICENSE`), or if a required entry point (`dist/maze-generator-v2.cjs.js`,
+`dist/maze-generator-v2.js`) is missing. CI runs this check on every push and
+pull request — after generating `coverage/`, so it proves the `files` allowlist
+actually keeps build artifacts out of the package — so a packaging regression
+fails the build instead of shipping.
 
 * * *
 

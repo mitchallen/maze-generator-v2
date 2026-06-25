@@ -3,6 +3,9 @@
   "version": "0.3.1",
   "description": "maze generator",
   "main": "dist/maze-generator-v2.cjs.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "node dist/maze-generator-v2.cjs.js",
     "build": "node build.js",
