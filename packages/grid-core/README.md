@@ -64,33 +64,14 @@ Output:
 An example similar to this exists on the __examples__ folder out on the repo.
 
 
-## Browser Usage
+## Browser usage
 
-```html
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="utf-8">
-        <title>Grid Core Example</title>
-        <meta name="description" content="Grid Core Example">
-        <script src="https://cdn.jsdelivr.net/gh/mitchallen/grid-core@v0.1.10/dist/grid-core.min.js"></script>
-        <script>
-          var factory = window.MitchAllen.GridCore;
-          console.log(factory);
-          var rows = 5;
-          var gc = factory.create( { rows: rows } );
-          gc.set(rows-1,6,"alpha");
-          console.log(gc);
-          gc.log(); 
-        </script>
-      </head>
-      <body>
-        <h1>Grid Core Example</h1>
-        <p>See JavaScript developer console for output.</p>
-      </body>
-    </html>
-```
-    
+This package builds a browser IIFE bundle at `dist/grid-core.js` exposing the
+`window.MitchAllen.GridCore` global. Build it from the repo root with
+`make build`, then open [`examples/client-example/`](examples/client-example/)
+— a runnable example that loads the local build (serve the repo root). As a
+private workspace package it is not available on npm or a CDN.
+
 * * *
 
 ## Methods

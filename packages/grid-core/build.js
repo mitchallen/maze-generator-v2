@@ -6,7 +6,7 @@ esbuild.build({
   bundle: true,
   outfile: './dist/grid-core.js',
   format: 'iife', // changed from 'umd' to 'iife'
-  globalName: 'MitchAllen_GridCore',
+  globalName: 'MitchAllen.GridCore',
   minify: true,
   sourcemap: true,
   target: ['es2015'],

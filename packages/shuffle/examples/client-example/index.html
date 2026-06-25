@@ -4,17 +4,20 @@
     <meta charset="utf-8">
     <title>Shuffle Example</title>
     <meta name="description" content="Shuffle Example">
-    <!-- either cdn should work -->
     <!--
-    <script src="https://cdn.rawgit.com/mitchallen/shuffle/v0.1.10/dist/shuffle.min.js"></script>
+      Loads the LOCAL build (run `make build` from the repo root first).
+      Serve the repo ROOT and open this page by path so the relative dist
+      path resolves:
+        cd <repo root> && python3 -m http.server 8000
+        open http://localhost:8000/packages/shuffle/examples/client-example/
     -->
-    <script src="https://unpkg.com/@mitchallen/shuffle@0.1.10/dist/shuffle.min.js"></script>
+    <script src="../../dist/shuffle.js"></script>
     <script>
       var factory = window.MitchAllen.Shuffle;
       var list = [1, 2, 3, 4, 5];
       var obj = factory.create({ array: list });
       var shuffled = obj.shuffle();
-      console.log(shuffled); 
+      console.log(shuffled);
     </script>
   </head>
   <body>

@@ -4,8 +4,16 @@
     <meta charset="utf-8">
     <title>Maze Generator Core Example</title>
     <meta name="description" content="Maze Generator Core Example">
-    <script src="https://unpkg.com/@mitchallen/maze-generator-core@0.1.11/dist/maze-generator-core.min.js"></script>
-    <script src="https://unpkg.com/@mitchallen/connection-grid-square@0.1.14/dist/connection-grid-square.min.js"></script>
+    <!--
+      Loads the LOCAL builds (run `make build` from the repo root first).
+      Serve the repo ROOT and open this page by path so the relative dist
+      paths resolve (this example also loads its connection-grid-square
+      dependency):
+        cd <repo root> && python3 -m http.server 8000
+        open http://localhost:8000/packages/maze-generator-core/examples/client-example/
+    -->
+    <script src="../../dist/maze-generator-core.js"></script>
+    <script src="../../../connection-grid-square/dist/connection-grid-square.js"></script>
     <script>
       var cgFactory = window.MitchAllen.ConnectionGridSquare;
       console.log(cgFactory);
@@ -17,7 +25,7 @@
       });
       console.log(sm);
       sm.generate();
-      sm.log(); 
+      sm.log();
     </script>
   </head>
   <body>

@@ -22,34 +22,14 @@ let ySize = 6;
 let grid = gridFactory.Square({ x: xSize, y: ySize });
 ```
 
-## Browser Usage:
+## Browser usage
 
-You can reference a minimized client version inside an HTML script tag using one of these URL's:
+This package builds a browser IIFE bundle at `dist/connection-grid.js` exposing the
+`window.MitchAllen.ConnectionGrid` global. Build it from the repo root with
+`make build`, then open [`examples/client-example/`](examples/client-example/)
+— a runnable example that loads the local build (serve the repo root). As a
+private workspace package it is not available on npm or a CDN.
 
-Example:
-
-```html
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="utf-8">
-        <title>Connection-Grid Example</title>
-        <meta name="description" content="Connection Grid Example">
-        <script src="https://cdn.jsdelivr.net/gh/mitchallen/connection-grid@v0.1.33/dist/connection-grid.min.js"></script>
-        <script>
-          var factory = window.MitchAllen.ConnectionGrid;
-          console.log(factory);
-          var xSize = 10, ySize = 5;
-          var sg = factory.Square( { x: xSize, y: ySize } );
-          sg.log(); 
-        </script>
-      </head>
-      <body>
-        <h1>Connection Grid Example</h1>
-      </body>
-    </html>
-```
-    
 * * *
 
 ## Testing

@@ -4,7 +4,14 @@
     <meta charset="utf-8">
     <title>Maze Generator Square Example</title>
     <meta name="description" content="Maze Generator Square Example">
-    <script src="https://unpkg.com/@mitchallen/maze-generator-square@0.1.23/dist/maze-generator-square.min.js"></script>
+    <!--
+      Loads the LOCAL build (run `make build` from the repo root first).
+      Serve the repo ROOT and open this page by path so the relative dist
+      path resolves:
+        cd <repo root> && python3 -m http.server 8000
+        open http://localhost:8000/packages/maze-generator-square/examples/client-example/
+    -->
+    <script src="../../dist/maze-generator-square.js"></script>
     <script>
       var factory = window.MitchAllen.MazeGeneratorSquare;
       console.log(factory);
@@ -21,7 +28,7 @@
         ]
       };
       sm.generate(options);
-      sm.printBoard(); 
+      sm.printBoard();
     </script>
   </head>
   <body>

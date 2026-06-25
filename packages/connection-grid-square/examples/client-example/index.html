@@ -4,14 +4,21 @@
     <meta charset="utf-8">
     <title>Connection-Grid-Square Example</title>
     <meta name="description" content="Connection Grid Square Example">
-    <script src="https://unpkg.com/@mitchallen/connection-grid-square@0.1.17/dist/connection-grid-square.min.js"></script>
+    <!--
+      Loads the LOCAL build (run `make build` from the repo root first).
+      Serve the repo ROOT and open this page by path so the relative dist
+      path resolves:
+        cd <repo root> && python3 -m http.server 8000
+        open http://localhost:8000/packages/connection-grid-square/examples/client-example/
+    -->
+    <script src="../../dist/connection-grid-square.js"></script>
     <script>
       var factory = window.MitchAllen.ConnectionGridSquare;
       console.log(factory);
       var xSize = 10, ySize = 5;
       var sg = factory.create( { x: xSize, y: ySize } );
       console.log(sg);
-      sg.log(); 
+      sg.log();
     </script>
   </head>
   <body>

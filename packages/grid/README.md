@@ -360,47 +360,13 @@ Example output:
 
 You can find examples in the repos listed below in the __examples__ folder.
 
-### Browser Client Example
+### Browser usage
 
-You can reference a minimized client version inside an HTML script tag using one of these URL's:
-
-* https://cdn.rawgit.com/mitchallen/grid/v0.1.21/dist/grid.min.js
-* https://cdn.jsdelivr.net/gh/mitchallen/grid@v0.1.21/dist/grid.min.js
-
-Adjust the URL's depending upon what version is available
-
-The __jsDelivr__ URL will pull based on the version in npmjs.com.
-
-The factory function can be retrieved from window.MitchAllen.Grid:
-
-    var factory = window.MitchAllen.Grid;
-    var xSize = 10, ySize = 5;
-    var sg = factory.Square( { x: xSize, y: ySize } );
-
-Example:
-
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="utf-8">
-        <title>Grid Example</title>
-        <meta name="description" content="Grid Example">
-        <!-- either cdn should work 
-        <script src="https://cdn.rawgit.com/mitchallen/grid/v0.1.21/dist/grid.min.js"></script>
-    -->
-        <script src="https://cdn.jsdelivr.net/gh/mitchallen/grid@v0.1.21/dist/grid.min.js"></script>
-        <script>
-          var factory = window.MitchAllen.Grid;
-          console.log(factory);
-          var xSize = 10, ySize = 5;
-          var sg = factory.Square( { x: xSize, y: ySize } );
-          sg.log(); 
-        </script>
-      </head>
-      <body>
-        <h1>Grid Example</h1>
-      </body>
-    </html>
+This package builds a browser IIFE bundle at `dist/grid.js` exposing the
+`window.MitchAllen.Grid` global. Build it from the repo root with
+`make build`, then open [`examples/client-example/`](examples/client-example/)
+— a runnable example that loads the local build (serve the repo root). As a
+private workspace package it is not available on npm or a CDN.
 
 * * *
 

@@ -42,38 +42,14 @@ maze.generate();
 
 * * *
 
-## Browser Usage
+## Browser usage
 
-```html
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="utf-8">
-        <title>Maze Generator Core Example</title>
-        <meta name="description" content="Maze Generator Core Example">
-        <script src="https://cdn.jsdelivr.net/gh/mitchallen/maze-generator-core@v0.1.11/dist/maze-generator-core.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/mitchallen/connection-grid-square@v0.1.14/dist/connection-grid-square.min.js"></script>
-        <script>
-          var cgFactory = window.MitchAllen.ConnectionGridSquare;
-          console.log(cgFactory);
-          var xSize = 10, ySize = 5;
-          var cGrid = cgFactory.create( { x: xSize, y: ySize } );
-          var factory = window.MitchAllen.MazeGeneratorCore;
-          var sm = factory.create({
-            grid: cGrid,
-          });
-          console.log(sm);
-          sm.generate();
-          sm.log();  
-        </script>
-      </head>
-      <body>
-        <h1>Maze Generator Core Example</h1>
-        <p>See JavaScript developer console for output.</p>
-      </body>
-    </html>
-```
-	
+This package builds a browser IIFE bundle at `dist/maze-generator-core.js` exposing the
+`window.MitchAllen.MazeGeneratorCore` global. Build it from the repo root with
+`make build`, then open [`examples/client-example/`](examples/client-example/)
+— a runnable example that loads the local build (serve the repo root). As a
+private workspace package it is not available on npm or a CDN.
+
 * * *
 
 ## Documentation
