@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../src/index.js"],
-  "sourcesContent": ["/**\n    Module: shuffle/src/index.js\n    Author: Mitch Allen\n*/\n\n/*jshint node: true */\n/*jshint esversion: 6 */\n\n\"use strict\";\n\nmodule.exports.create = (spec) => {\n    if(!spec) {\n        return null;\n    }\n    if(!spec.array) {\n        return null;\n    }\n    var _array = spec.array.slice(0);\n    return {\n        shuffle: function() {\n            var i = 0,\n                j = 0,\n                temp = null;\n            for (i = _array.length - 1; i > 0; i -= 1) {\n                j = Math.floor(Math.random() * (i + 1));\n                temp = _array[i];\n                _array[i] = _array[j];\n                _array[j] = temp;\n            }\n            return _array;\n        }\n    };\n};\n"],
-  "mappings": "aAUA,OAAO,QAAQ,OAAUA,GAAS,CAI9B,GAHG,CAACA,GAGD,CAACA,EAAK,MACL,OAAO,KAEX,IAAIC,EAASD,EAAK,MAAM,MAAM,CAAC,EAC/B,MAAO,CACH,QAAS,UAAW,CAChB,IAAIE,EAAI,EACJC,EAAI,EACJC,EAAO,KACX,IAAKF,EAAID,EAAO,OAAS,EAAGC,EAAI,EAAGA,GAAK,EACpCC,EAAI,KAAK,MAAM,KAAK,OAAO,GAAKD,EAAI,EAAE,EACtCE,EAAOH,EAAOC,CAAC,EACfD,EAAOC,CAAC,EAAID,EAAOE,CAAC,EACpBF,EAAOE,CAAC,EAAIC,EAEhB,OAAOH,CACX,CACJ,CACJ",
-  "names": ["spec", "_array", "i", "j", "temp"]
-}

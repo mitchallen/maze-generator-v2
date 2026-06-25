@@ -28,7 +28,10 @@ bootstrap: install
 ci:
 	npm ci
 
-test:
+# Build first: workspace dist/ is gitignored (rebuilt, not committed), and a
+# package's tests bundle its dependencies' dist, so dependencies must be built
+# before any package's test suite runs.
+test: build
 	npm run test --workspaces --if-present
 
 test-all: test
