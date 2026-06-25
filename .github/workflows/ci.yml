@@ -38,6 +38,11 @@ jobs:
 
       - run: npm run coverage
 
+      # Verify the published tarball contains only dist/ + npm metadata.
+      # Runs after coverage so coverage/ exists on disk — this proves the
+      # "files" allowlist keeps it (and src/, test/, etc.) out of the package.
+      - run: node scripts/check-pack.js
+
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v7
         with:
