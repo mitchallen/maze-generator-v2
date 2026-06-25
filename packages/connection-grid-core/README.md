@@ -36,43 +36,14 @@ let cg = gridFactory.create({
       });
 ```
 
-## Browser Usage:
+## Browser usage
 
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Connection-Grid-Core Example</title>
-    <meta name="description" content="Connection Grid Core Example">
-    <script src="https://cdn.jsdelivr.net/gh/mitchallen/connection-grid-core@v0.1.22/dist/connection-grid-core.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/mitchallen/grid-square@v0.1.8/dist/grid-square.min.js"></script>
-    <script>
-      var factory = window.MitchAllen.ConnectionGridCore;
-      var squareFactory = window.MitchAllen.GridSquare;
-      console.log(factory);
-      var xSize = 10, ySize = 5;
-      var sourceGrid = squareFactory.create({ x: xSize, y: ySize });
-      var _dirMap = { 
-        "N": 0x010, 
-        "S": 0x020, 
-        "E": 0x040, 
-        "W": 0x080 };
-    let _oppositeMap = { "E": "W", "W": "E", "N": "S", "S": "N" };
-    var cg = factory.create({ 
-        grid: sourceGrid, 
-        dirMap: _dirMap,
-        oppositeMap: _oppositeMap 
-      });
-      console.log(cg); 
-    </script>
-  </head>
-  <body>
-    <h1>Connection Grid Core Example</h1>
-  </body>
-</html>
-```
-    
+This package builds a browser IIFE bundle at `dist/connection-grid-core.js` exposing the
+`window.MitchAllen.ConnectionGridCore` global. Build it from the repo root with
+`make build`, then open [`examples/client-example/`](examples/client-example/)
+— a runnable example that loads the local build (serve the repo root). As a
+private workspace package it is not available on npm or a CDN.
+
 * * *
 
 ## Documentation

@@ -1,17 +1,23 @@
-
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>Grid Example</title>
     <meta name="description" content="Grid Example">
-    <script src="https://unpkg.com/@mitchallen/grid@0.1.24/dist/grid.min.js"></script>
+    <!--
+      Loads the LOCAL build (run `make build` from the repo root first).
+      Serve the repo ROOT and open this page by path so the relative dist
+      path resolves:
+        cd <repo root> && python3 -m http.server 8000
+        open http://localhost:8000/packages/grid/examples/client-example/
+    -->
+    <script src="../../dist/grid.js"></script>
     <script>
       var factory = window.MitchAllen.Grid;
       console.log(factory);
       var xSize = 10, ySize = 5;
       var sg = factory.Square( { x: xSize, y: ySize } );
-      sg.log(); 
+      sg.log();
     </script>
   </head>
   <body>

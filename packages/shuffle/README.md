@@ -26,51 +26,14 @@ Uses Fisher-Yates to shuffle an array.
     
     console.log(shuffled);
     
-## Browser Usage:
+## Browser usage
 
-You can reference a minimized client version inside an HTML script tag using one of these URL's:
+This package builds a browser IIFE bundle at `dist/shuffle.js` exposing the
+`window.MitchAllen.Shuffle` global. Build it from the repo root with
+`make build`, then open [`examples/client-example/`](examples/client-example/)
+— a runnable example that loads the local build (serve the repo root). As a
+private workspace package it is not available on npm or a CDN.
 
-* https://cdn.rawgit.com/mitchallen/shuffle/v0.1.4/dist/shuffle.min.js
-* https://cdn.jsdelivr.net/gh/mitchallen/shuffle@v0.1.4/dist/shuffle.min.js
-
-Adjust for the version that you wish to use.
-
-The __jsDelivr__ URL will pull based on the version in npmjs.com.
-
-The factory function can be retrieved from __window.MitchAllen.Shuffle__:
-
-    var factory = window.MitchAllen.Shuffle;
-    var list = [1, 2, 3, 4, 5];
-    var obj = factory.create({ array: list });
-    var shuffled = obj.shuffle();
-
-Example:
-
-    <!DOCTYPE html>
-    <html>
-      <head>
-    <meta charset="utf-8">
-        <title>Shuffle Example</title>
-        <meta name="description" content="Shuffle Example">
-        <!-- either cdn should work -->
-        <!--
-        <script src="https://cdn.rawgit.com/mitchallen/shuffle/v0.1.10/dist/shuffle.min.js"></script>
-        -->
-        <script src="https://cdn.jsdelivr.net/gh/mitchallen/shuffle@v0.1.10/dist/shuffle.min.js"></script>
-        <script>
-          var factory = window.MitchAllen.Shuffle;
-          var list = [1, 2, 3, 4, 5];
-          var obj = factory.create({ array: list });
-          var shuffled = obj.shuffle();
-          console.log(shuffled); 
-        </script>
-      </head>
-      <body>
-        <h1>Shuffle Example</h1>
-        <p>See the JavaScript console for results.</p>
-      </body>
-    </html>
-    
 * * * 
    
 ## Methods

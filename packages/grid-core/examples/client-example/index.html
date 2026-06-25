@@ -4,7 +4,14 @@
     <meta charset="utf-8">
     <title>Grid Core Example</title>
     <meta name="description" content="Grid Core Example">
-    <script src="https://unpkg.com/@mitchallen/grid-core@0.1.10/dist/grid-core.min.js"></script>
+    <!--
+      Loads the LOCAL build (run `make build` from the repo root first).
+      Serve the repo ROOT and open this page by path so the relative dist
+      path resolves:
+        cd <repo root> && python3 -m http.server 8000
+        open http://localhost:8000/packages/grid-core/examples/client-example/
+    -->
+    <script src="../../dist/grid-core.js"></script>
     <script>
       var factory = window.MitchAllen.GridCore;
       console.log(factory);
@@ -12,7 +19,7 @@
       var gc = factory.create( { rows: rows } );
       gc.set(rows-1,6,"alpha");
       console.log(gc);
-      gc.log(); 
+      gc.log();
     </script>
   </head>
   <body>

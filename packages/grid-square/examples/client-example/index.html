@@ -4,7 +4,14 @@
     <meta charset="utf-8">
     <title>Grid Square Example</title>
     <meta name="description" content="Grid Square Example">
-    <script src="https://unpkg.com/@mitchallen/grid-square@0.1.9/dist/grid-square.min.js"></script>
+    <!--
+      Loads the LOCAL build (run `make build` from the repo root first).
+      Serve the repo ROOT and open this page by path so the relative dist
+      path resolves:
+        cd <repo root> && python3 -m http.server 8000
+        open http://localhost:8000/packages/grid-square/examples/client-example/
+    -->
+    <script src="../../dist/grid-square.js"></script>
     <script>
       var factory = window.MitchAllen.GridSquare;
       console.log(factory);
@@ -13,7 +20,7 @@
       var gs = factory.create( { x: xSize, y: ySize } );
       gs.set( xSize-1, ySize-1, "alpha" );
       console.log(gs);
-      gs.log(); 
+      gs.log();
     </script>
   </head>
   <body>

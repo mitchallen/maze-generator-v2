@@ -25,31 +25,14 @@ let ySize = 6;
 let grid = gridFactory.create({ x: xSize, y: ySize });
 ```
 
-## Browser Usage:
+## Browser usage
 
-```html
-<!DOCTYPE html>
-  <html>
-      <head>
-        <meta charset="utf-8">
-        <title>Connection-Grid-Square Example</title>
-        <meta name="description" content="Connection Grid Square Example">
-        <script src="https://cdn.jsdelivr.net/gh/mitchallen/connection-grid-square@v0.1.17/dist/connection-grid-square.min.js"></script>
-        <script>
-          var factory = window.MitchAllen.ConnectionGridSquare;
-          console.log(factory);
-          var xSize = 10, ySize = 5;
-          var sg = factory.create( { x: xSize, y: ySize } );
-          console.log(sg);
-          sg.log(); 
-        </script>
-      </head>
-      <body>
-        <h1>Connection Grid Square Example</h1>
-      </body>
-  </html>
-```
-    
+This package builds a browser IIFE bundle at `dist/connection-grid-square.js` exposing the
+`window.MitchAllen.ConnectionGridSquare` global. Build it from the repo root with
+`make build`, then open [`examples/client-example/`](examples/client-example/)
+— a runnable example that loads the local build (serve the repo root). As a
+private workspace package it is not available on npm or a CDN.
+
 * * *
  
 ## Documentation

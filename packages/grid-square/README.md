@@ -200,33 +200,13 @@ Example output:
       
 * * *
 
-### Browser Client Example
+### Browser usage
 
-```html
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="utf-8">
-        <title>Grid Square Example</title>
-        <meta name="description" content="Grid Square Example">
-        <script src="https://cdn.jsdelivr.net/gh/mitchallen/grid-square@v0.1.9/dist/grid-square.min.js"></script>
-        <script>
-          var factory = window.MitchAllen.GridSquare;
-          console.log(factory);
-          var xSize = 5,
-              ySize = 6;
-          var gs = factory.create( { x: xSize, y: ySize } );
-          gs.set( xSize-1, ySize-1, "alpha" );
-          console.log(gs);
-          gs.log(); 
-        </script>
-      </head>
-      <body>
-        <h1>Grid Square Example</h1>
-        <p>See JavaScript developer console for output.</p>
-      </body>
-    </html>
-```
+This package builds a browser IIFE bundle at `dist/grid-square.js` exposing the
+`window.MitchAllen.GridSquare` global. Build it from the repo root with
+`make build`, then open [`examples/client-example/`](examples/client-example/)
+— a runnable example that loads the local build (serve the repo root). As a
+private workspace package it is not available on npm or a CDN.
 
 * * *
 

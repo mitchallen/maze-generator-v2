@@ -22,35 +22,14 @@ square maze generator
     var maze = mazeFactory.create({ x: xSize, y: ySize });
 ```
     
-## Browser Usage:
+## Browser usage
 
-Example:
+This package builds a browser IIFE bundle at `dist/maze-generator-square.js` exposing the
+`window.MitchAllen.MazeGeneratorSquare` global. Build it from the repo root with
+`make build`, then open [`examples/client-example/`](examples/client-example/)
+— a runnable example that loads the local build (serve the repo root). As a
+private workspace package it is not available on npm or a CDN.
 
-```html
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="utf-8">
-        <title>Maze Generator Square Example</title>
-        <meta name="description" content="Maze Generator Square Example">
-        <script src="https://cdn.jsdelivr.net/gh/mitchallen/maze-generator-square@v0.1.23/dist/maze-generator-square.min.js"></script>
-        <script>
-          var factory = window.MitchAllen.MazeGeneratorSquare;
-          console.log(factory);
-          var xSize = 10, ySize = 5;
-          var sm = factory.create( { x: xSize, y: ySize } );
-          console.log(sm);
-          sm.generate();
-          sm.printBoard(); 
-        </script>
-      </head>
-      <body>
-        <h1>Maze Generator Square Example</h1>
-        <p>See JavaScript developer console for output.</p>
-      </body>
-    </html>
-```
-    
 * * *
 
 ## Documentation
