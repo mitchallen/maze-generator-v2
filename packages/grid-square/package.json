@@ -2,13 +2,16 @@
   "name": "grid-square",
   "version": "0.1.9",
   "description": "2D square grid",
-  "main": "dist/grid-square.js",
+  "main": "dist/grid-square.cjs.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "start": "node dist/grid-square.js",
-    "build": "node esbuild.config.js",
+    "start": "node dist/grid-square.cjs.js",
+    "build": "node build.js",
     "test": "npm run build && mocha --recursive --timeout 20000",
     "test-debug": "npm run build && mocha -g '@DEBUG' --recursive --timeout 20000",
-    "web-server": "python -m SimpleHTTPServer $PORT || 8000"
+    "web-server": "python3 -m http.server ${PORT:-8000}"
   },
   "repository": {
     "type": "git",

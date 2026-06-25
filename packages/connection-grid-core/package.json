@@ -3,6 +3,9 @@
   "version": "0.1.22",
   "description": "Connection grid core",
   "main": "dist/connection-grid-core.cjs.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "node dist/connection-grid-core.cjs.js",
     "build": "node build.js",
