@@ -5,20 +5,41 @@
     <link rel="icon" href="data:,">
     <title>Maze Generator Example</title>
     <meta name="description" content="Maze Generator Example">
-    <!-- local dist file (see ../cdn-example for jsDelivr CDN version) -->
-    <script src="../../dist/maze-generator-v2.min.js"></script>
-    <script>
-      var factory = window.MitchAllen.MazeGeneratorV2;
-      console.log(factory);
-      var xSize = 10, ySize = 5;
-      var sm = factory.Square( { x: xSize, y: ySize } );
-      console.log(sm);
-      sm.generate();
-      sm.printBoard(); 
-    </script>
+    <!-- local dist build (see ../cdn-example for the jsDelivr CDN version) -->
+    <script src="../../dist/maze-generator-v2.js"></script>
   </head>
   <body>
     <h1>Maze Generator Example</h1>
-    <p>See JavaScript developer console for output.</p>
+    <p>Generated mazes (also logged to the JavaScript developer console):</p>
+    <pre id="output"></pre>
+    <script>
+      var factory = window.MitchAllen.MazeGeneratorV2;
+
+      // Tee printBoard() output (which uses console.log) onto the page.
+      // printBoard uses printf-style formatting (e.g. "MAZE: %d, %d"), so
+      // substitute %s/%d here to match what the devtools console shows.
+      var out = document.getElementById('output');
+      var log = console.log.bind(console);
+      console.log = function () {
+        var args = Array.prototype.slice.call(arguments);
+        var msg;
+        if (typeof args[0] === 'string' && /%[sd]/.test(args[0])) {
+          var i = 1;
+          msg = args[0].replace(/%[sd]/g, function () { return String(args[i++]); });
+        } else {
+          msg = args.map(String).join(' ');
+        }
+        out.textContent += msg + '\n';
+        log.apply(null, arguments);
+      };
+
+      var square = factory.Square({ x: 10, y: 5 });
+      square.generate();
+      square.printBoard();
+
+      var weave = factory.Weave({ x: 10, y: 5, weaveChance: 0.9 });
+      weave.generate();
+      weave.printBoard();
+    </script>
   </body>
 </html>
