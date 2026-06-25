@@ -444,6 +444,23 @@ Example:
     |_______________________________________________|
 
 
+A weave maze prints like a square maze, except __crossing__ cells (where a
+passage tunnels under a corridor) are marked with `+`:
+
+    WEAVE MAZE: 10, 10
+     ____________________
+    |_  |  _  |  ___   _|
+    | |___|  _|___|  +  |
+    |  _   + _______|  _|
+    |_  | | |  ___  | | |
+    |  + _| |_  |  + _| |
+    |_|  _ + ___|_ +  | |
+    |  +  |_  |  ___| | |
+    | |_|_____| | |  _| |
+    | |   |___  |  _|   |
+    |___|_______|_____|_|
+
+
 ## Publishing to GitHub Packages
 
 To publish this package to GitHub Packages, you need a GitHub Personal Access Token (PAT) with the following scopes:
@@ -500,6 +517,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.3.3
+
+* documented the weave maze: added a sample `printBoard` output showing `+` crossing cells to the README
 
 #### Version 0.3.2
 
