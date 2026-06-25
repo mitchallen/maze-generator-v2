@@ -1,5 +1,8 @@
 node_modules/
 packages/*/node_modules/
+# npm workspaces uses a single root lockfile; per-package lockfiles are
+# unused, and stale ones triggered hundreds of spurious Dependabot alerts.
+packages/*/package-lock.json
 npm-debug.log*
 *.log
 .DS_Store
