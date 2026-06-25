@@ -518,6 +518,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 ## Version History
 
+#### Version 0.3.4
+
+* smaller published bundle — the root now inlines the minified `grid-square` build (workspace package build was normalized); no API changes
+
 #### Version 0.3.3
 
 * documented the weave maze: added a sample `printBoard` output showing `+` crossing cells to the README
