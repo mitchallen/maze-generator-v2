@@ -1,11 +1,39 @@
-connection-grid
+@mitchallen/connection-grid
 ==
 Map connections between cells in a 2D grid.
 --
+
+[![CI](https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml)
+[![Coverage: 100%](https://img.shields.io/badge/coverage-100%25-brightgreen)](https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml?query=branch%3Amain)
+[![Version](https://img.shields.io/github/package-json/v/mitchallen/maze-generator-v2?filename=packages%2Fconnection-grid%2Fpackage.json&label=version)](https://github.com/users/mitchallen/packages/npm/package/connection-grid)
+[![License](https://img.shields.io/badge/license-ISC-green)](https://github.com/mitchallen/maze-generator-v2/blob/main/packages/connection-grid/LICENSE)
+
 * * *
 ## Installation
 
-> **Note:** This is a private workspace package. It is not published to npm and is resolved automatically via npm workspaces.
+This package — and its `@mitchallen` dependencies — is published to the
+**GitHub Packages** registry, not npmjs. Installing requires authentication
+even though the packages are public, so you need a GitHub personal access
+token with the `read:packages` scope.
+
+Versions **0.1.34** and earlier remain on npmjs.org and are no longer updated there.
+
+Route the `@mitchallen` scope to GitHub Packages in your project `.npmrc`
+(no secret — safe to commit):
+
+    @mitchallen:registry=https://npm.pkg.github.com
+
+Then add your token to your **user** `~/.npmrc` so it never lands in the repo:
+
+    npm config set //npm.pkg.github.com/:_authToken=YOUR_TOKEN --location=user
+
+Do **not** put the `_authToken` line in the project `.npmrc` — if committed it
+exposes your token. (In CI, set `NODE_AUTH_TOKEN` and reference it with
+`//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}`.)
+
+Then install:
+
+    $ npm install @mitchallen/connection-grid --save
 
 * * *
 
@@ -14,7 +42,7 @@ Map connections between cells in a 2D grid.
 ```js
 "use strict";
     
-let gridFactory = require("connection-grid");
+let gridFactory = require("@mitchallen/connection-grid");
     
 let xSize = 5;
 let ySize = 6;
@@ -22,14 +50,34 @@ let ySize = 6;
 let grid = gridFactory.Square({ x: xSize, y: ySize });
 ```
 
-## Browser usage
+## Browser Usage:
 
-This package builds a browser IIFE bundle at `dist/connection-grid.js` exposing the
-`window.MitchAllen.ConnectionGrid` global. Build it from the repo root with
-`make build`, then open [`examples/client-example/`](examples/client-example/)
-— a runnable example that loads the local build (serve the repo root). As a
-private workspace package it is not available on npm or a CDN.
+You can reference a minimized client version inside an HTML script tag using one of these URL's:
 
+Example:
+
+```html
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Connection-Grid Example</title>
+        <meta name="description" content="Connection Grid Example">
+        <script src="https://cdn.jsdelivr.net/gh/mitchallen/connection-grid@v0.1.39/dist/connection-grid.min.js"></script>
+        <script>
+          var factory = window.MitchAllen.ConnectionGrid;
+          console.log(factory);
+          var xSize = 10, ySize = 5;
+          var sg = factory.Square( { x: xSize, y: ySize } );
+          sg.log(); 
+        </script>
+      </head>
+      <body>
+        <h1>Connection Grid Example</h1>
+      </body>
+    </html>
+```
+    
 * * *
 
 ## Testing
@@ -37,10 +85,13 @@ private workspace package it is not available on npm or a CDN.
 To test, go to the root folder and type (sans __$__):
 
     $ npm test
+    
+Run all tests using nodemon:
 
-This builds the package (via esbuild) and runs the full test suite. Run individual suites (each builds first via `npm run build`):
+    $ npm run test-nodemon
+    
+Run suites using nodemon:
 
-    $ npm run test-create
     $ npm run test-square
     $ npm run test-hexagon
     $ npm run test-triangle
@@ -51,7 +102,7 @@ This builds the package (via esbuild) and runs the full test suite. Run individu
 ## Repo(s)
 
 * [bitbucket.org/mitchallen/connection-grid.git](https://bitbucket.org/mitchallen/connection-grid.git)
-* [github.com/mitchallen/connection-grid.git](https://github.com/mitchallen/connection-grid.git)
+* [github.com/mitchallen/connection-grid.git](https://github.com/mitchallen/maze-generator-v2/tree/main/packages/connection-grid)
 
 * * *
 
@@ -66,15 +117,15 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 #### Version 0.1.28
 
-* replaced modules/square.js with connection-grid-square
+* replaced modules/square.js with @mitchallen/connection-grid-square
 
 #### Version 0.1.27
 
-* square now uses grid-square
+* square now uses @mitchallen/grid-square
 
 #### Version 0.1.26
 
-* Replaced modules/base.js with connection-grid-core
+* Replaced modules/base.js with @mitchallen/connection-grid-core
 
 #### Version 0.1.25
 
@@ -141,11 +192,11 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 #### Version 0.1.10
 
-* now uses grid 0.1.10
+* now uses @mitchallen/grid 0.1.10
 
 #### Version 0.1.9
 
-* now uses grid 0.1.9
+* now uses @mitchallen/grid 0.1.9
 * changed internal use of __grid.create__ to __grid.Square__
 * added __Square__ method to replace __create__ method
 * added test suites for __Square__ method
@@ -153,12 +204,12 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 #### Version 0.1.8
 
-* now uses grid 0.1.8
+* now uses @mitchallen/grid 0.1.8
 * added experimental __Hexagon__ method
 
 #### Version 0.1.7 
 
-* now uses grid 0.1.7
+* now uses @mitchallen/grid 0.1.7
 * x and y values that are missing or less than 0 will be normalized to 0
 * updated tests 
 
@@ -180,7 +231,7 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 #### Version 0.1.3 
 
-* now uses grid 0.1.6
+* now uses @mitchallen/grid 0.1.6
 
 #### Version 0.1.2 
 

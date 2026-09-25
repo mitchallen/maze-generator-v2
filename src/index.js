@@ -8,8 +8,8 @@
 
 "use strict";
 
-var squareMaze = require('maze-generator-square').create,
-    weaveMaze = require('maze-generator-weave').create,
+var squareMaze = require('@mitchallen/maze-generator-square').create,
+    weaveMaze = require('@mitchallen/maze-generator-weave').create,
     hexagonMaze = require('./hexagon'),
     triangleMaze = require('./triangle'),
     circleMaze = require('./circle');

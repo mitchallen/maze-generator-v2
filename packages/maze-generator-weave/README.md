@@ -14,7 +14,7 @@ weave maze generator
 ```js
     "use strict";
 
-    var mazeFactory = require("maze-generator-weave");
+    var mazeFactory = require("@mitchallen/maze-generator-weave");
 
     let xSize = 5;
     let ySize = 6;

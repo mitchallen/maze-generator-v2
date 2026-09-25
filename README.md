@@ -78,7 +78,7 @@ npm config set //npm.pkg.github.com/:_authToken=YOUR_PAT --location=user
 ## Monorepo (npm workspaces)
 
 - root package: `@mitchallen/maze-generator-v2`
-- workspace packages: `packages/*` (private, unpublished internal dependencies)
+- workspace packages: `packages/*` — the `@mitchallen/*` maze libraries, each published to GitHub Packages from this repo (`maze-generator-weave` is still private)
 
 ### Workspace bootstrap
 
@@ -109,27 +109,36 @@ Every package (including the root) builds with [esbuild](https://esbuild.github.
 
 Because the root package and `packages/grid` / `packages/connection-grid` bundle other workspace packages via `require()`, they must be built *after* their dependencies. `npm run build --workspaces` builds in workspace-listing order (not dependency order) and will fail for this reason — always use `make build`, which runs explicit dependency-ordered build layers (`build-layer1` .. `build-layer4`) before building the root package.
 
-### No conflict with the standalone `@mitchallen/*` packages
+### The workspace packages are the published `@mitchallen/*` libraries
 
-Several of these vendored packages share a base name with packages published
-separately to GitHub Packages (for example, `@mitchallen/connection-grid`,
-`@mitchallen/grid`, `@mitchallen/shuffle`). They **cannot** collide, for three
-independent reasons:
+These packages used to live in their own repositories (`mitchallen/shuffle`,
+`mitchallen/grid`, …), with private, unscoped copies here. They now live only
+in this repo and are published from it:
 
-1. **They are all `private: true`.** npm refuses to publish a package marked
-   private, so the workspace packages are never published anywhere.
-2. **They use unscoped names** (`connection-grid`, `grid`, `shuffle`, …), which
-   are entirely different identifiers from the scoped, published
-   `@mitchallen/connection-grid`, `@mitchallen/grid`, etc. There is no
-   namespace overlap. (GitHub Packages only accepts scoped names matching the
-   owner, so an unscoped name could not be published there regardless.)
-3. **Only the root package is published.** `publish.yml` runs a single
-   `npm publish` for `@mitchallen/maze-generator-v2` — it does not publish the
-   workspaces.
+| Package | Depends on |
+| --- | --- |
+| `@mitchallen/shuffle` | — |
+| `@mitchallen/grid-core` | — |
+| `@mitchallen/maze-generator-core` | — |
+| `@mitchallen/grid-square` | `grid-core` |
+| `@mitchallen/connection-grid-core` | `shuffle` |
+| `@mitchallen/grid` | `grid-core`, `grid-square` |
+| `@mitchallen/connection-grid-square` | `connection-grid-core`, `grid-square` |
+| `@mitchallen/connection-grid` | `connection-grid-square`, `grid`, `grid-square`, `shuffle` |
+| `@mitchallen/maze-generator-square` | `connection-grid-square`, `maze-generator-core` |
+| `@mitchallen/maze-generator-weave` | `connection-grid-square`, `maze-generator-core` (private, not published) |
 
-Because the root's dependencies reference the unscoped names, npm workspaces
-links them to the local `packages/*` copies; the published `@mitchallen/*`
-versions are never pulled. The monorepo is intentionally self-contained.
+Each package keeps the name, entry point and published file list it had in its
+old repository, so existing consumers are unaffected. The old repositories are
+archived and point here.
+
+Inside the monorepo, npm workspaces links each `@mitchallen/*` dependency to the
+local `packages/*` copy (their versions satisfy the declared ranges), so a change
+to one package is picked up by its dependents and by the root bundle without
+publishing first.
+
+Every workspace package runs its own tests with a 100% coverage threshold
+(`make coverage`) and its own tarball check (`make pack-check`).
 
 ### What gets published (and why the deps are `devDependencies`)
 
@@ -463,22 +472,21 @@ passage tunnels under a corridor) are marked with `+`:
 
 ## Publishing to GitHub Packages
 
-To publish this package to GitHub Packages, you need a GitHub Personal Access Token (PAT) with the following scopes:
-- `write:packages`
-- `read:packages`
-- `repo`
+`.github/workflows/publish.yml` runs on a `v*` tag push (or manually). After the
+100% coverage gate passes it:
 
-Add this token as a repository secret named `GH_PUBLISH_TOKEN`.
+1. publishes the root `@mitchallen/maze-generator-v2` if the tag matches its
+   `package.json` version and that version isn't on GitHub Packages yet, then
+2. publishes every non-private workspace package whose `package.json` version
+   isn't on GitHub Packages yet, in dependency order.
 
-The GitHub Actions workflow will use this token to authenticate and publish the package when a version tag is pushed. See `.github/workflows/publish.yml` for details.
+So to release a workspace package, bump its version (and the root's), commit,
+tag the root version and push the tag. Packages whose version didn't change are
+skipped.
 
-To bump the version and trigger a publish:
-
-```
-make publish
-```
-
-This will switch to the `main` branch, increment the patch version, and push the changes and tags to GitHub — which triggers the publish workflow.
+Publishing uses the workflow's `GITHUB_TOKEN`. The workspace packages were first
+published from their old repositories, so each one's package settings must give
+this repository **Write** access under *Manage Actions access*.
 
 * * *
 

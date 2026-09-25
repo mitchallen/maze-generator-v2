@@ -1,40 +1,47 @@
 {
-  "name": "connection-grid-square",
-  "version": "0.1.17",
+  "name": "@mitchallen/connection-grid-square",
+  "version": "0.1.22",
   "description": "Connection grid for square grids",
-  "main": "dist/connection-grid-square.cjs.js",
+  "main": "src/index.js",
   "files": [
+    "src",
     "dist"
   ],
   "scripts": {
-    "start": "node dist/connection-grid-square.cjs.js",
+    "start": "node src/index.js",
     "build": "node build.js",
-    "test": "npm run build && mocha --recursive --timeout 20000",
-    "coverage": "npm run build && c8 --check-coverage --100 --include='src/**' --reporter=text mocha --recursive --timeout 20000",
-    "test-square": "npm run build && mocha test/square/ --recursive --timeout 5000",
-    "test-debug": "npm run build && mocha -g '@DEBUG' --recursive --timeout 20000"
+    "lint": "eslint src/",
+    "test": "node build.js && node --test $(find test -name '*-test.js' | sort)",
+    "coverage": "node build.js && node --test --experimental-test-coverage --test-coverage-include='src/**' --test-coverage-lines=100 --test-coverage-branches=100 --test-coverage-functions=100 --test-coverage-exclude='test/**' $(find test -name '*-test.js' | sort)",
+    "watch": "node build.js --watch",
+    "test-square": "node --test $(find test/square -name '*-test.js')",
+    "test-debug": "node --test $(find test -name '*-test.js' | sort)"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mitchallen/connection-grid-square.git"
+    "url": "https://github.com/mitchallen/maze-generator-v2.git",
+    "directory": "packages/connection-grid-square"
   },
   "author": "Mitch Allen <npm@mitchallen.com> (http://mitchallen.com)",
   "license": "MIT",
-  "private": true,
   "dependencies": {
-    "connection-grid-core": "^0.1.22",
-    "grid-square": "^0.1.9"
+    "@mitchallen/connection-grid-core": "^0.1.25",
+    "@mitchallen/grid-square": "^0.1.13"
   },
   "devDependencies": {
-    "esbuild": "^0.28.2",
-    "mocha": "^12.0.2",
-    "should": "^13.2.3"
-  },
-  "engines": {
-    "node": ">=20",
-    "npm": ">=10"
+    "esbuild": "^0.28.1",
+    "eslint": "^9.0.0",
+    "globals": "^16.0.0"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
+  },
+  "overrides": {
+    "esbuild": "^0.28.1",
+    "brace-expansion": "^5.0.9",
+    "js-yaml": "^4.3.2"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true
   }
 }

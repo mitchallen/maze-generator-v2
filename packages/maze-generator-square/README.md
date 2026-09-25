@@ -1,11 +1,60 @@
-maze-generator-square
+@mitchallen/maze-generator-square
 ==
 square maze generator
 --
 
+<p align="left">
+
+  <a href="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml">
+    <img src="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml/badge.svg?branch=main" alt="Build Status">
+  </a>
+  
+  <a href="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml?query=branch%3Amain">
+    <img src="https://img.shields.io/badge/coverage-100%25-brightgreen" alt="Coverage: 100%">
+  </a>
+  
+  <a href="https://github.com/users/mitchallen/packages/npm/package/maze-generator-square">
+    <img src="https://img.shields.io/github/package-json/v/mitchallen/maze-generator-v2?filename=packages%2Fmaze-generator-square%2Fpackage.json&label=version" alt="Version">
+  </a>
+  
+  <a href="https://github.com/mitchallen/maze-generator-v2/blob/main/packages/maze-generator-square/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-green">
+  </a>
+  
+</p>
+
 ## Installation
 
-> **Note:** This is a private workspace package. It is not published to npm and is resolved automatically via npm workspaces.
+This package — and its entire `@mitchallen` dependency chain — is published to
+the **GitHub Packages** registry, not npmjs.
+
+Versions **0.1.24** and earlier remain on npmjs.org and are no longer updated there.
+
+GitHub Packages requires authentication for **every** install, even though
+these packages are public. You need a GitHub personal access token with the
+`read:packages` scope (classic PAT, or fine-grained with Packages: read).
+
+1. Route the `@mitchallen` scope to GitHub Packages in your project `.npmrc`.
+   This line has no secret and is safe to commit:
+
+       @mitchallen:registry=https://npm.pkg.github.com
+
+2. Add your token to your **user** `~/.npmrc` so it never lands in the repo:
+
+       npm config set //npm.pkg.github.com/:_authToken=YOUR_TOKEN --location=user
+
+   Do **not** put the `_authToken` line in the project `.npmrc` — if it is
+   committed, your token is exposed. In CI, set the `NODE_AUTH_TOKEN`
+   environment variable and reference it with
+   `//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}` instead.
+
+3. Install:
+
+       $ npm install @mitchallen/maze-generator-square --save
+
+> Tip: with the GitHub CLI you can use
+> `npm config set //npm.pkg.github.com/:_authToken="$(gh auth token)" --location=user`
+> (after `gh auth refresh --scopes read:packages`).
 
 * * *
 
@@ -14,7 +63,7 @@ square maze generator
 ```js
     "use strict";
 
-    var mazeFactory = require("maze-generator-square");
+    var mazeFactory = require("@mitchallen/maze-generator-square");
 
     let xSize = 5;
     let ySize = 6;
@@ -22,14 +71,35 @@ square maze generator
     var maze = mazeFactory.create({ x: xSize, y: ySize });
 ```
     
-## Browser usage
+## Browser Usage:
 
-This package builds a browser IIFE bundle at `dist/maze-generator-square.js` exposing the
-`window.MitchAllen.MazeGeneratorSquare` global. Build it from the repo root with
-`make build`, then open [`examples/client-example/`](examples/client-example/)
-— a runnable example that loads the local build (serve the repo root). As a
-private workspace package it is not available on npm or a CDN.
+Example:
 
+```html
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Maze Generator Square Example</title>
+        <meta name="description" content="Maze Generator Square Example">
+        <script src="https://cdn.jsdelivr.net/gh/mitchallen/maze-generator-square@v0.1.27/dist/maze-generator-square.min.js"></script>
+        <script>
+          var factory = window.MitchAllen.MazeGeneratorSquare;
+          console.log(factory);
+          var xSize = 10, ySize = 5;
+          var sm = factory.create( { x: xSize, y: ySize } );
+          console.log(sm);
+          sm.generate();
+          sm.printBoard(); 
+        </script>
+      </head>
+      <body>
+        <h1>Maze Generator Square Example</h1>
+        <p>See JavaScript developer console for output.</p>
+      </body>
+    </html>
+```
+    
 * * *
 
 ## Documentation
@@ -49,7 +119,7 @@ To test, go to the root folder and type (sans __$__):
 ## Repo(s)
 
 * [bitbucket.org/mitchallen/maze-generator-square.git](https://bitbucket.org/mitchallen/maze-generator-square.git)
-* [github.com/mitchallen/maze-generator-square.git](https://github.com/mitchallen/maze-generator-square.git)
+* [github.com/mitchallen/maze-generator-square.git](https://github.com/mitchallen/maze-generator-v2/tree/main/packages/maze-generator-square)
 
 * * *
 
@@ -95,7 +165,7 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 #### Version 0.1.7
 
-* updated connection-grid-square to version 0.1.4
+* updated @mitchallen/connection-grid-square to version 0.1.4
 
 #### Version 0.1.6
 

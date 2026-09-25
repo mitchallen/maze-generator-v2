@@ -1,5 +1,5 @@
 /**
-    Module: grid/modules/circle.js
+    Module: @mitchallen/grid/modules/circle.js
     Author: Mitch Allen
 */
 
@@ -8,7 +8,7 @@
 
 "use strict";
 
-var coreGrid = require('grid-core');
+var coreGrid = require('@mitchallen/grid-core');
 
 module.exports = (spec = {}) => {
 

@@ -25,3 +25,5 @@ yarn-error.log*
 # Coverage
 coverage/
 
+lcov.info
+coverage

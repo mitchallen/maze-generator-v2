@@ -1,13 +1,40 @@
-grid
+@mitchallen/grid
 ===============================
 
 A 2D grid that uses zero-based indexing.
 ----------------------------------------------------
 
+[![CI](https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml)
+[![Coverage: 100%](https://img.shields.io/badge/coverage-100%25-brightgreen)](https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml?query=branch%3Amain)
+[![Version](https://img.shields.io/github/package-json/v/mitchallen/maze-generator-v2?filename=packages%2Fgrid%2Fpackage.json&label=version)](https://github.com/users/mitchallen/packages/npm/package/grid)
+[![License](https://img.shields.io/badge/license-ISC-green)](https://github.com/mitchallen/maze-generator-v2/blob/main/packages/grid/LICENSE)
+
 * * *
 ## Installation
 
-> **Note:** This is a private workspace package. It is not published to npm and is resolved automatically via npm workspaces.
+This package — and its `@mitchallen` dependencies — is published to the
+**GitHub Packages** registry, not npmjs. Installing requires authentication
+even though the packages are public, so you need a GitHub personal access
+token with the `read:packages` scope.
+
+Versions **0.1.25** and earlier remain on npmjs.org and are no longer updated there.
+
+Route the `@mitchallen` scope to GitHub Packages in your project `.npmrc`
+(no secret — safe to commit):
+
+    @mitchallen:registry=https://npm.pkg.github.com
+
+Then add your token to your **user** `~/.npmrc` so it never lands in the repo:
+
+    npm config set //npm.pkg.github.com/:_authToken=YOUR_TOKEN --location=user
+
+Do **not** put the `_authToken` line in the project `.npmrc` — if committed it
+exposes your token. (In CI, set `NODE_AUTH_TOKEN` and reference it with
+`//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}`.)
+
+Then install:
+
+    $ npm install @mitchallen/grid --save
 
 * * *
 
@@ -20,11 +47,16 @@ There are two forms of usage:
 
 ## Square Grid Usage
 
+Create a new folder and do the following at the command line:
+
+    $ npm init
+    $ npm install @mitchallen/grid --save
+
 In the same folder create a file called __index.js__ with the content below:
 
 ```js
     "use strict";
-    var gridFactory = require("grid");
+    var gridFactory = require("@mitchallen/grid");
     
     var xSize = 5;
     var ySize = 10;
@@ -65,6 +97,10 @@ An example similar to this exists on the __examples__ folder out on the repo.
     
 ## Square Methods
 
+### create( spec )
+
+The __create__ method is deprecated. Use __Square__ instead.
+
 ### Square( spec )
 
 Factory method that returns a square grid object.
@@ -77,7 +113,7 @@ The method will set xSize and ySize to 0 if no parameters are set
 
 You can call __Square__ multiple times to create multiple grids.
 
-    var gridFactory = require("grid");
+    var gridFactory = require("@mitchallen/grid");
     
     var grid1 = gridFactory.Square( { x: 5, y: 10 } );
     var grid2 = gridFactory.Square( { x: 7, y: 20 } );
@@ -198,10 +234,15 @@ Example output:
 
 ## Circle Grid Usage
 
+Create a new folder and do the following at the command line:
+
+    $ npm init
+    $ npm install @mitchallen/grid-circle --save
+
 In the same folder create a file called __index.js__ with the content below:
 
     "use strict";
-    var gridFactory = require("grid");
+    var gridFactory = require("@mitchallen/grid");
       
     var grid = gridFactory.Circle( { rings: 5 } );
     
@@ -242,7 +283,7 @@ The method will normalize __rings__ to 0 if for a missing or bad parameter.
 
 You can call __Circle__ multiple times to create multiple grids.
 
-    var gridFactory = require("grid");
+    var gridFactory = require("@mitchallen/grid");
     
     var grid1 = gridFactory.Circle( { rings: 6 } );
     var grid2 = gridFactory.Circle( { rings: 5 } );
@@ -360,47 +401,113 @@ Example output:
 
 You can find examples in the repos listed below in the __examples__ folder.
 
-### Browser usage
+### Browser Client Example
 
-This package builds a browser IIFE bundle at `dist/grid.js` exposing the
-`window.MitchAllen.Grid` global. Build it from the repo root with
-`make build`, then open [`examples/client-example/`](examples/client-example/)
-— a runnable example that loads the local build (serve the repo root). As a
-private workspace package it is not available on npm or a CDN.
+You can reference a minimized client version inside an HTML script tag using
+the jsDelivr CDN, which serves the file from GitHub by tag:
+
+* https://cdn.jsdelivr.net/gh/mitchallen/grid@v0.1.30/dist/grid.min.js
+
+Adjust the URL depending upon what version is available.
+
+The factory function can be retrieved from window.MitchAllen.Grid:
+
+    var factory = window.MitchAllen.Grid;
+    var xSize = 10, ySize = 5;
+    var sg = factory.Square( { x: xSize, y: ySize } );
+
+Example:
+
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Grid Example</title>
+        <meta name="description" content="Grid Example">
+        <script src="https://cdn.jsdelivr.net/gh/mitchallen/grid@v0.1.30/dist/grid.min.js"></script>
+        <script>
+          var factory = window.MitchAllen.Grid;
+          console.log(factory);
+          var xSize = 10, ySize = 5;
+          var sg = factory.Square( { x: xSize, y: ySize } );
+          sg.log(); 
+        </script>
+      </head>
+      <body>
+        <h1>Grid Example</h1>
+      </body>
+    </html>
 
 * * *
 
-## Testing
+## Development
+
+### Build
+
+Produces browser bundles in `dist/` using [esbuild](https://esbuild.github.io/):
+
+    $ npm run build
+
+Output files:
+
+* `dist/grid.js` — IIFE bundle (ES2017, unminified)
+* `dist/grid.min.js` — IIFE bundle (ES2017, minified, referenced by the `browser` field in `package.json`)
+
+### Watch mode
+
+Rebuilds `dist/grid.js` automatically when source files change:
+
+    $ npm run watch
+
+### Lint
+
+    $ npm run lint
+
+### Testing
 
 To test, go to the root folder and type (sans __$__):
 
     $ npm test
-   
+
+Tests use the Node.js built-in test runner (`node:test`) and `node:assert` — no external test framework required. Individual suites:
+
+    $ npm run test-square
+    $ npm run test-circle
+    $ npm run test-hexagon
+    $ npm run test-triangle
+    $ npm run test-create
+
 * * *
  
 ## Repo(s)
 
 * [bitbucket.org/mitchallen/grid.git](https://bitbucket.org/mitchallen/grid.git)
-* [github.com/mitchallen/grid.git](https://github.com/mitchallen/grid.git)
+* [github.com/mitchallen/grid.git](https://github.com/mitchallen/maze-generator-v2/tree/main/packages/grid)
 
 * * *
 
 ## Contributing
 
 In lieu of a formal style guide, take care to maintain the existing coding style.
-Add unit tests for any new or changed functionality. Lint and test your code.
+Add unit tests for any new or changed functionality. Lint (`npm run lint`) and test (`npm test`) your code before submitting.
 
 * * *
 
 ## Version History
 
+#### Version 0.1.25
+
+* Replaced grunt + browserify + babel + mocha toolchain with esbuild and Node.js built-in test runner
+* Eliminated all npm audit vulnerabilities (34 → 0)
+* `main` now points to `src/index.js`; `browser` field points to `dist/grid.min.js`
+
 #### Version 0.1.23
 
-* replaced internal square with __grid-square__
+* replaced internal square with __@mitchallen/grid-square__
 
 #### Version 0.1.22
 
-* square and cirlce modules now uses git-core
+* square and cirlce modules now uses @mitchallen/git-core
 * remove modules/base.js which is replaced by grid-core
 
 #### Version 0.1.21

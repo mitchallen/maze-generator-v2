@@ -4,6 +4,7 @@ on:
   push:
     tags:
       - 'v*'
+  workflow_dispatch:
 
 jobs:
   publish:
@@ -32,11 +33,14 @@ jobs:
       - name: Run npm audit
         run: npm audit --audit-level=high
 
-      - name: Build workspaces
-        run: make build
+      # Builds in dependency order, then runs every package's tests (workspaces
+      # and root); fails unless each one is at 100% coverage.
+      - name: Coverage gate
+        run: make coverage
 
-      - name: Run tests
-        run: npx mocha --recursive --timeout 20000 test/square test/hexagon test/triangle test/circle
+      # Root and per-package tarball checks.
+      - name: Pack check
+        run: make pack-check
 
       - name: Resolve package metadata
         id: pkg
@@ -45,6 +49,7 @@ jobs:
           echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
 
       - name: Validate tag matches package.json version
+        if: github.event_name == 'push'
         run: |
           TAG_VERSION="${GITHUB_REF_NAME#v}"
           if [ "$TAG_VERSION" != "${{ steps.pkg.outputs.version }}" ]; then
@@ -72,5 +77,31 @@ jobs:
       - name: Publish to GitHub Packages
         if: steps.exists.outputs.published != 'true'
         run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Workspace packages publish independently of the root: any public
+      # package whose package.json version isn't on GitHub Packages yet is
+      # published, dependencies first. Each package must grant this repository
+      # Write access under "Manage Actions access" in its package settings.
+      - name: Publish new workspace package versions
+        run: |
+          for p in shuffle grid-core maze-generator-core grid-square connection-grid-core \
+                   grid connection-grid-square connection-grid maze-generator-square \
+                   maze-generator-weave; do
+            dir="packages/$p"
+            name=$(node -p "require('./$dir/package.json').name")
+            version=$(node -p "require('./$dir/package.json').version")
+            if [ "$(node -p "!!require('./$dir/package.json').private")" = "true" ]; then
+              echo "$name is private; skipping."
+              continue
+            fi
+            if npm view "$name@$version" version --registry=https://npm.pkg.github.com/ >/dev/null 2>&1; then
+              echo "$name@$version already published; skipping."
+            else
+              echo "Publishing $name@$version"
+              npm publish --workspace="$dir"
+            fi
+          done
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

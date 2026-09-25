@@ -1,5 +1,5 @@
 /**
-    Module: maze-generator-square
+    Module: @mitchallen/maze-generator-square
       Test: square/smoke-test
     Author: Mitch Allen
 */
@@ -11,6 +11,7 @@
 
 var should = require('should'),
   modulePath = "../../src/index";
+  // modulePath = "../../dist/maze-generator-square";
 
 describe('module', function () {
 

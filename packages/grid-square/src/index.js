@@ -1,5 +1,5 @@
 /**
-    Module: grid-square/src/index.js
+    Module: @mitchallen/grid-square/src/index.js
     Author: Mitch Allen
 */
 
@@ -8,7 +8,7 @@
 
 "use strict";
 
-var coreGrid = require('grid-core');
+var coreGrid = require('@mitchallen/grid-core');
 
 module.exports.create = (spec = {}) => {
 
