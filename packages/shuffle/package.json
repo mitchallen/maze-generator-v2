@@ -1,6 +1,6 @@
 {
   "name": "@mitchallen/shuffle",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "Uses Fisher-Yates to shuffle an array",
   "main": "dist/shuffle.cjs.js",
   "files": [
