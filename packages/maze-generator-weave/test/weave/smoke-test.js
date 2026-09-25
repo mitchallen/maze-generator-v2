@@ -448,4 +448,19 @@ describe('module', function () {
     crossings.should.be.below(100);
     done();
   });
+  it('isUnder should return null for a cell outside the grid', function (done) {
+    var mazeGenerator = _module.create({ x: 5, y: 5 });
+    mazeGenerator.generate();
+    should.equal(mazeGenerator.isUnder(-1, 0), null);
+    should.equal(mazeGenerator.isUnder(0, 99), null);
+    done();
+  });
+
+  it('generate with a null spec should use the defaults', function (done) {
+    var mazeGenerator = _module.create({ x: 5, y: 5 });
+    mazeGenerator.generate(null);
+    mazeGenerator.isCell(0, 0).should.eql(true);
+    mazeGenerator.get(0, 0).should.be.above(0);
+    done();
+  });
 });

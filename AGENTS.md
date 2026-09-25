@@ -16,7 +16,7 @@ Use Node `>=20` and npm `>=10`.
 - `make clean`: remove all `node_modules` folders in the monorepo.
 
 ## Coding Style & Naming Conventions
-Code is CommonJS-first and uses JSHint/Grunt tooling.
+Code is CommonJS-first; packages build with esbuild (`build.js`) and test with Mocha. Legacy `/*jshint */` directives remain in some files but JSHint and Grunt are no longer used.
 - Indentation: 4 spaces; include semicolons.
 - Prefer `var` in legacy modules; use `let`/`const` only where already established.
 - File names are kebab-case or shape-oriented (for example `hexagon.js`, `smoke-test.js`).

@@ -1,6 +1,6 @@
 SHELL := /bin/sh
 
-.PHONY: help install bootstrap ci test test-all build build-layer1 build-layer2 build-layer3 build-layer4 clean prune list deps pack pack-check publish
+.PHONY: help install bootstrap ci test test-all coverage build build-layer1 build-layer2 build-layer3 build-layer4 clean prune list deps pack pack-check publish
 
 .DEFAULT_GOAL := help
 
@@ -11,6 +11,7 @@ help:
 	@echo "  ci         - install dependencies via npm ci"
 	@echo "  test       - run tests for all workspaces"
 	@echo "  test-all   - alias for test"
+	@echo "  coverage   - run every package's tests (workspaces + root); fails below 100% coverage"
 	@echo "  build      - build all workspaces"
 	@echo "  clean      - remove all node_modules directories"
 	@echo "  prune      - prune dependencies for all workspaces"
@@ -35,6 +36,12 @@ test: build
 	npm run test --workspaces --if-present
 
 test-all: test
+
+# Coverage is internal (no Codecov): every workspace package, including the
+# root (listed as a workspace), must stay at 100% statements/branches/
+# functions/lines, or this target fails.
+coverage: build
+	npm run coverage --workspaces --if-present
 
 # npm run build --workspaces builds in workspace-listing order, not
 # dependency order, so root and grid would build before the packages

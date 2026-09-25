@@ -1,7 +1,0 @@
-# Measure coverage on the root package's source only.
-ignore:
-  - "dist"
-  - "test"
-  - "examples"
-  - "build.js"
-  - "packages"
