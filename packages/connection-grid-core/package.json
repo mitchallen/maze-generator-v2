@@ -24,11 +24,11 @@
     "shuffle": "^0.1.10"
   },
   "devDependencies": {
-    "esbuild": "^0.25.12",
+    "esbuild": "^0.28.2",
     "grid-core": "^0.1.10",
     "grid-square": "^0.1.9",
-    "mocha": "^11.7.6",
-    "should": "^10.0.0"
+    "mocha": "^12.0.2",
+    "should": "^13.2.3"
   },
   "engines": {
     "node": ">=20",
