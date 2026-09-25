@@ -1,37 +1,33 @@
 {
-  "name": "grid-core",
-  "version": "0.1.10",
+  "name": "@mitchallen/grid-core",
+  "version": "0.1.17",
   "description": "Core grid module",
   "main": "dist/grid-core.cjs.js",
   "files": [
     "dist"
   ],
   "scripts": {
-    "start": "node dist/grid-core.cjs.js",
+    "start": "node dist/grid-core.js",
     "build": "node build.js",
-    "test": "npm run build && mocha --recursive --timeout 20000",
-    "coverage": "npm run build && c8 --check-coverage --100 --include='src/**' --reporter=text mocha --recursive --timeout 20000",
-    "test-debug": "npm run build && mocha -g '@DEBUG' --recursive --timeout 20000",
+    "test": "npm run build && node --test 'test/**/*.js'",
+    "coverage": "npm run build && node --test --experimental-test-coverage --test-coverage-include='src/**' --test-coverage-lines=100 --test-coverage-branches=100 --test-coverage-functions=100 --test-coverage-exclude='test/**' 'test/**/*.js'",
     "//": "Usage:> [PORT=8002] npm run web-server",
-    "web-server": "python -m SimpleHTTPServer $PORT || 8000"
+    "web-server": "python3 -m http.server ${PORT:-8000}"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mitchallen/grid-core.git"
+    "url": "https://github.com/mitchallen/maze-generator-v2.git",
+    "directory": "packages/grid-core"
   },
   "author": "Mitch Allen <npm@mitchallen.com> (http://mitchallen.com)",
   "license": "MIT",
-  "private": true,
   "devDependencies": {
-    "esbuild": "^0.28.2",
-    "mocha": "^12.0.2",
-    "should": "^13.2.3"
-  },
-  "engines": {
-    "node": ">=20",
-    "npm": ">=10"
+    "esbuild": "^0.28.1"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true
   }
 }

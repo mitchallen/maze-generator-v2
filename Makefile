@@ -49,19 +49,19 @@ coverage: build
 
 # Layer 1: packages with no internal workspace dependencies
 build-layer1:
-	npm run build --workspace=shuffle --workspace=grid-core --workspace=maze-generator-core
+	npm run build --workspace=packages/shuffle --workspace=packages/grid-core --workspace=packages/maze-generator-core
 
 # Layer 2: depends only on layer 1
 build-layer2: build-layer1
-	npm run build --workspace=grid-square --workspace=connection-grid-core
+	npm run build --workspace=packages/grid-square --workspace=packages/connection-grid-core
 
 # Layer 3: depends on layers 1-2
 build-layer3: build-layer2
-	npm run build --workspace=grid --workspace=connection-grid-square
+	npm run build --workspace=packages/grid --workspace=packages/connection-grid-square
 
 # Layer 4: depends on layers 1-3
 build-layer4: build-layer3
-	npm run build --workspace=connection-grid --workspace=maze-generator-square --workspace=maze-generator-weave
+	npm run build --workspace=packages/connection-grid --workspace=packages/maze-generator-square --workspace=packages/maze-generator-weave
 
 # Root depends on layers 1-4
 build: build-layer4
@@ -88,8 +88,10 @@ pack: build
 
 # Same as `pack`, but asserts the file list is correct and exits non-zero
 # otherwise — suitable for CI. See scripts/check-pack.js.
+# Checks the root tarball, then each published workspace package's tarball.
 pack-check: build
 	node scripts/check-pack.js
+	@for p in packages/*/scripts/check-pack.js; do echo "$$p"; node "$$p" || exit 1; done
 
 publish:
 	@echo "Switching to main branch..."

@@ -1,6 +1,6 @@
 {
-  "name": "shuffle",
-  "version": "0.1.10",
+  "name": "@mitchallen/shuffle",
+  "version": "0.1.16",
   "description": "Uses Fisher-Yates to shuffle an array",
   "main": "dist/shuffle.cjs.js",
   "files": [
@@ -9,27 +9,23 @@
   "scripts": {
     "start": "node dist/shuffle.cjs.js",
     "build": "node build.js",
-    "test": "npm run build && mocha --recursive --timeout 20000",
-    "coverage": "npm run build && c8 --check-coverage --100 --include='src/**' --reporter=text mocha --recursive --timeout 20000",
-    "test-debug": "npm run build && mocha -g '@DEBUG' --recursive --timeout 20000"
+    "test": "npm run build && node --test 'test/**/*.js'",
+    "coverage": "npm run build && node --test --experimental-test-coverage --test-coverage-include='modules/**' --test-coverage-lines=100 --test-coverage-branches=100 --test-coverage-functions=100 --test-coverage-exclude='test/**' 'test/**/*.js'"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mitchallen/shuffle.git"
+    "url": "https://github.com/mitchallen/maze-generator-v2.git",
+    "directory": "packages/shuffle"
   },
   "author": "Mitch Allen <npm@mitchallen.com> (http://mitchallen.com)",
   "license": "MIT",
-  "private": true,
-  "devDependencies": {
-    "esbuild": "^0.28.2",
-    "mocha": "^12.0.2",
-    "should": "^13.2.3"
-  },
-  "engines": {
-    "node": ">=20",
-    "npm": ">=10"
-  },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.1"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true
   }
 }

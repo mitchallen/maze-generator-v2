@@ -8,7 +8,7 @@
 
 "use strict";
 
-var gridFactory = require("grid");
+var gridFactory = require("@mitchallen/grid");
 
 module.exports.Canvas = (spec) => {
 

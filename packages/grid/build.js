@@ -1,30 +1,33 @@
+"use strict";
+
 const esbuild = require('esbuild');
+const watching = process.argv.includes('--watch');
 
-// IIFE build for browser usage
-esbuild.build({
+const base = {
   entryPoints: ['./src/index.js'],
   bundle: true,
-  outfile: './dist/grid.js',
-  format: 'iife',
+  platform: 'browser',
+  // Resolve deps via "main", not "browser". Sibling @mitchallen packages point
+  // their "browser" field at a global-assigning IIFE that exports nothing, so
+  // bundling it yields an empty object and .create() is undefined at runtime.
+  mainFields: ['main'],
   globalName: 'MitchAllen.Grid',
-  minify: true,
-  sourcemap: true,
-  target: ['es2015'],
-}).catch((err) => {
-  console.error('IIFE build failed:', err);
-  process.exit(1);
-});
+  format: 'iife',
+  target: ['es2017'],
+};
 
-// CJS build for Node.js/tests
-esbuild.build({
-  entryPoints: ['./src/index.js'],
-  bundle: true,
-  outfile: './dist/grid.cjs.js',
-  format: 'cjs',
-  minify: true,
-  sourcemap: true,
-  target: ['es2015'],
-}).catch((err) => {
-  console.error('CJS build failed:', err);
-  process.exit(1);
-});
+async function main() {
+  if (watching) {
+    const ctx = await esbuild.context({ ...base, outfile: './dist/grid.js' });
+    await ctx.watch();
+    console.log('Watching for changes...');
+  } else {
+    await Promise.all([
+      esbuild.build({ ...base, outfile: './dist/grid.js' }),
+      esbuild.build({ ...base, minify: true, outfile: './dist/grid.min.js' }),
+    ]);
+    console.log('Build complete.');
+  }
+}
+
+main().catch(e => { console.error(e); process.exit(1); });

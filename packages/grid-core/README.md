@@ -1,24 +1,74 @@
 
-grid-core
+@mitchallen/grid-core
 ==
 Grid core
 --
 
+<p align="left">
+
+  <a href="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml">
+    <img src="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml/badge.svg?branch=main" alt="Build Status">
+  </a>
+  
+  <a href="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml?query=branch%3Amain">
+    <img src="https://img.shields.io/badge/coverage-100%25-brightgreen" alt="Coverage: 100%">
+  </a>
+  
+  <a href="https://github.com/users/mitchallen/packages/npm/package/grid-core">
+    <img src="https://img.shields.io/github/package-json/v/mitchallen/maze-generator-v2?filename=packages%2Fgrid-core%2Fpackage.json&label=version" alt="Version">
+  </a>
+  
+  <a href="https://github.com/mitchallen/maze-generator-v2/blob/main/packages/grid-core/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-green">
+  </a>
+</p> 
+
 * * *
 ## Installation
 
-> **Note:** This is a private workspace package. It is not published to npm and is resolved automatically via npm workspaces.
+This package is published to the **GitHub Packages** registry, not npmjs.
+Versions **0.1.10** and earlier remain on npmjs.org and are no longer updated there.
+GitHub Packages requires authentication for every install, even though the
+package is public, so you need a GitHub personal access token with the
+`read:packages` scope.
 
+1. Route the `@mitchallen` scope to GitHub Packages in your project `.npmrc`.
+   This line has no secret and is safe to commit:
+
+       @mitchallen:registry=https://npm.pkg.github.com
+
+2. Add your token to your **user** `~/.npmrc` so it never lands in the repo:
+
+       npm config set //npm.pkg.github.com/:_authToken=YOUR_TOKEN --location=user
+
+   Do **not** put the `_authToken` line in the project `.npmrc` — if it is
+   committed, your token is exposed. In CI, set the `NODE_AUTH_TOKEN`
+   environment variable and reference it with
+   `//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}` instead.
+
+3. Install:
+
+       $ npm install @mitchallen/grid-core --save
+
+> Tip: with the GitHub CLI you can use
+> `npm config set //npm.pkg.github.com/:_authToken="$(gh auth token)" --location=user`
+> (after `gh auth refresh --scopes read:packages`).
+  
 * * *
 
 ## Usage
+
+Create a new folder and do the following at the command line:
+
+    $ npm init
+    $ npm install @mitchallen/grid-core --save
 
 In the same folder create a file called __index.js__ with the content below:
 
 ```js
     "use strict";
 
-    var gridFactory = require("grid-core");
+    var gridFactory = require("@mitchallen/grid-core");
 
     var rows = 5;
 
@@ -64,14 +114,33 @@ Output:
 An example similar to this exists on the __examples__ folder out on the repo.
 
 
-## Browser usage
+## Browser Usage
 
-This package builds a browser IIFE bundle at `dist/grid-core.js` exposing the
-`window.MitchAllen.GridCore` global. Build it from the repo root with
-`make build`, then open [`examples/client-example/`](examples/client-example/)
-— a runnable example that loads the local build (serve the repo root). As a
-private workspace package it is not available on npm or a CDN.
-
+```html
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Grid Core Example</title>
+        <meta name="description" content="Grid Core Example">
+        <script src="https://cdn.jsdelivr.net/gh/mitchallen/grid-core@v0.1.16/dist/grid-core.min.js"></script>
+        <script>
+          var factory = window.MitchAllen.GridCore;
+          console.log(factory);
+          var rows = 5;
+          var gc = factory.create( { rows: rows } );
+          gc.set(rows-1,6,"alpha");
+          console.log(gc);
+          gc.log(); 
+        </script>
+      </head>
+      <body>
+        <h1>Grid Core Example</h1>
+        <p>See JavaScript developer console for output.</p>
+      </body>
+    </html>
+```
+    
 * * *
 
 ## Methods
@@ -85,7 +154,7 @@ It takes one spec parameter that must be an object with a __rows__ value specify
 
 You can call __create__ multiple times to create multiple grids.
 
-    var gridFactory = require("grid-core");
+    var gridFactory = require("@mitchallen/grid-core");
     
     var grid1 = gridFactory.create( { rows: 5 } );
     var grid2 = gridFactory.create( { rows: 10 } );
@@ -96,13 +165,13 @@ You can call __create__ multiple times to create multiple grids.
 
 Returns the number for rows in the grid.
 
-	grid.rows.should.eql(5);
+	assert.deepStrictEqual(grid.rows, 5);
 	
 ### rowsSize(rowId)
 
 Returns the number of items in the array in row __rowId__.
 
-	grid.rowSize(3).should.eql(10);
+	assert.deepStrictEqual(grid.rowSize(3), 10);
 	
 A row size is determined by the highest zero-based position inserted into that row.
 
@@ -168,16 +237,16 @@ Returns a clone of the internal array. This is not a reference. So changes to th
 	let arr = grid.cloneArray();
 	
 	// Verify value exists in clone
-	arr[tX][tY].should.eql(gridValue);
+	assert.deepStrictEqual(arr[tX][tY], gridValue);
 	
 	// Change value in clone
 	arr[tX][tY] = cloneValue;
 	
 	// Verify new value is set in clone
-	arr[tX][tY].should.eql(cloneValue);
+	assert.deepStrictEqual(arr[tX][tY], cloneValue);
 	
 	// Ensure that value does not alter original grid
-	grid.get(tX,tY).should.eql(gridValue);
+	assert.deepStrictEqual(grid.get(tX,tY), gridValue);
 	
 
 ### grid.log()
@@ -200,7 +269,8 @@ Example output:
 
 ## Testing
 
-To test, go to the root folder and type (sans __$__):
+Tests run on Node's built-in test runner (`node --test`) — no third-party
+test framework is required. To test, go to the root folder and type (sans __$__):
 
     $ npm test
    
@@ -209,7 +279,7 @@ To test, go to the root folder and type (sans __$__):
 ## Repo(s)
 
 * [bitbucket.org/mitchallen/grid-core.git](https://bitbucket.org/mitchallen/grid-core.git)
-* [github.com/mitchallen/grid-core.git](https://github.com/mitchallen/grid-core.git)
+* [github.com/mitchallen/grid-core.git](https://github.com/mitchallen/maze-generator-v2/tree/main/packages/grid-core)
 
 * * *
 
@@ -221,6 +291,12 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.1.11
+
+* removed unused dev dependencies (mocha, should, supertest) and their overrides
+* switched tests to Node's built-in test runner (`node --test`)
+* resolves Dependabot alerts for form-data and js-yaml (npm audit: 0 vulnerabilities)
 
 #### Version 0.1.9
 

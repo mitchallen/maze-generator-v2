@@ -1,21 +1,68 @@
 
-grid-square
+@mitchallen/grid-square
 ==
 2D square grid
 --
 
+<p align="left">
+
+  <a href="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml">
+    <img src="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml/badge.svg?branch=main" alt="Build Status">
+  </a>
+  
+  <a href="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml?query=branch%3Amain">
+    <img src="https://img.shields.io/badge/coverage-100%25-brightgreen" alt="Coverage: 100%">
+  </a>
+  
+  <a href="https://github.com/users/mitchallen/packages/npm/package/grid-square">
+    <img src="https://img.shields.io/github/package-json/v/mitchallen/maze-generator-v2?filename=packages%2Fgrid-square%2Fpackage.json&label=version" alt="Version">
+  </a>
+  
+  <a href="https://github.com/mitchallen/maze-generator-v2/blob/main/packages/grid-square/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-green">
+  </a>
+  
+</p> 
+
 * * *
 ## Installation
 
-> **Note:** This is a private workspace package. It is not published to npm and is resolved automatically via npm workspaces.
+This package — and its `@mitchallen` dependencies — is published to the
+**GitHub Packages** registry, not npmjs. GitHub Packages requires
+authentication for every install, even though the packages are public, so you
+need a GitHub personal access token with the `read:packages` scope.
 
+Versions **0.1.9** and earlier remain on npmjs.org and are no longer updated there.
+
+1. Route the `@mitchallen` scope to GitHub Packages in your project `.npmrc`.
+   This line has no secret and is safe to commit:
+
+       @mitchallen:registry=https://npm.pkg.github.com
+
+2. Add your token to your **user** `~/.npmrc` so it never lands in the repo:
+
+       npm config set //npm.pkg.github.com/:_authToken=YOUR_TOKEN --location=user
+
+   Do **not** put the `_authToken` line in the project `.npmrc` — if it is
+   committed, your token is exposed. In CI, set the `NODE_AUTH_TOKEN`
+   environment variable and reference it with
+   `//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}` instead.
+
+3. Install:
+
+       $ npm install @mitchallen/grid-square --save
+
+> Tip: with the GitHub CLI you can use
+> `npm config set //npm.pkg.github.com/:_authToken="$(gh auth token)" --location=user`
+> (after `gh auth refresh --scopes read:packages`).
+  
 * * *
 
 ## Usage
 
 ```js
     "use strict";
-    var gridFactory = require("grid-square");
+    var gridFactory = require("@mitchallen/grid-square");
     
     var xSize = 5;
     var ySize = 10;
@@ -61,7 +108,7 @@ The method will set xSize and ySize to 0 if no parameters are set
 You can call __create__ multiple times to create multiple grids.
 
 ```js
-    var gridFactory = require("grid-square");
+    var gridFactory = require("@mitchallen/grid-square");
     
     var grid1 = gridFactory.create( { x: 5, y: 10 } );
     var grid2 = gridFactory.create( { x: 7, y: 20 } );
@@ -200,19 +247,40 @@ Example output:
       
 * * *
 
-### Browser usage
+### Browser Client Example
 
-This package builds a browser IIFE bundle at `dist/grid-square.js` exposing the
-`window.MitchAllen.GridSquare` global. Build it from the repo root with
-`make build`, then open [`examples/client-example/`](examples/client-example/)
-— a runnable example that loads the local build (serve the repo root). As a
-private workspace package it is not available on npm or a CDN.
+```html
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Grid Square Example</title>
+        <meta name="description" content="Grid Square Example">
+        <script src="https://cdn.jsdelivr.net/gh/mitchallen/grid-square@v0.1.14/dist/grid-square.min.js"></script>
+        <script>
+          var factory = window.MitchAllen.GridSquare;
+          console.log(factory);
+          var xSize = 5,
+              ySize = 6;
+          var gs = factory.create( { x: xSize, y: ySize } );
+          gs.set( xSize-1, ySize-1, "alpha" );
+          console.log(gs);
+          gs.log(); 
+        </script>
+      </head>
+      <body>
+        <h1>Grid Square Example</h1>
+        <p>See JavaScript developer console for output.</p>
+      </body>
+    </html>
+```
 
 * * *
 
 ## Testing
 
-To test, go to the root folder and type (sans __$__):
+Tests run on Node.js's built-in test runner (`node --test`) — no external test
+framework is required. To test, go to the root folder and type (sans __$__):
 
     $ npm test
    
@@ -221,7 +289,7 @@ To test, go to the root folder and type (sans __$__):
 ## Repo(s)
 
 * [bitbucket.org/mitchallen/grid-square.git](https://bitbucket.org/mitchallen/grid-square.git)
-* [github.com/mitchallen/grid-square.git](https://github.com/mitchallen/grid-square.git)
+* [github.com/mitchallen/grid-square.git](https://github.com/mitchallen/maze-generator-v2/tree/main/packages/grid-square)
 
 * * *
 
@@ -238,6 +306,9 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 * refactored
 * updated dependency
+* dependency cleanup: removed unused devDependencies (`should`, `supertest`) and the `overrides` block
+* switched test runner from mocha to Node's built-in `node --test`
+* removed stale coverage badge and dead npm scripts
 
 #### Version 0.1.8
 

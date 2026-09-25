@@ -30,9 +30,6 @@ jspm_packages/
 # Coverage directory
 coverage/
 
-# Grunt intermediate files
-.grunt/
-
 # IDEs and editors
 .idea/
 .vscode/
@@ -43,3 +40,6 @@ coverage/
 *.tgz
 .env
 .env.*
+
+# Coverage report
+lcov.info
