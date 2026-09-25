@@ -1,67 +1,19 @@
 
-@mitchallen/maze-generator-core
+@mitchallen/maze-generator-core-v2
 ==
 maze generator core
 --
 
-<p align="left">
+> Internal package of [maze-generator-v2](https://github.com/mitchallen/maze-generator-v2). It is not published; it is bundled into `@mitchallen/maze-generator-v2`.
+> It continues the code of `@mitchallen/maze-generator-core`, which stays on GitHub Packages frozen at 0.1.19 for existing users.
 
-  <a href="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml">
-    <img src="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml/badge.svg?branch=main" alt="Build Status">
-  </a>
-  
-  <a href="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml?query=branch%3Amain">
-    <img src="https://img.shields.io/badge/coverage-100%25-brightgreen" alt="Coverage: 100%">
-  </a>
-  
-  <a href="https://github.com/users/mitchallen/packages/npm/package/maze-generator-core">
-    <img src="https://img.shields.io/github/package-json/v/mitchallen/maze-generator-v2?filename=packages%2Fmaze-generator-core%2Fpackage.json&label=version" alt="Version">
-  </a>
-  
-  <a href="https://github.com/mitchallen/maze-generator-v2/blob/main/packages/maze-generator-core/LICENSE">
-    <img src="https://img.shields.io/badge/license-ISC-green">
-  </a>
-  
-</p>
-
-* * *
-## Installation
-
-This package is published to the **GitHub Packages** registry, not npmjs.
-Versions **0.1.13** and earlier remain on npmjs.org and are no longer updated there.
-GitHub Packages requires authentication for every install, even though the
-package is public, so you need a GitHub personal access token with the
-`read:packages` scope.
-
-1. Route the `@mitchallen` scope to GitHub Packages in your project `.npmrc`.
-   This line has no secret and is safe to commit:
-
-       @mitchallen:registry=https://npm.pkg.github.com
-
-2. Add your token to your **user** `~/.npmrc` so it never lands in the repo:
-
-       npm config set //npm.pkg.github.com/:_authToken=YOUR_TOKEN --location=user
-
-   Do **not** put the `_authToken` line in the project `.npmrc` — if it is
-   committed, your token is exposed. In CI, set the `NODE_AUTH_TOKEN`
-   environment variable and reference it with
-   `//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}` instead.
-
-3. Install:
-
-       $ npm install @mitchallen/maze-generator-core --save
-
-> Tip: with the GitHub CLI you can use
-> `npm config set //npm.pkg.github.com/:_authToken="$(gh auth token)" --location=user`
-> (after `gh auth refresh --scopes read:packages`).
-  
 * * *
 
 ## Usage
 
 ```js
-let cgFactory = require("@mitchallen/connection-grid-square"),
-    mazeCore = require("@mitchallen/maze-generator-core");
+let cgFactory = require("@mitchallen/connection-grid-square-v2"),
+    mazeCore = require("@mitchallen/maze-generator-core-v2");
     
 spec = spec || {};
 
@@ -86,40 +38,6 @@ let maze = mazeCore.create( {
 maze.generate();
 ```
 
-* * *
-
-## Browser Usage
-
-```html
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="utf-8">
-        <title>Maze Generator Core Example</title>
-        <meta name="description" content="Maze Generator Core Example">
-        <script src="https://cdn.jsdelivr.net/gh/mitchallen/maze-generator-core@v0.1.17/dist/maze-generator-core.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/mitchallen/connection-grid-square@v0.1.21/dist/connection-grid-square.min.js"></script>
-        <script>
-          var cgFactory = window.MitchAllen.ConnectionGridSquare;
-          console.log(cgFactory);
-          var xSize = 10, ySize = 5;
-          var cGrid = cgFactory.create( { x: xSize, y: ySize } );
-          var factory = window.MitchAllen.MazeGeneratorCore;
-          var sm = factory.create({
-            grid: cGrid,
-          });
-          console.log(sm);
-          sm.generate();
-          sm.log();  
-        </script>
-      </head>
-      <body>
-        <h1>Maze Generator Core Example</h1>
-        <p>See JavaScript developer console for output.</p>
-      </body>
-    </html>
-```
-	
 * * *
 
 ## Documentation

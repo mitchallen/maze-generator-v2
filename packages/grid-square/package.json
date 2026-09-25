@@ -1,7 +1,7 @@
 {
-  "name": "@mitchallen/grid-square",
+  "name": "@mitchallen/grid-square-v2",
   "version": "0.1.16",
-  "description": "2D square grid",
+  "description": "2D square grid (internal package of maze-generator-v2; not published)",
   "main": "dist/grid-square.js",
   "files": [
     "dist"
@@ -21,15 +21,13 @@
   "author": "Mitch Allen <npm@mitchallen.com> (http://mitchallen.com)",
   "license": "MIT",
   "dependencies": {
-    "@mitchallen/grid-core": "^0.1.10"
+    "@mitchallen/grid-core-v2": "^0.1.10"
   },
   "devDependencies": {
     "esbuild": "^0.28.1"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "allowScripts": {
     "esbuild@0.28.1": true
-  }
+  },
+  "private": true
 }

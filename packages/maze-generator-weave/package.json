@@ -1,7 +1,7 @@
 {
-  "name": "@mitchallen/maze-generator-weave",
+  "name": "@mitchallen/maze-generator-weave-v2",
   "version": "0.1.0",
-  "description": "weave maze generator",
+  "description": "weave maze generator (internal package of maze-generator-v2; not published)",
   "main": "dist/maze-generator-weave.cjs.js",
   "files": [
     "dist"
@@ -25,8 +25,8 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@mitchallen/connection-grid-square": "^0.1.17",
-    "@mitchallen/maze-generator-core": "^0.1.13"
+    "@mitchallen/connection-grid-square-v2": "^0.1.17",
+    "@mitchallen/maze-generator-core-v2": "^0.1.13"
   },
   "devDependencies": {
     "esbuild": "^0.28.2",
@@ -36,8 +36,5 @@
   "engines": {
     "node": ">=20",
     "npm": ">=10"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
   }
 }

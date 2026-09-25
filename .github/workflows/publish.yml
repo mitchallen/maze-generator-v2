@@ -38,7 +38,6 @@ jobs:
       - name: Coverage gate
         run: make coverage
 
-      # Root and per-package tarball checks.
       - name: Pack check
         run: make pack-check
 
@@ -77,31 +76,5 @@ jobs:
       - name: Publish to GitHub Packages
         if: steps.exists.outputs.published != 'true'
         run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # Workspace packages publish independently of the root: any public
-      # package whose package.json version isn't on GitHub Packages yet is
-      # published, dependencies first. Each package must grant this repository
-      # Write access under "Manage Actions access" in its package settings.
-      - name: Publish new workspace package versions
-        run: |
-          for p in shuffle grid-core maze-generator-core grid-square connection-grid-core \
-                   grid connection-grid-square connection-grid maze-generator-square \
-                   maze-generator-weave; do
-            dir="packages/$p"
-            name=$(node -p "require('./$dir/package.json').name")
-            version=$(node -p "require('./$dir/package.json').version")
-            if [ "$(node -p "!!require('./$dir/package.json').private")" = "true" ]; then
-              echo "$name is private; skipping."
-              continue
-            fi
-            if npm view "$name@$version" version --registry=https://npm.pkg.github.com/ >/dev/null 2>&1; then
-              echo "$name@$version already published; skipping."
-            else
-              echo "Publishing $name@$version"
-              npm publish --workspace="$dir"
-            fi
-          done
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

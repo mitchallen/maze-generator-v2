@@ -1,40 +1,11 @@
-@mitchallen/grid
+@mitchallen/grid-v2
 ===============================
 
 A 2D grid that uses zero-based indexing.
 ----------------------------------------------------
 
-[![CI](https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml)
-[![Coverage: 100%](https://img.shields.io/badge/coverage-100%25-brightgreen)](https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml?query=branch%3Amain)
-[![Version](https://img.shields.io/github/package-json/v/mitchallen/maze-generator-v2?filename=packages%2Fgrid%2Fpackage.json&label=version)](https://github.com/users/mitchallen/packages/npm/package/grid)
-[![License](https://img.shields.io/badge/license-ISC-green)](https://github.com/mitchallen/maze-generator-v2/blob/main/packages/grid/LICENSE)
-
-* * *
-## Installation
-
-This package — and its `@mitchallen` dependencies — is published to the
-**GitHub Packages** registry, not npmjs. Installing requires authentication
-even though the packages are public, so you need a GitHub personal access
-token with the `read:packages` scope.
-
-Versions **0.1.25** and earlier remain on npmjs.org and are no longer updated there.
-
-Route the `@mitchallen` scope to GitHub Packages in your project `.npmrc`
-(no secret — safe to commit):
-
-    @mitchallen:registry=https://npm.pkg.github.com
-
-Then add your token to your **user** `~/.npmrc` so it never lands in the repo:
-
-    npm config set //npm.pkg.github.com/:_authToken=YOUR_TOKEN --location=user
-
-Do **not** put the `_authToken` line in the project `.npmrc` — if committed it
-exposes your token. (In CI, set `NODE_AUTH_TOKEN` and reference it with
-`//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}`.)
-
-Then install:
-
-    $ npm install @mitchallen/grid --save
+> Internal package of [maze-generator-v2](https://github.com/mitchallen/maze-generator-v2). It is not published; it is bundled into `@mitchallen/maze-generator-v2`.
+> It continues the code of `@mitchallen/grid`, which stays on GitHub Packages frozen at 0.1.32 for existing users.
 
 * * *
 
@@ -47,16 +18,11 @@ There are two forms of usage:
 
 ## Square Grid Usage
 
-Create a new folder and do the following at the command line:
-
-    $ npm init
-    $ npm install @mitchallen/grid --save
-
-In the same folder create a file called __index.js__ with the content below:
+Inside this monorepo, a package that depends on it (or the root) uses it like this:
 
 ```js
     "use strict";
-    var gridFactory = require("@mitchallen/grid");
+    var gridFactory = require("@mitchallen/grid-v2");
     
     var xSize = 5;
     var ySize = 10;
@@ -113,7 +79,7 @@ The method will set xSize and ySize to 0 if no parameters are set
 
 You can call __Square__ multiple times to create multiple grids.
 
-    var gridFactory = require("@mitchallen/grid");
+    var gridFactory = require("@mitchallen/grid-v2");
     
     var grid1 = gridFactory.Square( { x: 5, y: 10 } );
     var grid2 = gridFactory.Square( { x: 7, y: 20 } );
@@ -131,7 +97,6 @@ Returns the size of the x dimension.
 Returns the size of the y dimension.
 
 	grid.ySize.should.eql(10);
-
 
 ### Square grid.isCell( x, y )
 
@@ -234,15 +199,10 @@ Example output:
 
 ## Circle Grid Usage
 
-Create a new folder and do the following at the command line:
-
-    $ npm init
-    $ npm install @mitchallen/grid-circle --save
-
-In the same folder create a file called __index.js__ with the content below:
+Inside this monorepo, a package that depends on it (or the root) uses it like this:
 
     "use strict";
-    var gridFactory = require("@mitchallen/grid");
+    var gridFactory = require("@mitchallen/grid-v2");
       
     var grid = gridFactory.Circle( { rings: 5 } );
     
@@ -283,7 +243,7 @@ The method will normalize __rings__ to 0 if for a missing or bad parameter.
 
 You can call __Circle__ multiple times to create multiple grids.
 
-    var gridFactory = require("@mitchallen/grid");
+    var gridFactory = require("@mitchallen/grid-v2");
     
     var grid1 = gridFactory.Circle( { rings: 6 } );
     var grid2 = gridFactory.Circle( { rings: 5 } );
@@ -400,43 +360,6 @@ Example output:
 ## Examples
 
 You can find examples in the repos listed below in the __examples__ folder.
-
-### Browser Client Example
-
-You can reference a minimized client version inside an HTML script tag using
-the jsDelivr CDN, which serves the file from GitHub by tag:
-
-* https://cdn.jsdelivr.net/gh/mitchallen/grid@v0.1.30/dist/grid.min.js
-
-Adjust the URL depending upon what version is available.
-
-The factory function can be retrieved from window.MitchAllen.Grid:
-
-    var factory = window.MitchAllen.Grid;
-    var xSize = 10, ySize = 5;
-    var sg = factory.Square( { x: xSize, y: ySize } );
-
-Example:
-
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="utf-8">
-        <title>Grid Example</title>
-        <meta name="description" content="Grid Example">
-        <script src="https://cdn.jsdelivr.net/gh/mitchallen/grid@v0.1.30/dist/grid.min.js"></script>
-        <script>
-          var factory = window.MitchAllen.Grid;
-          console.log(factory);
-          var xSize = 10, ySize = 5;
-          var sg = factory.Square( { x: xSize, y: ySize } );
-          sg.log(); 
-        </script>
-      </head>
-      <body>
-        <h1>Grid Example</h1>
-      </body>
-    </html>
 
 * * *
 

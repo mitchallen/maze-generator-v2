@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/connection-grid-core
+    Module: @mitchallen/connection-grid-core-v2
       Test: smoke-test
     Author: Mitch Allen
 */
@@ -8,8 +8,8 @@
 
 const { describe, it, before, after, beforeEach, afterEach } = require('node:test');
 const assert = require('node:assert');
-const gridCore = require('@mitchallen/grid-core');
-const gridSquare = require('@mitchallen/grid-square');
+const gridCore = require('@mitchallen/grid-core-v2');
+const gridSquare = require('@mitchallen/grid-square-v2');
 const modulePath = "../src/index";
 
 describe('module smoke test', function () {

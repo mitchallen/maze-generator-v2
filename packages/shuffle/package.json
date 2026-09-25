@@ -1,7 +1,7 @@
 {
-  "name": "@mitchallen/shuffle",
+  "name": "@mitchallen/shuffle-v2",
   "version": "0.1.17",
-  "description": "Uses Fisher-Yates to shuffle an array",
+  "description": "Uses Fisher-Yates to shuffle an array (internal package of maze-generator-v2; not published)",
   "main": "dist/shuffle.cjs.js",
   "files": [
     "dist"
@@ -19,13 +19,11 @@
   },
   "author": "Mitch Allen <npm@mitchallen.com> (http://mitchallen.com)",
   "license": "MIT",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "devDependencies": {
     "esbuild": "^0.28.1"
   },
   "allowScripts": {
     "esbuild@0.28.1": true
-  }
+  },
+  "private": true
 }

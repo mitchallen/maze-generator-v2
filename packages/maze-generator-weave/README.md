@@ -3,9 +3,7 @@ maze-generator-weave
 weave maze generator
 --
 
-## Installation
-
-> **Note:** This is a private workspace package. It is not published to npm and is resolved automatically via npm workspaces.
+> Internal package of [maze-generator-v2](https://github.com/mitchallen/maze-generator-v2). It is not published; it is bundled into `@mitchallen/maze-generator-v2`.
 
 * * *
 
@@ -14,7 +12,7 @@ weave maze generator
 ```js
     "use strict";
 
-    var mazeFactory = require("@mitchallen/maze-generator-weave");
+    var mazeFactory = require("@mitchallen/maze-generator-weave-v2");
 
     let xSize = 5;
     let ySize = 6;

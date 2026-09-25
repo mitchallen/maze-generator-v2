@@ -153,14 +153,14 @@ You can call create multiple times to create multiple mazes.
 
 **Example** *(Creating a maze-generator-square)*  
 ```js
-var mazeFactory = require("@mitchallen/maze-generator-square");
+var mazeFactory = require("@mitchallen/maze-generator-square-v2");
 let xSize = 5;
 let ySize = 6;
 var maze = mazeFactory.create({ x: xSize, y: ySize });
 ```
 **Example** *(Calling create mulitple times)*  
 ```js
-var mazeFactory = require("@mitchallen/maze-generator-square");
+var mazeFactory = require("@mitchallen/maze-generator-square-v2");
 var maze1 = mazeFactory.create( { x: 5, y: 10 } );
 var maze2 = mazeFactory.create( { x: 7, y: 20 } );
 maze1.generate();

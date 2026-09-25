@@ -1,7 +1,7 @@
 {
-  "name": "@mitchallen/grid-core",
+  "name": "@mitchallen/grid-core-v2",
   "version": "0.1.18",
-  "description": "Core grid module",
+  "description": "Core grid module (internal package of maze-generator-v2; not published)",
   "main": "dist/grid-core.cjs.js",
   "files": [
     "dist"
@@ -24,10 +24,8 @@
   "devDependencies": {
     "esbuild": "^0.28.1"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "allowScripts": {
     "esbuild@0.28.1": true
-  }
+  },
+  "private": true
 }

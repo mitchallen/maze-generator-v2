@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/connection-grid/src/hexagon.js
+    Module: @mitchallen/connection-grid-v2/src/hexagon.js
     Author: Mitch Allen
 */
 
@@ -8,8 +8,8 @@
 
 "use strict";
 
-let gridFactory = require("@mitchallen/grid"),
-    baseGrid = require("@mitchallen/connection-grid-core").create;
+let gridFactory = require("@mitchallen/grid-v2"),
+    baseGrid = require("@mitchallen/connection-grid-core-v2").create;
 
 module.exports = (spec) => {
     

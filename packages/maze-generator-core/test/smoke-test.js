@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/maze-generator-core
+    Module: @mitchallen/maze-generator-core-v2
       Test: square/smoke-test
     Author: Mitch Allen
 */
@@ -10,7 +10,7 @@
 "use strict";
 
 var should = require('should'),
-  cgFactory = require("@mitchallen/connection-grid-square"),
+  cgFactory = require("@mitchallen/connection-grid-square-v2"),
   modulePath = "../src/index";
 // modulePath = "../dist/maze-generator-core";
 

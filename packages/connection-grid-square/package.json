@@ -1,7 +1,7 @@
 {
-  "name": "@mitchallen/connection-grid-square",
+  "name": "@mitchallen/connection-grid-square-v2",
   "version": "0.1.23",
-  "description": "Connection grid for square grids",
+  "description": "Connection grid for square grids (internal package of maze-generator-v2; not published)",
   "main": "src/index.js",
   "files": [
     "src",
@@ -25,16 +25,13 @@
   "author": "Mitch Allen <npm@mitchallen.com> (http://mitchallen.com)",
   "license": "MIT",
   "dependencies": {
-    "@mitchallen/connection-grid-core": "^0.1.25",
-    "@mitchallen/grid-square": "^0.1.13"
+    "@mitchallen/connection-grid-core-v2": "^0.1.25",
+    "@mitchallen/grid-square-v2": "^0.1.13"
   },
   "devDependencies": {
     "esbuild": "^0.28.1",
     "eslint": "^9.0.0",
     "globals": "^16.0.0"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
   },
   "overrides": {
     "esbuild": "^0.28.1",
@@ -43,5 +40,6 @@
   },
   "allowScripts": {
     "esbuild@0.28.1": true
-  }
+  },
+  "private": true
 }

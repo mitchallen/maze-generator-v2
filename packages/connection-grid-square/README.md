@@ -1,62 +1,12 @@
 
-@mitchallen/connection-grid-square
+@mitchallen/connection-grid-square-v2
 ==
 Connection grid for square array
 --
 
-<p align="left">
+> Internal package of [maze-generator-v2](https://github.com/mitchallen/maze-generator-v2). It is not published; it is bundled into `@mitchallen/maze-generator-v2`.
+> It continues the code of `@mitchallen/connection-grid-square`, which stays on GitHub Packages frozen at 0.1.23 for existing users.
 
-  <a href="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml">
-    <img src="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml/badge.svg?branch=main" alt="Build Status">
-  </a>
-  
-  <a href="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml?query=branch%3Amain">
-    <img src="https://img.shields.io/badge/coverage-100%25-brightgreen" alt="Coverage: 100%">
-  </a>
-  
-  <a href="https://github.com/users/mitchallen/packages/npm/package/connection-grid-square">
-    <img src="https://img.shields.io/github/package-json/v/mitchallen/maze-generator-v2?filename=packages%2Fconnection-grid-square%2Fpackage.json&label=version" alt="Version">
-  </a>
-  
-  <a href="https://github.com/mitchallen/maze-generator-v2/blob/main/packages/connection-grid-square/LICENSE">
-    <img src="https://img.shields.io/badge/license-MIT-green">
-  </a>
-  
-</p>
-
-
-* * *
-## Installation
-
-This package — and its `@mitchallen` dependencies — is published to the
-**GitHub Packages** registry, not npmjs. GitHub Packages requires
-authentication for every install, even though the packages are public, so you
-need a GitHub personal access token with the `read:packages` scope.
-
-Versions **0.1.17** and earlier remain on npmjs.org and are no longer updated there.
-
-1. Route the `@mitchallen` scope to GitHub Packages in your project `.npmrc`.
-   This line has no secret and is safe to commit:
-
-       @mitchallen:registry=https://npm.pkg.github.com
-
-2. Add your token to your **user** `~/.npmrc` so it never lands in the repo:
-
-       npm config set //npm.pkg.github.com/:_authToken=YOUR_TOKEN --location=user
-
-   Do **not** put the `_authToken` line in the project `.npmrc` — if it is
-   committed, your token is exposed. In CI, set the `NODE_AUTH_TOKEN`
-   environment variable and reference it with
-   `//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}` instead.
-
-3. Install:
-
-       $ npm install @mitchallen/connection-grid-square --save
-
-> Tip: with the GitHub CLI you can use
-> `npm config set //npm.pkg.github.com/:_authToken="$(gh auth token)" --location=user`
-> (after `gh auth refresh --scopes read:packages`).
-  
 * * *
 
 ## Usage
@@ -64,7 +14,7 @@ Versions **0.1.17** and earlier remain on npmjs.org and are no longer updated th
 ```js
 "use strict";
     
-let gridFactory = require("@mitchallen/connection-grid-square");
+let gridFactory = require("@mitchallen/connection-grid-square-v2");
     
 let xSize = 5;
 let ySize = 6;
@@ -72,31 +22,6 @@ let ySize = 6;
 let grid = gridFactory.create({ x: xSize, y: ySize });
 ```
 
-## Browser Usage:
-
-```html
-<!DOCTYPE html>
-  <html>
-      <head>
-        <meta charset="utf-8">
-        <title>Connection-Grid-Square Example</title>
-        <meta name="description" content="Connection Grid Square Example">
-        <script src="https://cdn.jsdelivr.net/gh/mitchallen/connection-grid-square@v0.1.21/dist/connection-grid-square.min.js"></script>
-        <script>
-          var factory = window.MitchAllen.ConnectionGridSquare;
-          console.log(factory);
-          var xSize = 10, ySize = 5;
-          var sg = factory.create( { x: xSize, y: ySize } );
-          console.log(sg);
-          sg.log(); 
-        </script>
-      </head>
-      <body>
-        <h1>Connection Grid Square Example</h1>
-      </body>
-  </html>
-```
-    
 * * *
  
 ## Documentation
