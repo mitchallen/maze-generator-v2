@@ -12,15 +12,16 @@ jobs:
     permissions:
       contents: read
       packages: read
-      id-token: write
     steps:
       - uses: actions/checkout@v5
 
       - uses: actions/setup-node@v5
         with:
           node-version: '24'
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@mitchallen'
+
+      # Authenticate to GitHub Packages without setup-node's registry-url/scope
+      # inputs, which write a scope mapping that breaks npm ci.
+      - run: echo '//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}' >> ~/.npmrc
 
       - run: npm install
         env:
@@ -32,21 +33,11 @@ jobs:
       # by the root build and tests, and is not committed).
       - run: make build
 
-      # Run every workspace package's test suite (root CI otherwise only
-      # exercises the root package).
-      - run: make test
-
-      - run: npm run coverage
+      # Run every workspace package's tests and the root's, failing unless
+      # each one is at 100% coverage.
+      - run: make coverage
 
       # Verify the published tarball contains only dist/ + npm metadata.
       # Runs after coverage so coverage/ exists on disk — this proves the
       # "files" allowlist keeps it (and src/, test/, etc.) out of the package.
       - run: node scripts/check-pack.js
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v7
-        with:
-          use_oidc: true
-          files: ./coverage/lcov.info
-          slug: mitchallen/maze-generator-v2
-          fail_ci_if_error: false
