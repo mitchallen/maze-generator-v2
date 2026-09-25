@@ -1,68 +1,19 @@
 
-@mitchallen/grid-square
+@mitchallen/grid-square-v2
 ==
 2D square grid
 --
 
-<p align="left">
+> Internal package of [maze-generator-v2](https://github.com/mitchallen/maze-generator-v2). It is not published; it is bundled into `@mitchallen/maze-generator-v2`.
+> It continues the code of `@mitchallen/grid-square`, which stays on GitHub Packages frozen at 0.1.16 for existing users.
 
-  <a href="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml">
-    <img src="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml/badge.svg?branch=main" alt="Build Status">
-  </a>
-  
-  <a href="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml?query=branch%3Amain">
-    <img src="https://img.shields.io/badge/coverage-100%25-brightgreen" alt="Coverage: 100%">
-  </a>
-  
-  <a href="https://github.com/users/mitchallen/packages/npm/package/grid-square">
-    <img src="https://img.shields.io/github/package-json/v/mitchallen/maze-generator-v2?filename=packages%2Fgrid-square%2Fpackage.json&label=version" alt="Version">
-  </a>
-  
-  <a href="https://github.com/mitchallen/maze-generator-v2/blob/main/packages/grid-square/LICENSE">
-    <img src="https://img.shields.io/badge/license-MIT-green">
-  </a>
-  
-</p> 
-
-* * *
-## Installation
-
-This package — and its `@mitchallen` dependencies — is published to the
-**GitHub Packages** registry, not npmjs. GitHub Packages requires
-authentication for every install, even though the packages are public, so you
-need a GitHub personal access token with the `read:packages` scope.
-
-Versions **0.1.9** and earlier remain on npmjs.org and are no longer updated there.
-
-1. Route the `@mitchallen` scope to GitHub Packages in your project `.npmrc`.
-   This line has no secret and is safe to commit:
-
-       @mitchallen:registry=https://npm.pkg.github.com
-
-2. Add your token to your **user** `~/.npmrc` so it never lands in the repo:
-
-       npm config set //npm.pkg.github.com/:_authToken=YOUR_TOKEN --location=user
-
-   Do **not** put the `_authToken` line in the project `.npmrc` — if it is
-   committed, your token is exposed. In CI, set the `NODE_AUTH_TOKEN`
-   environment variable and reference it with
-   `//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}` instead.
-
-3. Install:
-
-       $ npm install @mitchallen/grid-square --save
-
-> Tip: with the GitHub CLI you can use
-> `npm config set //npm.pkg.github.com/:_authToken="$(gh auth token)" --location=user`
-> (after `gh auth refresh --scopes read:packages`).
-  
 * * *
 
 ## Usage
 
 ```js
     "use strict";
-    var gridFactory = require("@mitchallen/grid-square");
+    var gridFactory = require("@mitchallen/grid-square-v2");
     
     var xSize = 5;
     var ySize = 10;
@@ -108,7 +59,7 @@ The method will set xSize and ySize to 0 if no parameters are set
 You can call __create__ multiple times to create multiple grids.
 
 ```js
-    var gridFactory = require("@mitchallen/grid-square");
+    var gridFactory = require("@mitchallen/grid-square-v2");
     
     var grid1 = gridFactory.create( { x: 5, y: 10 } );
     var grid2 = gridFactory.create( { x: 7, y: 20 } );
@@ -245,36 +196,6 @@ Example output:
       [ 10, 10, 10, 10, 10 ],
       [ 10, 10, 10, 10, 30 ] ]
       
-* * *
-
-### Browser Client Example
-
-```html
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="utf-8">
-        <title>Grid Square Example</title>
-        <meta name="description" content="Grid Square Example">
-        <script src="https://cdn.jsdelivr.net/gh/mitchallen/grid-square@v0.1.14/dist/grid-square.min.js"></script>
-        <script>
-          var factory = window.MitchAllen.GridSquare;
-          console.log(factory);
-          var xSize = 5,
-              ySize = 6;
-          var gs = factory.create( { x: xSize, y: ySize } );
-          gs.set( xSize-1, ySize-1, "alpha" );
-          console.log(gs);
-          gs.log(); 
-        </script>
-      </head>
-      <body>
-        <h1>Grid Square Example</h1>
-        <p>See JavaScript developer console for output.</p>
-      </body>
-    </html>
-```
-
 * * *
 
 ## Testing

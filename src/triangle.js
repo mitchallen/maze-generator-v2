@@ -8,8 +8,8 @@
 
 "use strict";
 
-var connectionGridFactory = require("@mitchallen/connection-grid"),
-    baseGrid = require("@mitchallen/maze-generator-core"),
+var connectionGridFactory = require("@mitchallen/connection-grid-v2"),
+    baseGrid = require("@mitchallen/maze-generator-core-v2"),
     ascii = require("./ascii-canvas");
 
 module.exports = (spec) => {

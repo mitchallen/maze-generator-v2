@@ -37,7 +37,7 @@ jobs:
       # each one is at 100% coverage.
       - run: make coverage
 
-      # Verify the root and every workspace package tarball contain only their
-      # "files" allowlist + npm metadata. Runs after coverage so coverage/ exists
-      # on disk; this proves the allowlists keep it (and test/, etc.) out.
+      # Verify the published tarball contains only dist/ + npm metadata.
+      # Runs after coverage so coverage/ exists on disk; this proves the
+      # "files" allowlist keeps it (and src/, test/, etc.) out of the package.
       - run: make pack-check

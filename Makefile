@@ -88,10 +88,8 @@ pack: build
 
 # Same as `pack`, but asserts the file list is correct and exits non-zero
 # otherwise — suitable for CI. See scripts/check-pack.js.
-# Checks the root tarball, then each published workspace package's tarball.
 pack-check: build
 	node scripts/check-pack.js
-	@for p in packages/*/scripts/check-pack.js; do echo "$$p"; node "$$p" || exit 1; done
 
 publish:
 	@echo "Switching to main branch..."

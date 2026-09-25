@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/grid
+    Module: @mitchallen/grid-v2
       Test: square-opposite-test
     Author: Mitch Allen
 */

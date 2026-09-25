@@ -1,7 +1,7 @@
 {
-  "name": "@mitchallen/grid",
+  "name": "@mitchallen/grid-v2",
   "version": "0.1.32",
-  "description": "A 2D grid that uses zero-based indexing",
+  "description": "A 2D grid that uses zero-based indexing (internal package of maze-generator-v2; not published)",
   "main": "src/index.js",
   "files": [
     "src",
@@ -34,11 +34,8 @@
     "globals": "^16.0.0"
   },
   "dependencies": {
-    "@mitchallen/grid-core": "^0.1.15",
-    "@mitchallen/grid-square": "^0.1.13"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "@mitchallen/grid-core-v2": "^0.1.15",
+    "@mitchallen/grid-square-v2": "^0.1.13"
   },
   "overrides": {
     "esbuild": "^0.28.1",
@@ -47,5 +44,6 @@
   },
   "allowScripts": {
     "esbuild@0.28.1": true
-  }
+  },
+  "private": true
 }

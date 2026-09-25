@@ -1,68 +1,19 @@
 
-@mitchallen/shuffle
+@mitchallen/shuffle-v2
 ==
 Uses Fisher-Yates to shuffle an array.
 --
 
-<p align="left">
+> Internal package of [maze-generator-v2](https://github.com/mitchallen/maze-generator-v2). It is not published; it is bundled into `@mitchallen/maze-generator-v2`.
+> It continues the code of `@mitchallen/shuffle`, which stays on GitHub Packages frozen at 0.1.17 for existing users.
 
-  <a href="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml">
-    <img src="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml/badge.svg?branch=main" alt="Build Status">
-  </a>
-  
-  <a href="https://github.com/mitchallen/maze-generator-v2/actions/workflows/ci.yml?query=branch%3Amain">
-    <img src="https://img.shields.io/badge/coverage-100%25-brightgreen" alt="Coverage: 100%">
-  </a>
-  
-  <a href="https://github.com/users/mitchallen/packages/npm/package/shuffle">
-    <img src="https://img.shields.io/github/package-json/v/mitchallen/maze-generator-v2?filename=packages%2Fshuffle%2Fpackage.json&label=version" alt="Version">
-  </a>
-  
-  <a href="https://github.com/mitchallen/maze-generator-v2/blob/main/packages/shuffle/LICENSE">
-    <img src="https://img.shields.io/badge/license-MIT-green">
-  </a>
-  
-</p>
-
-
-* * *
-## Installation
-
-This package is published to the **GitHub Packages** registry, not npmjs.
-Versions **0.1.10** and earlier remain on npmjs.org and are no longer updated there.
-GitHub Packages requires authentication for every install, even though the
-package is public, so you need a GitHub personal access token with the
-`read:packages` scope.
-
-1. Route the `@mitchallen` scope to GitHub Packages in your project `.npmrc`.
-   This line has no secret and is safe to commit:
-
-       @mitchallen:registry=https://npm.pkg.github.com
-
-2. Add your token to your **user** `~/.npmrc` so it never lands in the repo:
-
-       npm config set //npm.pkg.github.com/:_authToken=YOUR_TOKEN --location=user
-
-   Do **not** put the `_authToken` line in the project `.npmrc` — if it is
-   committed, your token is exposed. In CI, set the `NODE_AUTH_TOKEN`
-   environment variable and reference it with
-   `//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}` instead.
-
-3. Install:
-
-       $ npm install @mitchallen/shuffle --save
-
-> Tip: with the GitHub CLI you can use
-> `npm config set //npm.pkg.github.com/:_authToken="$(gh auth token)" --location=user`
-> (after `gh auth refresh --scopes read:packages`).
-  
 * * *
 
 ## Usage 
 
     "use strict";
     
-    var shuffleFactory = require("@mitchallen/shuffle");
+    var shuffleFactory = require("@mitchallen/shuffle-v2");
     
 	var list = [1, 2, 3, 4, 5];
 	
@@ -71,45 +22,6 @@ package is public, so you need a GitHub personal access token with the
     var shuffled = shuffler.shuffle();
     
     console.log(shuffled);
-    
-## Browser Usage:
-
-You can reference a minimized client version inside an HTML script tag using
-the jsDelivr CDN, which serves the file from GitHub by tag:
-
-* https://cdn.jsdelivr.net/gh/mitchallen/shuffle@v0.1.15/dist/shuffle.min.js
-
-Adjust for the version that you wish to use.
-
-The factory function can be retrieved from __window.MitchAllen.Shuffle__:
-
-    var factory = window.MitchAllen.Shuffle;
-    var list = [1, 2, 3, 4, 5];
-    var obj = factory.create({ array: list });
-    var shuffled = obj.shuffle();
-
-Example:
-
-    <!DOCTYPE html>
-    <html>
-      <head>
-    <meta charset="utf-8">
-        <title>Shuffle Example</title>
-        <meta name="description" content="Shuffle Example">
-        <script src="https://cdn.jsdelivr.net/gh/mitchallen/shuffle@v0.1.15/dist/shuffle.min.js"></script>
-        <script>
-          var factory = window.MitchAllen.Shuffle;
-          var list = [1, 2, 3, 4, 5];
-          var obj = factory.create({ array: list });
-          var shuffled = obj.shuffle();
-          console.log(shuffled); 
-        </script>
-      </head>
-      <body>
-        <h1>Shuffle Example</h1>
-        <p>See the JavaScript console for results.</p>
-      </body>
-    </html>
     
 * * * 
    
@@ -125,7 +37,7 @@ The method will return null if create fails, such as with bad parameters.
 
 You can call create multiple times to create multiple shuffle objects.
 
-	var shuffleFactory = require("@mitchallen/shuffle");
+	var shuffleFactory = require("@mitchallen/shuffle-v2");
 
 	var s1 = shuffleFactory.create( { array: [ 1, 2, 3, 4, 5 ] } );
 	var s2 = shuffleFactory.create( { array: [ 6, 7, 8, 9, 10 ] }  );
@@ -136,7 +48,7 @@ You can call create multiple times to create multiple shuffle objects.
 
 Returns a shuffled version of the array passed to the create method. It does not affect the original but instead returns a shuffled copy. You can call __shuffle__ multiple times and it will keep shuffling it's internal copy.
 
-	var shuffleFactory = require("@mitchallen/shuffle");
+	var shuffleFactory = require("@mitchallen/shuffle-v2");
 
 	var s1 = shuffleFactory.create( { array: [ 1, 2, 3, 4, 5 ] } );
 	

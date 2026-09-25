@@ -8,8 +8,8 @@
 
 "use strict";
 
-var cgFactory = require("@mitchallen/connection-grid-square"),
-  baseGrid = require("@mitchallen/maze-generator-core");
+var cgFactory = require("@mitchallen/connection-grid-square-v2"),
+  baseGrid = require("@mitchallen/maze-generator-core-v2");
 
 /**
  * Maze Generator Core {@link https://www.npmjs.com/package/maze-generator-core|npm documentation}
@@ -50,7 +50,7 @@ const PERP = {
 * @param {number} options.y Height of the maze
 * @returns {module:maze-generator-weave}
 * @example <caption>Creating a maze-generator-weave</caption>
-* var mazeFactory = require("@mitchallen/maze-generator-weave");
+* var mazeFactory = require("@mitchallen/maze-generator-weave-v2");
 * let xSize = 5;
 * let ySize = 6;
 * var maze = mazeFactory.create({ x: xSize, y: ySize });

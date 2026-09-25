@@ -1,7 +1,7 @@
 {
-  "name": "@mitchallen/connection-grid",
+  "name": "@mitchallen/connection-grid-v2",
   "version": "0.1.41",
-  "description": "map connections between cells in a 2D grid",
+  "description": "map connections between cells in a 2D grid (internal package of maze-generator-v2; not published)",
   "main": "src/index.js",
   "files": [
     "src",
@@ -34,13 +34,10 @@
     "globals": "^16.0.0"
   },
   "dependencies": {
-    "@mitchallen/connection-grid-square": "^0.1.20",
-    "@mitchallen/grid": "^0.1.29",
-    "@mitchallen/grid-square": "^0.1.13",
-    "@mitchallen/shuffle": "^0.1.14"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "@mitchallen/connection-grid-square-v2": "^0.1.20",
+    "@mitchallen/grid-v2": "^0.1.29",
+    "@mitchallen/grid-square-v2": "^0.1.13",
+    "@mitchallen/shuffle-v2": "^0.1.14"
   },
   "overrides": {
     "esbuild": "^0.28.1",
@@ -49,5 +46,6 @@
   },
   "allowScripts": {
     "esbuild@0.28.1": true
-  }
+  },
+  "private": true
 }

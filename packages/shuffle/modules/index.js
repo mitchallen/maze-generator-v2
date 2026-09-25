@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/shuffle
+    Module: @mitchallen/shuffle-v2
     Author: Mitch Allen
 */
 
