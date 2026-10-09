@@ -38,8 +38,8 @@ test: build
 test-all: test
 
 # Coverage is internal (no Codecov): every workspace package, including the
-# root (listed as a workspace), must stay at 100% statements/branches/
-# functions/lines, or this target fails.
+# root (listed as a workspace), must stay at 100% lines/branches/functions
+# (Node's built-in coverage), or this target fails.
 coverage: build
 	npm run coverage --workspaces --if-present
 

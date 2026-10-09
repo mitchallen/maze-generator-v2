@@ -9,7 +9,8 @@
 
 "use strict";
 
-var should = require('should'),
+const { describe, it, before, after, beforeEach, afterEach } = require('node:test');
+var assert = require('node:assert/strict'),
   cgFactory = require("@mitchallen/connection-grid-square-v2"),
   modulePath = "../src/index";
 // modulePath = "../dist/maze-generator-core";
@@ -60,153 +61,137 @@ describe('module create', function () {
 
   var _module = null;
 
-  before(function (done) {
+  before(function() {
     // Call before all tests
     delete require.cache[require.resolve(modulePath)];
     _module = require(modulePath);
-    done();
   });
 
-  after(function (done) {
+  after(function() {
     // Call after all tests
-    done();
   });
 
-  beforeEach(function (done) {
+  beforeEach(function() {
     // Call before each test
-    done();
   });
 
-  afterEach(function (done) {
+  afterEach(function() {
     // Call after eeach test
-    done();
   });
 
-  it('module should exist', function (done) {
-    should.exist(_module);
-    done();
+  it('module should exist', function() {
+    assert.ok(_module != null);
   });
 
-  it('with no spec should return null', function (done) {
+  it('with no spec should return null', function() {
     var mazeGenerator = _module.create();
-    should.not.exist(mazeGenerator);
-    done();
+    assert.ok(mazeGenerator == null);
   });
 
-  it('generate 0 x 0 method should generate an empty maze', function (done) {
+  it('generate 0 x 0 method should generate an empty maze', function() {
     var _connectionGrid = cgFactory.create({ x: 0, y: 0 });
-    should.exist(_connectionGrid);
+    assert.ok(_connectionGrid != null);
     var maze = _module.create({
       grid: _connectionGrid,
     });
-    should.exist(maze);
+    assert.ok(maze != null);
     maze.generate();
-    done();
   });
 
-  it('generate 1 x 1 method should generate a maze', function (done) {
+  it('generate 1 x 1 method should generate a maze', function() {
     var _connectionGrid = cgFactory.create({ x: 1, y: 1 });
-    should.exist(_connectionGrid);
+    assert.ok(_connectionGrid != null);
     var maze = _module.create({
       grid: _connectionGrid,
     });
-    should.exist(maze);
+    assert.ok(maze != null);
     maze.generate();
-    done();
   });
 
-  it('generate 1 x 2 method should generate a maze', function (done) {
+  it('generate 1 x 2 method should generate a maze', function() {
     var _connectionGrid = cgFactory.create({ x: 1, y: 2 });
-    should.exist(_connectionGrid);
+    assert.ok(_connectionGrid != null);
     var maze = _module.create({
       grid: _connectionGrid,
     });
-    should.exist(maze);
+    assert.ok(maze != null);
     maze.generate();
-    done();
   });
 
-  it('generate 2 x 1 method should generate a maze', function (done) {
+  it('generate 2 x 1 method should generate a maze', function() {
     var _connectionGrid = cgFactory.create({ x: 2, y: 1 });
-    should.exist(_connectionGrid);
+    assert.ok(_connectionGrid != null);
     var maze = _module.create({
       grid: _connectionGrid,
     });
-    should.exist(maze);
+    assert.ok(maze != null);
     maze.generate();
-    done();
   });
 
-  it('generate 5 x 5 method should generate a maze', function (done) {
+  it('generate 5 x 5 method should generate a maze', function() {
     var _connectionGrid = cgFactory.create({ x: 5, y: 5 });
-    should.exist(_connectionGrid);
+    assert.ok(_connectionGrid != null);
     var maze = _module.create({
       grid: _connectionGrid,
     });
-    should.exist(maze);
+    assert.ok(maze != null);
     maze.generate();
-    done();
   });
 
-  it('generate 10 x 5 method should generate a maze', function (done) {
+  it('generate 10 x 5 method should generate a maze', function() {
     var _connectionGrid = cgFactory.create({ x: 10, y: 5 });
-    should.exist(_connectionGrid);
+    assert.ok(_connectionGrid != null);
     var maze = _module.create({
       grid: _connectionGrid,
     });
-    should.exist(maze);
+    assert.ok(maze != null);
     maze.generate();
-    done();
   });
 
-  it('generate 10 x 10 method should generate a maze', function (done) {
+  it('generate 10 x 10 method should generate a maze', function() {
     var _connectionGrid = cgFactory.create({ x: 10, y: 10 });
-    should.exist(_connectionGrid);
+    assert.ok(_connectionGrid != null);
     var maze = _module.create({
       grid: _connectionGrid,
     });
-    should.exist(maze);
+    assert.ok(maze != null);
     maze.generate();
-    done();
   });
 
-  it('generate 20 x 15 method should generate a maze', function (done) {
+  it('generate 20 x 15 method should generate a maze', function() {
     var _connectionGrid = cgFactory.create({ x: 20, y: 10 });
-    should.exist(_connectionGrid);
+    assert.ok(_connectionGrid != null);
     var maze = _module.create({
       grid: _connectionGrid,
     });
-    should.exist(maze);
+    assert.ok(maze != null);
     maze.generate();
-    done();
   });
 
-  it('generate 20 x 20 method should generate a maze', function (done) {
+  it('generate 20 x 20 method should generate a maze', function() {
     var _connectionGrid = cgFactory.create({ x: 20, y: 20 });
-    should.exist(_connectionGrid);
+    assert.ok(_connectionGrid != null);
     var maze = _module.create({
       grid: _connectionGrid,
     });
-    should.exist(maze);
+    assert.ok(maze != null);
     maze.generate();
-    done();
   });
 
-  it('generate called twice should generate two valid and distinct mazes', function (done) {
+  it('generate called twice should generate two valid and distinct mazes', function() {
     var _connectionGrid = cgFactory.create({ x: 10, y: 5 });
-    should.exist(_connectionGrid);
+    assert.ok(_connectionGrid != null);
     var maze = _module.create({
       grid: _connectionGrid,
     });
-    should.exist(maze);
+    assert.ok(maze != null);
     maze.generate();
     maze.generate();
-    done();
   });
 
-  it('generate start should start the maze in a new location', function (done) {
+  it('generate start should start the maze in a new location', function() {
     var _connectionGrid = cgFactory.create({ x: 10, y: 5 });
-    should.exist(_connectionGrid);
+    assert.ok(_connectionGrid != null);
     var maze = _module.create({
       grid: _connectionGrid,
     });
@@ -220,12 +205,11 @@ describe('module create', function () {
       ]
     };
     maze.generate(spec);
-    done();
   });
 
-  it('generate start with a negative c value should fail gracefully', function (done) {
+  it('generate start with a negative c value should fail gracefully', function() {
     var _connectionGrid = cgFactory.create({ x: 10, y: 5 });
-    should.exist(_connectionGrid);
+    assert.ok(_connectionGrid != null);
     var maze = _module.create({
       grid: _connectionGrid,
     });
@@ -233,12 +217,11 @@ describe('module create', function () {
       start: { c: -3, r: 3 }
     };
     maze.generate(spec);
-    done();
   });
 
-  it('generate mask should mask parts of the maze', function (done) {
+  it('generate mask should mask parts of the maze', function() {
     var _connectionGrid = cgFactory.create({ x: 10, y: 5 });
-    should.exist(_connectionGrid);
+    assert.ok(_connectionGrid != null);
     var maze = _module.create({
       grid: _connectionGrid,
     });
@@ -251,12 +234,11 @@ describe('module create', function () {
       ]
     };
     maze.generate(spec);
-    done();
   });
 
-  it('generate mask should mask center parts of the maze', function (done) {
+  it('generate mask should mask center parts of the maze', function() {
     var _connectionGrid = cgFactory.create({ x: 10, y: 5 });
-    should.exist(_connectionGrid);
+    assert.ok(_connectionGrid != null);
     var maze = _module.create({
       grid: _connectionGrid,
     });
@@ -270,17 +252,16 @@ describe('module create', function () {
       ]
     };
     maze.generate(spec);
-    done();
   });
 
-  it('solve maze method should solve maze', function (done) {
+  it('solve maze method should solve maze', function() {
     let _size = { x: 25, y: 25 };
     let _connectionGrid = cgFactory.create(_size);
-    should.exist(_connectionGrid);
+    assert.ok(_connectionGrid != null);
     var maze = _module.create({
       grid: _connectionGrid,
     });
-    should.exist(maze);
+    assert.ok(maze != null);
     maze.generate();
     let points = [
       { x: 0, y: 0 },
@@ -304,18 +285,16 @@ describe('module create', function () {
       // console.log(row);
     }
     printboard({ maze, x: _size.x, y: _size.y });
-    done();
   });
 
-  it('solve with empty points should return without error', function (done) {
+  it('solve with empty points should return without error', function() {
     let _connectionGrid = cgFactory.create({ x: 5, y: 5 });
     var maze = _module.create({ grid: _connectionGrid });
     maze.generate();
     maze.solve([]);
-    done();
   });
 
-  it('solveNode at or beyond max depth should stop', function (done) {
+  it('solveNode at or beyond max depth should stop', function() {
     let _connectionGrid = cgFactory.create({ x: 5, y: 5 });
     var maze = _module.create({ grid: _connectionGrid });
     maze.generate();
@@ -323,10 +302,9 @@ describe('module create', function () {
     console.warn = function () {};
     maze.solveNode(0, 0, 5, 1);
     console.warn = origWarn;
-    done();
   });
 
-  it('solveNode should skip a red neighbor', function (done) {
+  it('solveNode should skip a red neighbor', function() {
     let _connectionGrid = cgFactory.create({ x: 5, y: 5 });
     var maze = _module.create({ grid: _connectionGrid });
     maze.generate();
@@ -335,18 +313,17 @@ describe('module create', function () {
     maze.markGreen(0, 0);
     maze.markRed(1, 0);
     maze.solveNode(0, 0, 0, maze.xSize * maze.ySize);
-    should.equal(maze.isRed(1, 0), true);
-    done();
+    assert.ok((maze.isRed(1, 0)) == true);
   });
 
-  it('alt method should control depth', function (done) {
+  it('alt method should control depth', function() {
     let _size = { x: 25, y: 25 };
     let _connectionGrid = cgFactory.create(_size);
-    should.exist(_connectionGrid);
+    assert.ok(_connectionGrid != null);
     var maze = _module.create({
       grid: _connectionGrid,
     });
-    should.exist(maze);
+    assert.ok(maze != null);
     let options = {
       start: { c: 0, r: 0 },
       depthFunction: function (depth, maxDepth) { 
@@ -357,6 +334,5 @@ describe('module create', function () {
 
     printboard({ maze, x: _size.x, y: _size.y });
 
-    done();
   });
 });

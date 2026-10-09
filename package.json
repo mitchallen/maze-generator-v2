@@ -9,15 +9,15 @@
   "scripts": {
     "start": "node dist/maze-generator-v2.cjs.js",
     "build": "node build.js",
-    "test": "npm run build && mocha --recursive --timeout 20000",
-    "coverage": "npm run build && c8 --check-coverage --100 --include='src/**' --reporter=text mocha --recursive --timeout 20000",
-    "test-hexagon": "npm run build && mocha --recursive test/hexagon/ --timeout 5000",
-    "test-square": "npm run build && mocha --recursive test/square/ --timeout 5000",
-    "test-weave": "npm run build && mocha --recursive test/weave/ --timeout 5000",
-    "test-triangle": "npm run build && mocha --recursive test/triangle/ --timeout 5000",
-    "test-circle": "npm run build && mocha --recursive test/circle/ --timeout 5000",
-    "test-ascii": "npm run build && mocha --recursive test/ascii/ --timeout 5000",
-    "test-debug": "npm run build && mocha -g '@DEBUG' --recursive --timeout 20000",
+    "test": "npm run build && node --test 'test/**/*.js'",
+    "coverage": "npm run build && node --test --experimental-test-coverage --test-coverage-include='src/**' --test-coverage-lines=100 --test-coverage-branches=100 --test-coverage-functions=100 --test-coverage-exclude='test/**' 'test/**/*.js'",
+    "test-hexagon": "npm run build && node --test 'test/hexagon/**/*.js'",
+    "test-square": "npm run build && node --test 'test/square/**/*.js'",
+    "test-weave": "npm run build && node --test 'test/weave/**/*.js'",
+    "test-triangle": "npm run build && node --test 'test/triangle/**/*.js'",
+    "test-circle": "npm run build && node --test 'test/circle/**/*.js'",
+    "test-ascii": "npm run build && node --test 'test/ascii/**/*.js'",
+    "test-debug": "npm run build && node --test --test-name-pattern='@DEBUG' 'test/**/*.js'",
     "ws:install": "npm install --workspaces",
     "ws:test": "npm run test --workspaces --if-present",
     "ws:build": "npm run build --workspaces --if-present",
@@ -36,16 +36,11 @@
     "@mitchallen/maze-generator-core-v2": "^0.1.18",
     "@mitchallen/maze-generator-square-v2": "^0.1.28",
     "@mitchallen/maze-generator-weave-v2": "^0.1.0",
-    "c8": "^12.0.0",
-    "esbuild": "^0.28.2",
-    "mocha": "^12.0.2",
-    "should": "^13.2.3"
+    "esbuild": "^0.28.2"
   },
   "overrides": {
-    "brace-expansion": "^5.0.9",
-    "diff": "^9.0.0",
-    "js-yaml": "^4.3.2",
-    "serialize-javascript": "^7.0.5"
+    "brace-expansion": "^5.0.12",
+    "js-yaml": "^4.3.2"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/",

@@ -11,19 +11,19 @@ Use Node `>=20` and npm `>=10`.
 - `make install`: install root and workspace dependencies.
 - `make build`: run `build` scripts across all workspaces.
 - `make test`: run `test` scripts across all workspaces.
-- `npm test`: root build + recursive Mocha tests.
+- `npm test`: root build + Node's built-in test runner (`node --test`) over `test/**`.
 - `npm run test-square` (or `test-hexagon`, `test-triangle`, `test-circle`, `test-ascii`): run targeted suites.
 - `make clean`: remove all `node_modules` folders in the monorepo.
 
 ## Coding Style & Naming Conventions
-Code is CommonJS-first; packages build with esbuild (`build.js`) and test with Mocha. Legacy `/*jshint */` directives remain in some files but JSHint and Grunt are no longer used.
+Code is CommonJS-first; packages build with esbuild (`build.js`) and test with Node's built-in test runner (`node:test` + `node:assert/strict`); no Mocha/Should/c8. Legacy `/*jshint */` directives remain in some files but JSHint and Grunt are no longer used.
 - Indentation: 4 spaces; include semicolons.
 - Prefer `var` in legacy modules; use `let`/`const` only where already established.
 - File names are kebab-case or shape-oriented (for example `hexagon.js`, `smoke-test.js`).
 - Keep public API factory names in PascalCase (`Square`, `Hexagon`, `Triangle`, `Circle`) to match existing exports.
 
 ## Testing Guidelines
-Mocha + Should are the primary test stack.
+Tests use `node:test` + `node:assert/strict`; coverage uses Node's built-in coverage (100% lines/branches/functions). Don't add a third-party test framework — it reintroduces the Dependabot churn this repo was cleaned of.
 - Place tests in `test/**` using `*-test.js` naming.
 - Keep smoke coverage for each shape/module (`square`, `hexagon`, `triangle`, `circle`, `ascii`).
 - Run `make test` before opening a PR; for quick validation, run the relevant targeted test script first.
