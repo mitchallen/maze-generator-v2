@@ -9,152 +9,134 @@
 
 "use strict";
 
-var should = require('should'),
+const { describe, it, before, after, beforeEach, afterEach } = require('node:test');
+var assert = require('node:assert/strict'),
     modulePath = "../../src/index";
 
 describe('Weave method', function() {
 
     var _module = null;
 
-    before(function(done) {
+    before(function() {
         // Call before all tests
         delete require.cache[require.resolve(modulePath)];
         _module = require(modulePath);
-        done();
     });
 
-    after(function(done) {
+    after(function() {
         // Call after all tests
-        done();
     });
 
-    beforeEach(function(done) {
+    beforeEach(function() {
         // Call before each test
-        done();
     });
 
-    afterEach(function(done) {
+    afterEach(function() {
         // Call after eeach test
-        done();
     });
 
-    it('module should exist', function(done) {
-        should.exist(_module);
-        done();
+    it('module should exist', function() {
+        assert.ok(_module != null);
     });
 
-    it('with no spec should return object', function(done) {
+    it('with no spec should return object', function() {
         var mazeGenerator = _module.Weave();
-        should.exist(mazeGenerator);
-        done();
+        assert.ok(mazeGenerator != null);
     });
 
-    it('with valid x and y parameters should return object', function(done) {
+    it('with valid x and y parameters should return object', function() {
         var mazeGenerator = _module.Weave({ x: 5, y: 5 });
-        should.exist(mazeGenerator);
-        done();
+        assert.ok(mazeGenerator != null);
     });
 
-    it('generate 0 x 0 method should generate an empty maze', function(done) {
+    it('generate 0 x 0 method should generate an empty maze', function() {
         var mazeGenerator = _module.Weave({ x: 0, y: 0 });
-        should.exist(mazeGenerator);
+        assert.ok(mazeGenerator != null);
         mazeGenerator.generate();
         mazeGenerator.printBoard();
-        done();
     });
 
-    it('generate -1 x -1 method should generate an empty maze', function(done) {
+    it('generate -1 x -1 method should generate an empty maze', function() {
         var mazeGenerator = _module.Weave({ x: -1, y: -1 });
-        should.exist(mazeGenerator);
+        assert.ok(mazeGenerator != null);
         mazeGenerator.generate();
         mazeGenerator.printBoard();
-        done();
     });
 
-    it('generate -1 x -1 method should normalize x and y to 0', function(done) {
+    it('generate -1 x -1 method should normalize x and y to 0', function() {
         var mazeGenerator = _module.Weave({ x: -1, y: -1 });
-        mazeGenerator.xSize.should.eql(0);
-        mazeGenerator.ySize.should.eql(0);
-        done();
+        assert.deepStrictEqual(mazeGenerator.xSize, 0);
+        assert.deepStrictEqual(mazeGenerator.ySize, 0);
     });
 
-    it('generate 1 x 1 method should generate a maze', function(done) {
+    it('generate 1 x 1 method should generate a maze', function() {
         var mazeGenerator = _module.Weave({ x: 1, y: 1 });
-        should.exist(mazeGenerator);
+        assert.ok(mazeGenerator != null);
         mazeGenerator.generate();
         mazeGenerator.printBoard();
-        done();
     });
 
-    it('generate 1 x 2 method should generate a maze', function(done) {
+    it('generate 1 x 2 method should generate a maze', function() {
         var mazeGenerator = _module.Weave({ x: 1, y: 2 });
-        should.exist(mazeGenerator);
+        assert.ok(mazeGenerator != null);
         mazeGenerator.generate();
         mazeGenerator.printBoard();
-        done();
     });
 
-    it('generate 2 x 1 method should generate a maze', function(done) {
+    it('generate 2 x 1 method should generate a maze', function() {
         var mazeGenerator = _module.Weave({ x: 2, y: 1 });
-        should.exist(mazeGenerator);
+        assert.ok(mazeGenerator != null);
         mazeGenerator.generate();
         mazeGenerator.printBoard();
-        done();
     });
 
-    it('generate 5 x 5 method should generate a maze', function(done) {
+    it('generate 5 x 5 method should generate a maze', function() {
         var mazeGenerator = _module.Weave({ x: 5, y: 5 });
-        should.exist(mazeGenerator);
+        assert.ok(mazeGenerator != null);
         mazeGenerator.generate();
         mazeGenerator.printBoard();
-        done();
     });
 
-    it('generate 10 x 5 method should generate a maze', function(done) {
+    it('generate 10 x 5 method should generate a maze', function() {
         var mazeGenerator = _module.Weave({ x: 10, y: 5 });
-        should.exist(mazeGenerator);
+        assert.ok(mazeGenerator != null);
         mazeGenerator.generate();
         mazeGenerator.printBoard();
-        done();
     });
 
-    it('generate 10 x 10 method should generate a maze', function(done) {
+    it('generate 10 x 10 method should generate a maze', function() {
         var mazeGenerator = _module.Weave({ x: 10, y: 10 });
-        should.exist(mazeGenerator);
+        assert.ok(mazeGenerator != null);
         mazeGenerator.generate();
         mazeGenerator.printBoard();
-        done();
     });
 
-    it('generate 20 x 15 method should generate a maze', function(done) {
+    it('generate 20 x 15 method should generate a maze', function() {
         var mazeGenerator = _module.Weave({ x: 20, y: 15 });
-        should.exist(mazeGenerator);
+        assert.ok(mazeGenerator != null);
         mazeGenerator.generate();
         mazeGenerator.printBoard();
-        done();
     });
 
-    it('generate 20 x 20 method should generate a maze', function(done) {
+    it('generate 20 x 20 method should generate a maze', function() {
         var mazeGenerator = _module.Weave({ x: 20, y: 20 });
-        should.exist(mazeGenerator);
+        assert.ok(mazeGenerator != null);
         mazeGenerator.generate();
         mazeGenerator.printBoard();
-        done();
     });
 
-    it('generate called twice should generate two valid and distinct mazes', function(done) {
+    it('generate called twice should generate two valid and distinct mazes', function() {
         var mazeGenerator = _module.Weave({ x: 10, y: 5 });
-        should.exist(mazeGenerator);
+        assert.ok(mazeGenerator != null);
         mazeGenerator.generate();
         mazeGenerator.printBoard();
         mazeGenerator.generate();
         mazeGenerator.printBoard();
-        done();
     });
 
-    it('generate start should start the maze in a new location', function(done) {
+    it('generate start should start the maze in a new location', function() {
         var mazeGenerator = _module.Weave({ x: 5, y: 6 });
-        should.exist(mazeGenerator);
+        assert.ok(mazeGenerator != null);
         let spec = {
             start: { c: 3, r: 3 },
             mask: [
@@ -166,12 +148,11 @@ describe('Weave method', function() {
         };
         mazeGenerator.generate(spec);
         mazeGenerator.printBoard();
-        done();
     });
 
-    it('generate mask should mask parts of the maze', function(done) {
+    it('generate mask should mask parts of the maze', function() {
         var mazeGenerator = _module.Weave({ x: 5, y: 6 });
-        should.exist(mazeGenerator);
+        assert.ok(mazeGenerator != null);
         let spec = {
             start: { c: 3, r: 3 },
             mask: [
@@ -182,12 +163,11 @@ describe('Weave method', function() {
         };
         mazeGenerator.generate(spec);
         mazeGenerator.printBoard();
-        done();
     });
 
-    it('generate mask should mask center parts of the maze', function(done) {
+    it('generate mask should mask center parts of the maze', function() {
         var mazeGenerator = _module.Weave({ x: 5, y: 6 });
-        should.exist(mazeGenerator);
+        assert.ok(mazeGenerator != null);
         let spec = {
             start: { c: 0, r: 0 },
             mask: [
@@ -199,12 +179,11 @@ describe('Weave method', function() {
         };
         mazeGenerator.generate(spec);
         mazeGenerator.printBoard();
-        done();
     });
 
-    it('generate mask should mask center parts of a larger maze', function(done) {
+    it('generate mask should mask center parts of a larger maze', function() {
         var mazeGenerator = _module.Weave({ x: 25, y: 25 });
-        should.exist(mazeGenerator);
+        assert.ok(mazeGenerator != null);
         let spec = {
             start: { c: 0, r: 0 },
             mask: [
@@ -216,23 +195,21 @@ describe('Weave method', function() {
         };
         mazeGenerator.generate(spec);
         mazeGenerator.printBoard();
-        done();
     });
 
-    it('getMaxDistance for maze 20x20', function(done) {
+    it('getMaxDistance for maze 20x20', function() {
         var mazeGenerator = _module.Weave({ x: 20, y: 20 });
-        should.exist(mazeGenerator);
+        assert.ok(mazeGenerator != null);
         mazeGenerator.generate();
         let d = mazeGenerator.getMaxDistance(0, 0);
         mazeGenerator.printBoard({ target: d });
         console.log('\ntarget: ', d, '\n');
-        done();
     });
 
-    it('solve for maze corner to corner', function(done) {
+    it('solve for maze corner to corner', function() {
         let size = { x: 9, y: 9 }
         var mazeGenerator = _module.Weave(size);
-        should.exist(mazeGenerator);
+        assert.ok(mazeGenerator != null);
         mazeGenerator.generate();
         let { x, y } = size;
         let d = { x: x - 1, y: y - 1 };
@@ -244,12 +221,11 @@ describe('Weave method', function() {
         ];
         mazeGenerator.solve(points);
         mazeGenerator.printBoard({ target: d });
-        done();
     });
 
-    it('generate should create at least one crossing for a large enough maze', function(done) {
+    it('generate should create at least one crossing for a large enough maze', function() {
         var mazeGenerator = _module.Weave({ x: 12, y: 12 });
-        should.exist(mazeGenerator);
+        assert.ok(mazeGenerator != null);
         mazeGenerator.generate();
         mazeGenerator.printBoard();
         let crossings = 0;
@@ -261,14 +237,13 @@ describe('Weave method', function() {
             }
         }
         console.log('\ncrossings: ', crossings, '\n');
-        crossings.should.be.above(0);
-        done();
+        assert.ok(crossings > 0);
     });
 
-    it('afterGenerate should open borders', function(done) {
+    it('afterGenerate should open borders', function() {
         var xSize = 5, ySize = 6;
         var mazeGenerator = _module.Weave({ x: xSize, y: ySize });
-        should.exist(mazeGenerator);
+        assert.ok(mazeGenerator != null);
         let spec = {
             open: [
                 { border: "N", list: [0, 2, xSize - 1] },
@@ -279,6 +254,5 @@ describe('Weave method', function() {
         };
         mazeGenerator.generate(spec);
         mazeGenerator.printBoard();
-        done();
     });
 });
