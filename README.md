@@ -520,6 +520,28 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 ## Version History
 
+#### Version 0.3.8
+
+* renamed the workspace packages to `@mitchallen/*-v2` and kept them private
+* switched the remaining mocha test suites to the built-in `node:test` runner
+* dev-dependency bumps (including eslint 10.13.0); no API changes
+
+#### Version 0.3.7
+
+* the monorepo is now the source of the `@mitchallen` maze libraries (shuffle, grid-core, maze-generator-core, grid-square, connection-grid-core, grid, connection-grid-square, connection-grid, maze-generator-square); no API changes
+
+#### Version 0.3.6
+
+* modernized CI: dropped Codecov, now requires 100% coverage, updated badges
+* reduced recurring Dependabot alerts in dev dependencies; dev-dependency and GitHub Actions bumps
+* dropped the redundant `.npmignore` (the `files` allowlist governs the tarball); no API changes
+
+#### Version 0.3.5
+
+* added the `LICENSE` file for the declared MIT license and republished so the tarball includes it
+* cleared high-severity `brace-expansion` and `js-yaml` advisories in dev dependencies
+* marked the example package as private
+
 #### Version 0.3.4
 
 * smaller published bundle — the root now inlines the minified `grid-square` build (workspace package build was normalized); no API changes
